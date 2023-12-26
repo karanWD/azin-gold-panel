@@ -1,18 +1,19 @@
 import {Box} from "@mui/material";
 import {ReactNode} from "react";
 import Navigation from "./navigation";
+import {StyledLayout} from "./styles";
 
 
 const LayoutIndex = ({children}: { children: ReactNode }) => {
   return (
-    <Box display='flex' flexDirection="row-reverse">
-      <Box flexBasis="280px">
+    <StyledLayout>
+      <Box className="sidebar-container" flexBasis="">
         <Navigation/>
       </Box>
-      <Box flex="7">
+      <Box className="content-container">
         {children}
       </Box>
-    </Box>
+    </StyledLayout>
   );
 };
 
