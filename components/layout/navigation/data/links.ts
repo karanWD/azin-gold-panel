@@ -1,0 +1,74 @@
+export const NavigationLinks = [
+  {
+    title:"پیشخوان",
+    icon:'',
+    href:"",
+    isDisabled:false
+  },
+  {
+    title:"سفارشات",
+    icon:'',
+    href:"",
+    isDisabled:false
+  },
+  {
+    title:"محصولات",
+    icon:'',
+    href:"",
+    isDisabled:false
+  },
+  {
+    title:"بنرها",
+    icon:'',
+    href:"",
+    isDisabled:false
+  },
+  {
+    title:"مشتریان",
+    icon:'',
+    href:"",
+    isDisabled:false
+  },
+  {
+    title:"گروه‌یندی مشتریان",
+    icon:'',
+    href:"",
+    isDisabled:false
+  },
+  {
+    title:"همکاران",
+    icon:'',
+    href:"",
+    isDisabled:false
+  },
+  {
+    title:"دسته‌بندی محصول",
+    icon:'',
+    href:"",
+    isDisabled:false
+  },
+  {
+    title:"مدیریت ویژگی‌ها",
+    icon:'',
+    href:"",
+    isDisabled:false
+  },
+  {
+    title:"صفحات عمومی",
+    icon:'',
+    href:"",
+    isDisabled:false
+  },
+  {
+    title:"مدیریت محتوا",
+    icon:'',
+    href:"",
+    isDisabled:false
+  },
+  {
+    title:"خروج",
+    icon:'',
+    href:"",
+    isDisabled:false
+  }
+]
