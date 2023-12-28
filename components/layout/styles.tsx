@@ -5,7 +5,11 @@ export const StyledLayout = styled(Box)<BoxProps>(({theme}) => ({
   ".sidebar-container": {
     flexBasis: "280px",
     padding:'42px 42px 0 0',
-    height:'100vh'
+    height:'100vh',
+    position:'sticky',
+    top:'0',
+    right:'0',
+
   },
   ".content-container": {
     flex: '7',

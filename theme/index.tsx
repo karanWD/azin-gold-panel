@@ -1,11 +1,8 @@
 import {createTheme} from "@mui/material";
+import {palette} from "./palette";
 
 export const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#2a9461"
-    }
-  },
+  palette: palette,
   typography: {
     fontFamily: 'IRANSansX',
     fontSize: 14
