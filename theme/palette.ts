@@ -9,6 +9,7 @@ declare module '@mui/material/styles' {
     state: Palette['primary']
   }
 }
+
 interface PaletteColor {
   min?: string
   max?: string
@@ -50,23 +51,23 @@ interface SimplePaletteColorOptions {
 }
 
 
-export const palette:any = {
+export const palette: any = {
   primary: {
     main: "#0072FF"
   },
   neutral: {
     white: "#FFF",
-    '100':"#F2F3F6",
-    '300':"#97989B",
-    main:'#5B5C5F',
-    '900':"#1C1D1F",
+    '100': "#F2F3F6",
+    '300': "#97989B",
+    main: '#5B5C5F',
+    '900': "#1C1D1F",
     black: "#000"
   },
-  state:{
-    info:"#0072FF",
-    success:"#1EA362",
-    error:"#D4394D",
-    warning:"#E06E16",
-    default:"#5B5C5F",
+  state: {
+    info: {main: "#0072FF", light: "#E6F1FF"},
+    success: {main: "#1EA362", light: "#E9F6EF"},
+    error: {main: "#D4394D", light: "#FBEBED"},
+    warning: {main: "#E06E16", light: "#FCF1E8"},
+    default: {main: "#5B5C5F", light: "#EEE"},
   }
 }

@@ -2,8 +2,13 @@ import {Box, BoxProps, styled} from "@mui/material";
 
 export const StyledOrderDetailPage = styled(Box)<BoxProps>(({theme})=>({
   display:'flex',
-  alignItems:'center',
-  justifyContent:'space-between',
+  flexDirection:"column",
+  rowGap:'20px',
+  ".order-header-container":{
+    display:'flex',
+    alignItems:'center',
+    justifyContent:'space-between',
+  },
   ".back-button":{
     display:'flex',
     alignItems:'center',
