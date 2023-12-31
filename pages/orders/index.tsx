@@ -54,7 +54,7 @@ const OrdersPage: NextPage = () => {
       weight: item.order.totalWeight + " گرم ",
       weightWithWage: item.order.totalWeightWithWage + " گرم ",
       count: item.order.totalQuantity + " عدد ",
-      more: <MoreDetail id={item.order._id}/>
+      more: <MoreDetail userId={item._id} trackingId={item.order.tracking}/>
     }))
   }, [])
 

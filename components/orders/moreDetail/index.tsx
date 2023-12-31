@@ -2,11 +2,15 @@ import React, {FC} from 'react';
 import {StyledMoreDetail} from "./styles";
 import {Box, Button, Popover, Typography} from "@mui/material";
 import Image from "next/image";
+import {useRouter} from "next/router";
+import Link from "next/link";
 
 type Props = {
-  id: string
+  userId: string
+  trackingId: string
 }
-const MoreDetail: FC<Props> = ({id}) => {
+const MoreDetail: FC<Props> = ({userId,trackingId}) => {
+  const router = useRouter()
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -22,7 +26,6 @@ const MoreDetail: FC<Props> = ({id}) => {
       </Button>
       <Popover
         className="popover-container"
-        id={id}
         open={!!anchorEl}
         anchorEl={anchorEl}
         onClose={handleClose}
@@ -41,7 +44,7 @@ const MoreDetail: FC<Props> = ({id}) => {
           }
         }}
       >
-        <Typography>جزئیات سفارش</Typography>
+        <Link href={`/orders/${userId}/${trackingId}`}>جزئیات سفارش</Link>
         <Typography>تغییر وضعیت</Typography>
       </Popover>
     </StyledMoreDetail>
