@@ -5,6 +5,7 @@ import useFetch from "../../../../hooks/useFetch";
 import {ApiRoutes} from "../../../../enums/ApiRoutes";
 import OrderHeader from "../../../../components/orders/orderHeader";
 import OrderInfo from "../../../../components/orders/orderInfo";
+import OrderCategories from "../../../../components/orders/orderCategories";
 
 const OrderDetailPage = () => {
   const router = useRouter()
@@ -22,6 +23,7 @@ const OrderDetailPage = () => {
     <StyledOrderDetailPage>
       <OrderHeader trackingId={trackingId as string}/>
       <OrderInfo data={response}/>
+      <OrderCategories data={response.order.products} />
     </StyledOrderDetailPage>
   );
 };

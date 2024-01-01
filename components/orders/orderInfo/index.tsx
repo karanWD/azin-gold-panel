@@ -6,14 +6,14 @@ const OrderInfo = ({data}) => {
   return (
     <StyledOrderInfo>
       <Box className="order-info-columns">
-        <OrderInfoItem title="نام مشتری:" value={"تست"}/>
-        <OrderInfoItem title="شماره موبایل:" value={"تست"}/>
-        <OrderInfoItem title="تاریخ تحویل:" value={new Date(data.updatedAt).toLocaleDateString("fa-ir") ?? "--"}/>
+        <OrderInfoItem title="نام مشتری:" value={data.name}/>
+        <OrderInfoItem title="شماره موبایل:" value={data.mobile}/>
+        <OrderInfoItem title="تاریخ تحویل:" value={new Date(data.order.updatedAt).toLocaleDateString("fa-ir") ?? "--"}/>
       </Box>
       <Box className="order-info-columns">
-        <OrderInfoItem title="تعداد سفارش:" value={data.totalQuantity+" عدد "}/>
-        <OrderInfoItem title="وزن کل حدودی:" value={data.totalWeight+" گرم "}/>
-        <OrderInfoItem title="وزن کل حدودی با اجرت:" value={data.totalWeightWithWage+" گرم "}/>
+        <OrderInfoItem title="تعداد سفارش:" value={data.order.totalQuantity+" عدد "}/>
+        <OrderInfoItem title="وزن کل حدودی:" value={data.order.totalWeight+" گرم "}/>
+        <OrderInfoItem title="وزن کل حدودی با اجرت:" value={data.order.totalWeightWithWage+" گرم "}/>
       </Box>
       <Box className="order-info-columns"></Box>
     </StyledOrderInfo>

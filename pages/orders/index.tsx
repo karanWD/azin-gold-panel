@@ -50,7 +50,7 @@ const OrdersPage: NextPage = () => {
       createdAt: handleDate(item.order.createdAt),
       tracking: item.order.tracking,
       username: item.name,
-      status: <OrdersStatus status={item.order.status}/>,
+      status: <OrdersStatus status={item.order.status} type={"TEXT"}/>,
       weight: item.order.totalWeight + " گرم ",
       weightWithWage: item.order.totalWeightWithWage + " گرم ",
       count: item.order.totalQuantity + " عدد ",
