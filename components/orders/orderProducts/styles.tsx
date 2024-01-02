@@ -27,7 +27,7 @@ export const StyledOrderProducts = styled(Box)(({theme}) => ({
       fontSize: '12px',
       fontWeight: '400',
       lineHeight: '24px',
-
+      color: theme.palette.neutral["300"]
     }
   },
   ".sub-products-container": {
