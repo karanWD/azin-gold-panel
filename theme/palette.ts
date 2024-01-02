@@ -58,6 +58,7 @@ export const palette: any = {
   neutral: {
     white: "#FFF",
     '100': "#F2F3F6",
+    "200":"#DADCDE",
     '300': "#97989B",
     main: '#5B5C5F',
     '900': "#1C1D1F",
