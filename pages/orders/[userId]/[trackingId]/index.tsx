@@ -6,6 +6,7 @@ import {ApiRoutes} from "../../../../enums/ApiRoutes";
 import OrderHeader from "../../../../components/orders/orderHeader";
 import OrderInfo from "../../../../components/orders/orderInfo";
 import OrderCategories from "../../../../components/orders/orderCategories";
+import OrderDetailSkeleton from "../../../../components/orders/orderDetailSkeleton";
 
 const OrderDetailPage = () => {
   const router = useRouter()
@@ -22,14 +23,15 @@ const OrderDetailPage = () => {
   }, [trackingId])
 
   return (
-    response && !loading &&
-    <StyledOrderDetailPage>
+    response && !loading ?
+      <StyledOrderDetailPage>
         <OrderHeader status={response.order.status}
                      trackingId={trackingId as string} orderId={response.order._id}
                      updateHandler={fetchOrderDetail}/>
         <OrderInfo data={response}/>
         <OrderCategories data={response.order.products} orderId={response.order._id} updateHandler={fetchOrderDetail}/>
-    </StyledOrderDetailPage>
+      </StyledOrderDetailPage> :
+      <OrderDetailSkeleton/>
   );
 };
 

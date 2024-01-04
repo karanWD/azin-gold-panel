@@ -34,13 +34,17 @@ const handleDate = (timestamp: string): string => {
 const OrdersPage: NextPage = () => {
   const {response, error, loading, request} = useFetch()
   const [page, setPage] = useState<number>(1)
-  useEffect(() => {
+
+  const fetchOrderList = (page) => {
     request({
       url: ApiRoutes.ADMIN_ORDERS + `?page=${page}`
       // for filters
       //status=CANCELED&fromDate=2023-12-25T00:00:00Z&toDate=2023-12-28T00:00:00Z&name=م&tracking=87
     })
+  }
 
+  useEffect(() => {
+    fetchOrderList(page)
   }, [page])
 
   const formatData = useCallback((data) => {
@@ -54,7 +58,7 @@ const OrdersPage: NextPage = () => {
       weight: item.order.totalWeight + " گرم ",
       weightWithWage: item.order.totalWeightWithWage + " گرم ",
       count: item.order.totalQuantity + " عدد ",
-      more: <MoreDetail userId={item._id} trackingId={item.order.tracking}/>
+      more: <MoreDetail userId={item._id} orderId={item.order._id} trackingId={item.order.tracking} updateHandler={()=>fetchOrderList(page)}/>
     }))
   }, [])
 
