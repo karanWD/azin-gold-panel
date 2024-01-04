@@ -12,4 +12,18 @@ export const StyledChangeOrderTotalStatus = styled(Box)<BoxProps>(({theme})=>({
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
+  ".change-status-modal-header": {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between'
+  },
+  ".change-status-modal-footer": {
+    display: 'flex',
+    justifyContent: 'flex-end'
+  },
+  ".change-status-modal-body":{
+    display: 'flex',
+    flexDirection: 'column',
+    rowGap: '4px',
+  }
 }))

@@ -5,10 +5,19 @@ import {Box, Button, Modal} from "@mui/material";
 import OrderProducts from "../orderProducts";
 import ChangeStatusModal from "../changeStatusModal";
 
-type Props = { data: { [key: string]: Array<any> },orderId:string,updateHandler:()=>void }
-type SelectedItems = { orderId:string, groupId: string, currentStatus: string, items: Array<any> } | null
+type Props = {
+  data: { [key: string]: Array<any> },
+  orderId: string,
+  updateHandler: () => void
+}
+type SelectedItems = {
+  orderId: string,
+  groupId: string,
+  currentStatus: string,
+  items: Array<any>
+} | null
 
-const OrderCategories: FC<Props> = ({data,orderId,updateHandler}) => {
+const OrderCategories: FC<Props> = ({data, orderId, updateHandler}) => {
   const [selectedItems, setSelectedItems] = useState<SelectedItems>(null)
   const [openModal, setOpenModal] = useState<boolean>(false)
 
@@ -16,7 +25,7 @@ const OrderCategories: FC<Props> = ({data,orderId,updateHandler}) => {
     if (isChecked) {
       const temp = {
         groupId: id,
-        orderId:orderId,
+        orderId: orderId,
         currentStatus: key,
       }
       setSelectedItems((prevState) => ({
@@ -58,7 +67,7 @@ const OrderCategories: FC<Props> = ({data,orderId,updateHandler}) => {
         open={openModal}
         onClose={closeHandler}
       >
-            <ChangeStatusModal selectedItems={selectedItems} closeHandler={closeHandler} updateHandler={updateHandler}/>
+        <ChangeStatusModal selectedItems={selectedItems} closeHandler={closeHandler} updateHandler={updateHandler}/>
       </Modal>
     </StyledOrderCategories>
   );

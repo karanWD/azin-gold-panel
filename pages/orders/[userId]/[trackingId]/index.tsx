@@ -12,9 +12,9 @@ const OrderDetailPage = () => {
   const {response, loading, request} = useFetch()
   const {trackingId, userId} = router.query
 
- const fetchOrderDetail = () =>{
-   request({url: ApiRoutes.ADMIN_ORDERS + "/" + userId + "/" + trackingId})
- }
+  const fetchOrderDetail = () => {
+    request({url: ApiRoutes.ADMIN_ORDERS + "/" + userId + "/" + trackingId})
+  }
 
   useEffect(() => {
     trackingId && userId &&
@@ -24,9 +24,11 @@ const OrderDetailPage = () => {
   return (
     response && !loading &&
     <StyledOrderDetailPage>
-      <OrderHeader trackingId={trackingId as string}/>
-      <OrderInfo data={response}/>
-      <OrderCategories data={response.order.products} orderId={response.order._id} updateHandler={fetchOrderDetail} />
+        <OrderHeader status={response.order.status}
+                     trackingId={trackingId as string} orderId={response.order._id}
+                     updateHandler={fetchOrderDetail}/>
+        <OrderInfo data={response}/>
+        <OrderCategories data={response.order.products} orderId={response.order._id} updateHandler={fetchOrderDetail}/>
     </StyledOrderDetailPage>
   );
 };

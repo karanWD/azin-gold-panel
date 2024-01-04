@@ -4,15 +4,18 @@ import EastIcon from "@mui/icons-material/East";
 import OrdersStatus from "../ordersStatus";
 import {ORDER_STATUSES} from "../../../enums/OrderStatuses";
 import {useRouter} from "next/router";
-import ChangeStatusModal from "../changeStatusModal";
-import ChangeOrderTotalStatusMoadl from "../changeOrderTotalStatusModal";
+import ChangeOrderTotalStatusModal from "../changeOrderTotalStatusModal";
 
 
 type Props = {
   trackingId:string
+  orderId:string
+  updateHandler:()=>void
+  status:ORDER_STATUSES
 }
-const OrderHeader:FC<Props> = ({trackingId}) => {
+const OrderHeader:FC<Props> = ({status,trackingId,orderId,updateHandler}) => {
   const router = useRouter()
+  const {userId }=router.query
   const title = "سفارش " + trackingId
   const [openModal,setOpenModal]=useState<boolean>(false)
   return (
@@ -25,7 +28,7 @@ const OrderHeader:FC<Props> = ({trackingId}) => {
         <Box className="order-detail-header">
           <Typography className="order-detail-title">
             {title}
-            <OrdersStatus status={"REGISTERED" as ORDER_STATUSES} type={"CONTAINED"}/>
+            <OrdersStatus status={status} type={"CONTAINED"}/>
           </Typography>
 
         </Box>
@@ -37,7 +40,12 @@ const OrderHeader:FC<Props> = ({trackingId}) => {
         open={openModal}
         onClose={()=>setOpenModal(false)}
       >
-        <ChangeOrderTotalStatusMoadl />
+        <ChangeOrderTotalStatusModal
+          closeHandler={()=>setOpenModal(false)}
+          updateHandler={updateHandler}
+          orderId={orderId}
+          userId={userId as string}
+        />
       </Modal>
     </Box>
   );
