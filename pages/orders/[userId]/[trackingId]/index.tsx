@@ -9,13 +9,16 @@ import OrderCategories from "../../../../components/orders/orderCategories";
 
 const OrderDetailPage = () => {
   const router = useRouter()
-  const {response, loading, error, request} = useFetch()
+  const {response, loading, request} = useFetch()
   const {trackingId, userId} = router.query
 
+ const fetchOrderDetail = () =>{
+   request({url: ApiRoutes.ADMIN_ORDERS + "/" + userId + "/" + trackingId})
+ }
 
   useEffect(() => {
     trackingId && userId &&
-    request({url: ApiRoutes.ADMIN_ORDERS + "/" + userId + "/" + trackingId})
+    fetchOrderDetail()
   }, [trackingId])
 
   return (
@@ -23,7 +26,7 @@ const OrderDetailPage = () => {
     <StyledOrderDetailPage>
       <OrderHeader trackingId={trackingId as string}/>
       <OrderInfo data={response}/>
-      <OrderCategories data={response.order.products} />
+      <OrderCategories data={response.order.products} orderId={response.order._id} updateHandler={fetchOrderDetail} />
     </StyledOrderDetailPage>
   );
 };

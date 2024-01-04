@@ -1,9 +1,11 @@
-import React, {FC} from 'react';
-import {Box, Button, Typography} from "@mui/material";
+import React, {FC, useState} from 'react';
+import {Box, Button, Modal, Typography} from "@mui/material";
 import EastIcon from "@mui/icons-material/East";
 import OrdersStatus from "../ordersStatus";
 import {ORDER_STATUSES} from "../../../enums/OrderStatuses";
 import {useRouter} from "next/router";
+import ChangeStatusModal from "../changeStatusModal";
+import ChangeOrderTotalStatusMoadl from "../changeOrderTotalStatusModal";
 
 
 type Props = {
@@ -12,6 +14,7 @@ type Props = {
 const OrderHeader:FC<Props> = ({trackingId}) => {
   const router = useRouter()
   const title = "سفارش " + trackingId
+  const [openModal,setOpenModal]=useState<boolean>(false)
   return (
     <Box className="order-header-container">
       <Box>
@@ -27,9 +30,15 @@ const OrderHeader:FC<Props> = ({trackingId}) => {
 
         </Box>
       </Box>
-      <Button color="primary" variant="contained">
+      <Button color="primary" variant="contained" onClick={()=>setOpenModal(true)}>
         تغییر وضعیت سفارش
       </Button>
+      <Modal
+        open={openModal}
+        onClose={()=>setOpenModal(false)}
+      >
+        <ChangeOrderTotalStatusMoadl />
+      </Modal>
     </Box>
   );
 };
