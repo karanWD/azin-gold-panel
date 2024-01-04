@@ -18,11 +18,9 @@ export const StyledOrderInfo = styled(Box)<BoxProps>(({theme}) => ({
     alignItems:'center',
     ".order-info-item-title":{
       color:theme.palette.neutral.main,
-      fontSize:'14px'
     },
     ".order-info-item-value":{
       color:theme.palette.neutral[900],
-      fontSize:'14px'
     }
   }
 }))

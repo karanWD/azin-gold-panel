@@ -42,11 +42,11 @@ const ChangeOrderTotalStatusModal:FC<Props>  = ({closeHandler,updateHandler,user
   return (
     <StyledChangeOrderTotalStatus>
       <Box className='change-status-modal-header'>
-        <Typography>تغییر وضعیت سفارش</Typography>
+        <Typography variant="title4">تغییر وضعیت سفارش</Typography>
         <CloseIcon fontSize="medium" onClick={closeHandler}/>
       </Box>
       <Box className="change-status-modal-body">
-        <Typography>وضعیت</Typography>
+        <Typography variant="body3">وضعیت</Typography>
         <FormControl fullWidth>
           <Select
             className="select-status-container"
@@ -55,7 +55,9 @@ const ChangeOrderTotalStatusModal:FC<Props>  = ({closeHandler,updateHandler,user
             onChange={e=>setNewStatus(e.target.value as string)}
           >
             {generateOptions().map((item, index) => (
-              <MenuItem key={"OPTION_ITEM_" + index} value={item.value}>{item.text}</MenuItem>
+              <MenuItem key={"OPTION_ITEM_" + index} value={item.value}>
+                <Typography variant={"button2"}>{item.text}</Typography>
+              </MenuItem>
             ))
             }
           </Select>
@@ -63,7 +65,7 @@ const ChangeOrderTotalStatusModal:FC<Props>  = ({closeHandler,updateHandler,user
       </Box>
       <Box className="change-status-modal-footer">
         <Button color="primary" variant="contained" onClick={submitHandler} disabled={loading}>
-          ثبت
+          <Typography variant={"button2"}>ثبت</Typography>
         </Button>
       </Box>
     </StyledChangeOrderTotalStatus>

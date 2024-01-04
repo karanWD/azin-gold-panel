@@ -16,17 +16,11 @@ export const StyledOrderProducts = styled(Box)(({theme}) => ({
 
     ".products-name": {
       padding: '12px 20px 0 20px',
-      fontSize: '14px',
-      fontWeight: '500',
-      lineHeight: '28px',
       color: theme.palette.neutral["900"]
     },
     ".products-wage": {
       padding: '0 20px 0 20px',
       marginTop: '4px',
-      fontSize: '12px',
-      fontWeight: '400',
-      lineHeight: '24px',
       color: theme.palette.neutral["300"]
     }
   },
@@ -45,21 +39,12 @@ export const StyledOrderProducts = styled(Box)(({theme}) => ({
 
   },
   ".product-item-weight":{
-    fontSize: '12px',
-    fontWeight: '400',
-    lineHeight: '24px',
     color: theme.palette.neutral["300"]
   },
   ".product-item-info-title":{
-    fontSize: '12px',
-    fontWeight: '400',
-    lineHeight: '24px',
     color: theme.palette.neutral["300"]
   },
   ".product-item-info-value":{
-    fontSize: '14px',
-    fontWeight: '500',
-    lineHeight: '28px',
     color: theme.palette.neutral["900"]
   }
 }))

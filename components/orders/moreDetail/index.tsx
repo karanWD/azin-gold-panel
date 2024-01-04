@@ -49,7 +49,7 @@ const MoreDetail: FC<Props> = ({orderId,userId,trackingId,updateHandler }) => {
         }}
       >
         <Link href={`/orders/${userId}/${trackingId}`}>جزئیات سفارش</Link>
-        <Typography onClick={()=>setOpenModal(true)}>تغییر وضعیت</Typography>
+        <Typography variant="button2" onClick={()=>setOpenModal(true)}>تغییر وضعیت</Typography>
       </Popover>
       <Modal
         open={openModal}

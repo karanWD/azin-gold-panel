@@ -17,7 +17,7 @@ const NavigationItem: FC<Props> = ({icon, href, title,isActive,isDisabled}) => {
       <Link href={href} passHref>
         <Box display="flex" alignItems="center" gap="4px">
           <Image src={icon} alt={title} width={20} height={20} layout="fixed"/>
-          <Typography variant="body2">
+          <Typography variant="button2">
             {title}
           </Typography>
         </Box>

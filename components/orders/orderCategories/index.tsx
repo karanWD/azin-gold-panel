@@ -1,7 +1,7 @@
 import React, {FC, useState} from 'react';
 import {StyledOrderCategories} from "./styles";
 import OrderCategoryName from "./orderCategoryName";
-import {Box, Button, Modal} from "@mui/material";
+import {Box, Button, Modal, Typography} from "@mui/material";
 import OrderProducts from "../orderProducts";
 import ChangeStatusModal from "../changeStatusModal";
 
@@ -61,7 +61,11 @@ const OrderCategories: FC<Props> = ({data, orderId, updateHandler}) => {
       <Box mr={'auto'} ml={0}>
         <Button color="primary"
                 onClick={() => setOpenModal(true)}
-                variant="contained">تغییر وضعیت محصولات</Button>
+                variant="contained">
+          <Typography variant="button2">
+            تغییر وضعیت محصولات
+          </Typography>
+        </Button>
       </Box>
       <Modal
         open={openModal}
