@@ -2,7 +2,7 @@ import React from 'react';
 import {Skeleton, TableBody, TableCell, TableRow} from "@mui/material";
 import {StyledContainer, StyledTable} from "./styles";
 
-const ITEMS = [null, null, null, null, null, null]
+const ITEMS = [null, null, null, null, null, null, null, null, null]
 
 const TableSkeleton = () => {
   return (
