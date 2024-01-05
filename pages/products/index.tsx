@@ -21,11 +21,11 @@ import HandleDate from "../../components/reusable/handelDate";
       "فعال/غیرفعال",
       "جزئیات",
     ]
-    
+
     const ProductsPage: NextPage = () => {
       const {response, error, loading, request} = useFetch()
       const [page, setPage] = useState<number>(1)
-    
+
       const fetchProductsList = (page) => {
         request({
           url: ApiRoutes.ADMIN_PRODUCTS + `?page=${page}`
@@ -33,11 +33,11 @@ import HandleDate from "../../components/reusable/handelDate";
           //status=CANCELED&fromDate=2023-12-25T00:00:00Z&toDate=2023-12-28T00:00:00Z&name=م&tracking=87
         })
       }
-    
+
       useEffect(() => {
         fetchProductsList(page)
       }, [page])
-    
+
       const formatData = useCallback((data) => {
         if (!data) return null
         return data.map((item) => ({
@@ -52,12 +52,12 @@ import HandleDate from "../../components/reusable/handelDate";
         }))
       }, [])
 
-    return ( 
+    return (
         <StyledProductsPage>
             <PageHeader title="محصولات"/>
             <PageBody
-              data={formatData(response?.products)} 
-              totalPages={response?.totalPages} 
+              data={formatData(response?.products)}
+              totalPages={response?.totalPages}
               page={page}
               setPage={setPage}
               loading={loading}
