@@ -45,6 +45,8 @@ const OrdersPage: NextPage = () => {
     fetchOrderList(page)
   }, [page])
 
+  console.log(response)
+
   const formatData = useCallback((data) => {
     if (!data) return null
     return data.map((item, index) => ({
