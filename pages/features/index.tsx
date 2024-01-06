@@ -40,12 +40,12 @@ import PageBody from "../../components/UI/body";
         })
       }
 
-      
-    
+
+
       useEffect(() => {
         fetchFeaturesList(page)
       }, [page])
-    
+
       const formatData = useCallback((data) => {
         if (!data) return null
         return data.map((item) => ({
@@ -64,8 +64,8 @@ import PageBody from "../../components/UI/body";
             <PageHeader title="ویژگی‌ها"/>
             <SearchBar />
             <PageBody
-              data={formatData(response?.featureGroups)} 
-              totalPages={response?.totalPages} 
+              data={formatData(response?.featureGroups)}
+              totalPages={response?.totalPages}
               page={page}
               setPage={setPage}
               loading={loading}
