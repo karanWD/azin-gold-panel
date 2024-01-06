@@ -3,8 +3,14 @@ import {Box, BoxProps, styled} from "@mui/material";
 export const StyledProductsPage = styled(Box)<BoxProps>(() => ({
   display:'flex',
   flexDirection:'column',
+  rowGap:'24px',
   ".box-item":{
     borderRadius:'16px'
+  },
+  ".pagination-container":{
+    width:"100%",
+    display:'flex',
+    justifyContent:'center'
   }
 }))
 
