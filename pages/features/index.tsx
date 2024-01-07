@@ -1,4 +1,3 @@
-
 import { StyledPropertyPage } from "./styles";
 import {NextPage} from "next";
 import Table from "../../components/UI/table";
@@ -8,9 +7,13 @@ import {ApiRoutes} from "../../enums/ApiRoutes";
 import TableSkeleton from "../../components/skeleton/tableSkeleton/tableSkeleton";
 import PageHeader from "../../components/reusable/pageHeader";
 import {Box, Pagination, PaginationItem, Typography, Switch} from "@mui/material";
-import MoreDetail from "../../components/orders/moreDetail";
+import MoreDetail from "../../components/features/moreDatail";
 import KeyboardArrowLeftRoundedIcon from '@mui/icons-material/KeyboardArrowLeftRounded';
 import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRightRounded';
+import HeaderFeatures from "../../components/features/headerFeatures";
+import FeaturesItem from "../../components/features/featuresItem";
+import DisplayMode from "../../components/features/displayMode";
+import SearchBar from "../../components/features/searchBar";
 
     const tableHeading: string[] = [
       "ردیف",
@@ -32,7 +35,7 @@ import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRigh
       const {response, error, loading, request} = useFetch()
       const [page, setPage] = useState<number>(1)
     
-      const fetchProductsList = (page) => {
+      const fetchFeaturesList = (page) => {
         request({
           url: ApiRoutes.ADMIN_FEATURES + `?page=${page}`
           // for filters
@@ -41,7 +44,7 @@ import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRigh
       }
     
       useEffect(() => {
-        fetchProductsList(page)
+        fetchFeaturesList(page)
 
       }, [page])
 
@@ -49,16 +52,14 @@ import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRigh
     
       const formatData = useCallback((data) => {
         if (!data) return null
-        return data.map((item,index) => ({
+        return data.map((item) => ({
           index: <Typography variant="body3">{item.index}</Typography>,
-          title: <Typography variant="body3">{item.header}</Typography>,
-          featureType:<Typography variant="body3">{item.displayMode}</Typography>,
-          features:<Box>{item.features.map((item) => (
-            <Typography className="space-item" variant="body3"><span>{item.title}{" "}</span></Typography>
-          ))}</Box>,
+          title: <HeaderFeatures header={item.header}/>,
+          featureType:<DisplayMode modes={item.displayMode}/>,
+          features:<FeaturesItem modes={item.features}/>,
           createdAt:<Typography variant="body3"> {handleDate(item.createdAt)}</Typography>,
           updatedAt: <Typography variant="body3">{handleDate(item.updatedAt)}</Typography>,
-          more: <MoreDetail userId={item._id} orderId={item._id} trackingId={item.tracking} updateHandler={()=>fetchProductsList(page)}/>
+          more: <MoreDetail userId={item._id} orderId={item._id} trackingId={item.tracking} updateHandler={()=>(page)}/>
         }))
       }, [])
 
@@ -68,7 +69,7 @@ import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRigh
             {
                 loading || !response ? <TableSkeleton/> :
                 <>
-
+                    <SearchBar />
                     <Table headings={tableHeading} data={formatData(response.featureGroups)}/>
                     {
                     response.totalPages > 1 &&

@@ -1,6 +1,6 @@
 import {Box, BoxProps, styled} from "@mui/material";
 
-export const StyledPropertyPage = styled(Box)<BoxProps>(() => ({
+export const StyledPropertyPage = styled(Box)<BoxProps>(({theme}) => ({
   display:'flex',
   flexDirection:'column',
   rowGap:'24px',
@@ -14,5 +14,5 @@ export const StyledPropertyPage = styled(Box)<BoxProps>(() => ({
   },
   ".space-item":{
     margin:"0 2px"
-  }
+  },
 }))
