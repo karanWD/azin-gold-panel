@@ -8,7 +8,7 @@ type Props = {
 const HeaderFeatures: FC<Props> = ({header}) => {
     return (
         <StyledHeaderTypography>
-            <Typography variant="body3">{header}</Typography>
+            <Typography variant="subtitle3">{header}</Typography>
         </StyledHeaderTypography>
     )
 }

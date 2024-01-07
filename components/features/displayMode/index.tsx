@@ -1,6 +1,6 @@
 import React,{FC} from "react";
 import { Typography } from "@mui/material";
-import {Statuses} from "../../../data/Statuses";
+import {DisplayModes} from "../../../data/DisplayModes";
 import {DISPLAY_MODES} from "../../../enums/DisplayModes";
 
 type Props = {
@@ -10,7 +10,7 @@ const DisplayMode: FC<Props> = ({modes}) => {
     return (
         <>
             <Typography className="space-item" variant="body3">
-                {Statuses[modes].text}
+                {DisplayModes[modes].text}
             </Typography>
         </>
     )

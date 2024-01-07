@@ -1,17 +1,15 @@
 
 import { StyledProductsPage } from "./styles";
 import {NextPage} from "next";
-import Table from "../../components/UI/table";
 import useFetch from "../../hooks/useFetch";
 import {useCallback, useEffect, useState} from "react";
 import {ApiRoutes} from "../../enums/ApiRoutes";
-import TableSkeleton from "../../components/skeleton/tableSkeleton/tableSkeleton";
 import PageHeader from "../../components/reusable/pageHeader";
-import {Box, Pagination, PaginationItem, Typography, Switch} from "@mui/material";
+import {Typography} from "@mui/material";
 import MoreDetail from "../../components/orders/moreDetail";
-import KeyboardArrowLeftRoundedIcon from '@mui/icons-material/KeyboardArrowLeftRounded';
-import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRightRounded';
 import ChangeStatusProduct from "../../components/products/changeStatusProducts";
+import PageBody from "../../components/UI/body";
+import HandleDate from "../../components/reusable/handelDate";
 
     const tableHeading: string[] = [
       "ردیف",
@@ -23,12 +21,6 @@ import ChangeStatusProduct from "../../components/products/changeStatusProducts"
       "فعال/غیرفعال",
       "جزئیات",
     ]
-    const handleDate = (timestamp: string): string => {
-      const newDate = new Date(timestamp)
-      const date = newDate.toLocaleDateString("fa-ir", {month: "2-digit", day: "2-digit"})
-      const hour = newDate.toLocaleTimeString("fa-ir", {timeStyle: "short"})
-      return hour + " " + date
-    }
     
     const ProductsPage: NextPage = () => {
       const {response, error, loading, request} = useFetch()
@@ -45,16 +37,14 @@ import ChangeStatusProduct from "../../components/products/changeStatusProducts"
       useEffect(() => {
         fetchProductsList(page)
       }, [page])
-
-      console.log(response,loading)
     
       const formatData = useCallback((data) => {
         if (!data) return null
         return data.map((item) => ({
           index: <Typography variant="body3">{item.index}</Typography>,
           title: <Typography variant="body3">{item.title}</Typography>,
-          createdAt:<Typography variant="body3"> {handleDate(item.createdAt)}</Typography>,
-          updatedAt: <Typography variant="body3">{handleDate(item.updatedAt)}</Typography>,
+          createdAt:<Typography variant="body3"> {HandleDate(item.createdAt)}</Typography>,
+          updatedAt: <Typography variant="body3">{HandleDate(item.updatedAt)}</Typography>,
           wage:<Typography variant="body3">{item.wage + " گرم "}</Typography>,
           features:<Typography variant="body3">{item.numbersOfFeatureGroups}</Typography>,
           status: <ChangeStatusProduct updateHandler={() => fetchProductsList(page)} status={item.isActive} productId={item._id}/>,
@@ -65,31 +55,14 @@ import ChangeStatusProduct from "../../components/products/changeStatusProducts"
     return ( 
         <StyledProductsPage>
             <PageHeader title="محصولات"/>
-            {
-                loading || !response ? <TableSkeleton/> :
-                <>
-                    <Table headings={tableHeading} data={formatData(response.products)}/>
-                    {
-                    response.totalPages > 1 &&
-                        <Box className="pagination-container">
-                            <Pagination color="primary"
-                                        count={response.totalPages}
-                                        page={page}
-                                        onChange={(_, value) => setPage(value)}
-                                        renderItem={(item) => (
-                                        <PaginationItem
-                                            slots={{
-                                            previous: KeyboardArrowRightRoundedIcon,
-                                            next: KeyboardArrowLeftRoundedIcon
-                                            }}
-                                            {...item}
-                                        />
-                                        )}
-                            />
-                        </Box>
-                    }
-                </>
-            }
+            <PageBody
+              data={formatData(response?.products)} 
+              totalPages={response?.totalPages} 
+              page={page}
+              setPage={setPage}
+              loading={loading}
+              tableHeading={tableHeading}
+            />
         </StyledProductsPage>
      );
 }

@@ -1,18 +1,24 @@
 import React,{FC} from "react";
-import { Box,Typography } from "@mui/material";
+import { Typography } from "@mui/material";
+import {StyledFeatures} from "./style"
 
-type Props = {
-    modes:  Array<any>;
+type FeaturesItem = {
+    title: string;
+    sequence: number;
 }
+type Props = {
+    modes:  Array<FeaturesItem>;
+}
+
 const FeaturesItem: FC<Props> = ({modes}) => {
     return (
         <>
-           <Box>{modes.map((item) => (
+           <StyledFeatures>{modes.map((item) => (
                 <Typography className="space-item" variant="body3">
                     {item.title}{" "}
                 </Typography>
             ))}
-          </Box>
+          </StyledFeatures>
         </>
     )
 }

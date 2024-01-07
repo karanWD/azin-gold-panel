@@ -1,19 +1,16 @@
 import { StyledPropertyPage } from "./styles";
 import {NextPage} from "next";
-import Table from "../../components/UI/table";
 import useFetch from "../../hooks/useFetch";
 import {useCallback, useEffect, useState} from "react";
 import {ApiRoutes} from "../../enums/ApiRoutes";
-import TableSkeleton from "../../components/skeleton/tableSkeleton/tableSkeleton";
 import PageHeader from "../../components/reusable/pageHeader";
-import {Box, Pagination, PaginationItem, Typography, Switch} from "@mui/material";
+import {Typography} from "@mui/material";
 import MoreDetail from "../../components/features/moreDatail";
-import KeyboardArrowLeftRoundedIcon from '@mui/icons-material/KeyboardArrowLeftRounded';
-import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRightRounded';
 import HeaderFeatures from "../../components/features/headerFeatures";
 import FeaturesItem from "../../components/features/featuresItem";
 import DisplayMode from "../../components/features/displayMode";
 import SearchBar from "../../components/features/searchBar";
+import PageBody from "../../components/UI/body";
 
     const tableHeading: string[] = [
       "ردیف",
@@ -26,7 +23,7 @@ import SearchBar from "../../components/features/searchBar";
     ]
     const handleDate = (timestamp: string): string => {
       const newDate = new Date(timestamp)
-      const date = newDate.toLocaleDateString("fa-ir", {month: "2-digit", day: "2-digit"})
+      const date = newDate.toLocaleDateString("fa-ir", {month: "2-digit", day: "2-digit", year: "2-digit"})
       const hour = newDate.toLocaleTimeString("fa-ir", {timeStyle: "short"})
       return hour + " " + date
     }
@@ -42,13 +39,12 @@ import SearchBar from "../../components/features/searchBar";
           //status=CANCELED&fromDate=2023-12-25T00:00:00Z&toDate=2023-12-28T00:00:00Z&name=م&tracking=87
         })
       }
+
+      
     
       useEffect(() => {
         fetchFeaturesList(page)
-
       }, [page])
-
-      console.log(response)
     
       const formatData = useCallback((data) => {
         if (!data) return null
@@ -66,32 +62,15 @@ import SearchBar from "../../components/features/searchBar";
     return ( 
         <StyledPropertyPage>
             <PageHeader title="ویژگی‌ها"/>
-            {
-                loading || !response ? <TableSkeleton/> :
-                <>
-                    <SearchBar />
-                    <Table headings={tableHeading} data={formatData(response.featureGroups)}/>
-                    {
-                    response.totalPages > 1 &&
-                        <Box className="pagination-container">
-                            <Pagination color="primary"
-                                        count={response.totalPages}
-                                        page={page}
-                                        onChange={(_, value) => setPage(value)}
-                                        renderItem={(item) => (
-                                        <PaginationItem
-                                            slots={{
-                                            previous: KeyboardArrowRightRoundedIcon,
-                                            next: KeyboardArrowLeftRoundedIcon
-                                            }}
-                                            {...item}
-                                        />
-                                        )}
-                            />
-                        </Box>
-                    }
-                </>
-            }
+            <SearchBar />
+            <PageBody
+              data={formatData(response?.featureGroups)} 
+              totalPages={response?.totalPages} 
+              page={page}
+              setPage={setPage}
+              loading={loading}
+              tableHeading={tableHeading}
+            />
         </StyledPropertyPage>
      );
 }
