@@ -4,13 +4,14 @@ import useFetch from "../../hooks/useFetch";
 import {useCallback, useEffect, useState} from "react";
 import {ApiRoutes} from "../../enums/ApiRoutes";
 import PageHeader from "../../components/reusable/pageHeader";
-import {Typography} from "@mui/material";
+import {Box, Typography} from "@mui/material";
 import MoreDetail from "../../components/features/moreDatail";
 import HeaderFeatures from "../../components/features/headerFeatures";
 import FeaturesItem from "../../components/features/featuresItem";
 import DisplayMode from "../../components/features/displayMode";
 import SearchBar from "../../components/features/searchBar";
 import PageBody from "../../components/UI/body";
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
     const tableHeading: string[] = [
       "ردیف",
@@ -61,7 +62,14 @@ import PageBody from "../../components/UI/body";
 
     return ( 
         <StyledPropertyPage>
-            <PageHeader title="ویژگی‌ها"/>
+            <PageHeader title="ویژگی‌ها">
+              <Box className="box-child">
+                <AddCircleIcon className="add-features-icon"/>
+                <Typography className="add-features" variant="button1">
+                  افزودن ویژگی  
+                </Typography>
+              </Box>
+            </PageHeader>
             <SearchBar />
             <PageBody
               data={formatData(response?.featureGroups)} 

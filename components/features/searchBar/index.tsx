@@ -1,20 +1,33 @@
-import React,{FC} from "react";
-import { TextField, Typography } from "@mui/material";
-import { StyledContainer,StyledTextField } from "./styles";
+import React,{FC, useState} from "react";
+import { InputAdornment, TextField, Typography } from "@mui/material";
+import { StyledContainer } from "./styles";
+import SearchIcon from '@mui/icons-material/Search';
+import { NextPage } from "next";
 
-type Props = {
+const SearchBar: NextPage = () => {
+
+    const [valueInput , setValueInput] = useState("")
     
-}
-const SearchBar: FC<Props> = ({}) => {
     return (
         <StyledContainer>
-            <StyledTextField
-                id="standard-search"
-                label="جستجو کنید."
+            <Typography className="header-search" variant="body3">جستجو عنوان</Typography>
+            <TextField
+                dir="ltr"
+                size="small"
                 type="search"
                 variant="outlined"
-                className="input-search"
-                size="small"
+                className="search-Input"
+                placeholder="جستجو کنید ."
+                value={valueInput}
+                onChange={(e) => setValueInput(e.target.value)}
+                InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <SearchIcon className="icon-search" fontSize="large" />
+                       {/* { valueInput ? "" : <Typography variant="body3">جستجو کنید .</Typography>} */}
+                      </InputAdornment>
+                    ),
+                  }}
             />
         </StyledContainer>
     )
