@@ -5,7 +5,7 @@ import {ApiRoutes} from "../../enums/ApiRoutes";
 import OrdersStatus from "../../components/orders/ordersStatus";
 import {StyledOrderPage} from "./styles";
 import PageHeader from "../../components/reusable/pageHeader";
-import {Box, Pagination, PaginationItem, Typography} from "@mui/material";
+import {Typography} from "@mui/material";
 import MoreDetail from "../../components/orders/moreDetail";
 import PageBody from "../../components/UI/body";
 import HandleDate from "../../components/reusable/handelDate";
@@ -22,12 +22,6 @@ const tableHeading: string[] = [
   "جزئیات",
 
 ]
-const handleDate = (timestamp: string): string => {
-  const newDate = new Date(timestamp)
-  const date = newDate.toLocaleDateString("fa-ir", {month: "2-digit", day: "2-digit"})
-  const hour = newDate.toLocaleTimeString("fa-ir", {timeStyle: "short"})
-  return hour + " " + date
-}
 
 const OrdersPage: NextPage = () => {
   const {response, error, loading, request} = useFetch()
@@ -44,8 +38,6 @@ const OrdersPage: NextPage = () => {
   useEffect(() => {
     fetchOrderList(page)
   }, [page])
-
-  console.log(response)
 
   const formatData = useCallback((data) => {
     if (!data) return null
