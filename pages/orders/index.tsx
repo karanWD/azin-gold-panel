@@ -1,16 +1,14 @@
 import {NextPage} from "next";
-import Table from "../../components/UI/table";
 import useFetch from "../../hooks/useFetch";
 import {useCallback, useEffect, useState} from "react";
 import {ApiRoutes} from "../../enums/ApiRoutes";
-import TableSkeleton from "../../components/skeleton/tableSkeleton/tableSkeleton";
 import OrdersStatus from "../../components/orders/ordersStatus";
 import {StyledOrderPage} from "./styles";
 import PageHeader from "../../components/reusable/pageHeader";
-import {Box, Pagination, PaginationItem, Typography} from "@mui/material";
+import {Typography} from "@mui/material";
 import MoreDetail from "../../components/orders/moreDetail";
-import KeyboardArrowLeftRoundedIcon from '@mui/icons-material/KeyboardArrowLeftRounded';
-import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRightRounded';
+import PageBody from "../../components/UI/body";
+import HandleDate from "../../components/reusable/handelDate";
 
 const tableHeading: string[] = [
   "ردیف",
@@ -51,7 +49,7 @@ const OrdersPage: NextPage = () => {
     if (!data) return null
     return data.map((item, index) => ({
       index: <Typography variant="body3">{item.index}</Typography>,
-      createdAt:<Typography variant="body3"> {handleDate(item.order.createdAt)}</Typography>,
+      createdAt:<Typography variant="body3"> {HandleDate(item.order.createdAt)}</Typography>,
       tracking: <Typography variant="body3">{item.order.tracking}</Typography>,
       username: <Typography variant="body3">{item.name}</Typography>,
       status: <OrdersStatus status={item.order.status} type={"TEXT"}/>,
@@ -65,31 +63,14 @@ const OrdersPage: NextPage = () => {
   return (
     <StyledOrderPage>
       <PageHeader title="سفارشات"/>
-      {
-        loading || !response ? <TableSkeleton/> :
-          <>
-            <Table headings={tableHeading} data={formatData(response.orders)}/>
-            {
-              response.totalPages > 1 &&
-                <Box className="pagination-container">
-                    <Pagination color="primary"
-                                count={response.totalPages}
-                                page={page}
-                                onChange={(_, value) => setPage(value)}
-                                renderItem={(item) => (
-                                  <PaginationItem
-                                    slots={{
-                                      previous: KeyboardArrowRightRoundedIcon,
-                                      next: KeyboardArrowLeftRoundedIcon
-                                    }}
-                                    {...item}
-                                  />
-                                )}
-                    />
-                </Box>
-            }
-          </>
-      }
+      <PageBody
+              data={formatData(response?.orders)}
+              totalPages={response?.totalPages}
+              page={page}
+              setPage={setPage}
+              loading={loading}
+              tableHeading={tableHeading}
+            />
     </StyledOrderPage>
 
   )

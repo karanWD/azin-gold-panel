@@ -50,8 +50,8 @@ export const NavigationLinks = [
   {
     title:"مدیریت ویژگی‌ها",
     icon:'/icons/light.svg',
-    href:"/attributes",
-    isDisabled:true
+    href:"/features",
+    isDisabled:false
   },
   {
     title:"صفحات عمومی",
