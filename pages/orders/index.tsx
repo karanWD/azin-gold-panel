@@ -5,7 +5,7 @@ import {ApiRoutes} from "../../enums/ApiRoutes";
 import OrdersStatus from "../../components/orders/ordersStatus";
 import {StyledOrderPage} from "./styles";
 import PageHeader from "../../components/reusable/pageHeader";
-import {Typography} from "@mui/material";
+import {Box, Pagination, PaginationItem, Typography} from "@mui/material";
 import MoreDetail from "../../components/orders/moreDetail";
 import PageBody from "../../components/UI/body";
 import HandleDate from "../../components/reusable/handelDate";
