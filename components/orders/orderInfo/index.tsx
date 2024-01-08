@@ -26,8 +26,8 @@ export default OrderInfo;
 export const OrderInfoItem = ({title, value}) => {
   return (
     <Box className="order-info-item-container">
-      <Typography className="order-info-item-title">{title}</Typography>
-      <Typography className="order-info-item-value">{value}</Typography>
+      <Typography variant="body3" className="order-info-item-title">{title}</Typography>
+      <Typography variant={"body3"} className="order-info-item-value">{value}</Typography>
     </Box>
   )
 }

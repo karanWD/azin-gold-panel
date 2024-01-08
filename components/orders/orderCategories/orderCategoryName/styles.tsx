@@ -21,7 +21,6 @@ export const StyledOrderCategoryName = styled(Box)<CategoryNameType>(({theme,col
       justifyContent:'center'
     },
     ".order-state-title":{
-      fontSize:'14px',
       color:theme.palette.state[color].main
     }
   }

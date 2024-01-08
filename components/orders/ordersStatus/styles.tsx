@@ -11,7 +11,4 @@ export const StyledStatus = styled(Box)<StatusType>(({theme,type,status})=>({
   borderRadius:type === "TEXT" ? "0" : "8px",
   color:theme.palette.state[status].main,
   padding:"4px 8px",
-  fontSize:'14px',
-  lineHeight:'28px',
-  fontWeight:400
 }))

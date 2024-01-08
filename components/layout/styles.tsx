@@ -14,6 +14,6 @@ export const StyledLayout = styled(Box)<BoxProps>(({theme}) => ({
   ".content-container": {
     flex: '7',
     backgroundColor:'#F2F3F6',
-    padding:'40px 88px 140px'
+    padding:'40px 32px 140px'
   }
 }))

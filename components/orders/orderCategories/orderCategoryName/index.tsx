@@ -20,7 +20,7 @@ const OrderCategoryName = ({type}) => {
         <Box className="order-state-icon">
           <Image src={images[type]} alt={type} width={20} height={28} layout="fixed"/>
         </Box>
-        <Typography className="order-state-title">{" محصولات " + Statuses[type].text}</Typography>
+        <Typography variant="subtitle3" className="order-state-title">{" محصولات " + Statuses[type].text}</Typography>
       </Box>
     </StyledOrderCategoryName>
   );

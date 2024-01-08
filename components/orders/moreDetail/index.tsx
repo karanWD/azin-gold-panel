@@ -1,17 +1,21 @@
-import React, {FC} from 'react';
+import React, {FC,useState} from 'react';
 import {StyledMoreDetail} from "./styles";
-import {Box, Button, Popover, Typography} from "@mui/material";
+import {Box,Modal, Button, Popover, Typography} from "@mui/material";
 import Image from "next/image";
 import {useRouter} from "next/router";
 import Link from "next/link";
+import ChangeOrderTotalStatusModal from "../changeOrderTotalStatusModal";
 
 type Props = {
   userId: string
+  orderId: string
   trackingId: string
+  updateHandler:()=>void
 }
-const MoreDetail: FC<Props> = ({userId,trackingId}) => {
+const MoreDetail: FC<Props> = ({orderId,userId,trackingId,updateHandler}) => {
   const router = useRouter()
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
+  const [openModal,setOpenModal]=useState<boolean>(false)
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -45,8 +49,19 @@ const MoreDetail: FC<Props> = ({userId,trackingId}) => {
         }}
       >
         <Link href={`/orders/${userId}/${trackingId}`}>جزئیات سفارش</Link>
-        <Typography>تغییر وضعیت</Typography>
+        <Typography variant="button2" onClick={()=>setOpenModal(true)}>تغییر وضعیت</Typography>
       </Popover>
+      <Modal
+        open={openModal}
+        onClose={()=>setOpenModal(false)}
+      >
+        <ChangeOrderTotalStatusModal
+          closeHandler={()=>setOpenModal(false)}
+          updateHandler={updateHandler}
+          orderId={orderId}
+          userId={userId as string}
+        />
+      </Modal>
     </StyledMoreDetail>
   );
 };

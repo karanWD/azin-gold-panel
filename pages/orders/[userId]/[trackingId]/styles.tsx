@@ -20,6 +20,7 @@ export const StyledOrderDetailPage = styled(Box)<BoxProps>(({theme})=>({
     display:'flex',
     alignItems:'center',
     justifyContent:'space-between',
+    columnGap:'16px',
     color:theme.palette.neutral[900]
   },
   ".order-detail-title":{
