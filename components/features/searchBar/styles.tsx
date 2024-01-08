@@ -7,7 +7,6 @@ export const StyledContainer = styled(Box)<BoxProps>(({theme})=>({
     ".search-Input":{
         backgroundColor:theme.palette.neutral["white"],
         borderRadius:'8px',
-        // border: "2px solid gray",
         width: "376px",
         direction: "rtl",
     },

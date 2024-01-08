@@ -7,6 +7,8 @@ type Props = {
     modes:  DISPLAY_MODES;
 }
 const DisplayMode: FC<Props> = ({modes}) => {
+
+    console.log(modes)
     return (
         <>
             <Typography className="space-item" variant="body3">

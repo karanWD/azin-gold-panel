@@ -21,8 +21,10 @@ const PageHeader: FC<Props> = ({title,children}) => {
   return (
     username &&
     <StyledPageHeader>
-      <Typography variant={"title2"} className="page-title">{title}</Typography>
-      {children}
+      <Box className="profile-container">
+        <Typography variant={"title2"} className="page-title">{title}</Typography>
+        {children}
+      </Box>
       <Box className="profile-container">
         <Image src="/images/user-avatar.png" alt={"کاربر آذین گلد"} width={40} height={40} layout="fixed"/>
         <Box>
