@@ -1,40 +1,47 @@
 @font-face {
-    font-family: IRANSansX;
-    src: url("/fonts/IRANSansXFaNum-Medium.woff2") format("woff2");
-    font-weight: bold;
-    font-style: normal;
+  font-family: IRANSansX;
+  src: url("/fonts/IRANSansXFaNum-Medium.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: IRANSansX_Bold;
-    src: url("/fonts/IRANSansXFaNum-Bold.woff2") format("woff2");
-    font-weight: normal;
-    font-style: normal;
+  font-family: IRANSansX_Bold;
+  src: url("/fonts/IRANSansXFaNum-Bold.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
 }
 
 * {
-    box-sizing: border-box;
-    font-family: IRANSansX, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-
+  box-sizing: border-box;
+  font-family:
+    IRANSansX,
+    Segoe UI,
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    Fira Sans,
+    Droid Sans,
+    Helvetica Neue,
+    sans-serif;
 }
 
 html,
 body {
-    direction: rtl;
-    padding: 0;
-    margin: 0;
-    font-size:14px
+  direction: rtl;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
-

@@ -1,3 +1,1 @@
-export enum StaticRoutes{
-
-}
+export enum StaticRoutes {}

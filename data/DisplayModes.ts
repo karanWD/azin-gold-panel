@@ -12,5 +12,5 @@ export const DisplayModes = {
   },
   [DISPLAY_MODES.PRODUCT]: {
     text: "شمارنده",
-  }
+  },
 };
