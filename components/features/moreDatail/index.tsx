@@ -1,10 +1,7 @@
-import React, {FC,useState} from 'react';
+import React, {FC, useState} from 'react';
 import {StyledMoreDetail} from "./styles";
-import {Box,Modal, Button, Popover, Typography} from "@mui/material";
+import {Button, Popover, Typography} from "@mui/material";
 import Image from "next/image";
-import {useRouter} from "next/router";
-import Link from "next/link";
-import ChangeOrderTotalStatusModal from "../changeOrderTotalStatusModal";
 
 type Props = {
   userId: string
@@ -12,11 +9,9 @@ type Props = {
   trackingId: string
   updateHandler:()=>void
 }
-
-const MoreDetail: FC<Props> = ({orderId,userId,trackingId,updateHandler}) => {
-  const router = useRouter()
+const MoreDetail: FC<Props> = ({orderId,userId,trackingId,updateHandler }) => {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
-  const [openModal,setOpenModal]=useState<boolean>(false)
+
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -45,24 +40,13 @@ const MoreDetail: FC<Props> = ({orderId,userId,trackingId,updateHandler}) => {
             flexDirection: "column",
             rowGap: "8px",
             borderRadius: '8px',
-            boxShadow: "0 6px 16px rgba(0,0,0,0.08)"
+            boxShadow: "0 6px 16px rgba(0,0,0,0.08)",
+            cursor:"pointer"
           }
         }}
       >
-        <Link href={`/orders/${userId}/${trackingId}`}>جزئیات سفارش</Link>
-        <Typography variant="button2" onClick={()=>setOpenModal(true)}>تغییر وضعیت</Typography>
+        <Typography className="pointer-item" variant="button2">ویرایش</Typography>
       </Popover>
-      <Modal
-        open={openModal}
-        onClose={()=>setOpenModal(false)}
-      >
-        <ChangeOrderTotalStatusModal
-          closeHandler={()=>setOpenModal(false)}
-          updateHandler={updateHandler}
-          orderId={orderId}
-          userId={userId as string}
-        />
-      </Modal>
     </StyledMoreDetail>
   );
 };
