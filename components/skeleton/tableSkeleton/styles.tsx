@@ -1,14 +1,14 @@
 import { Box, BoxProps, styled, Table } from "@mui/material";
 
 export const StyledContainer = styled(Box)<BoxProps>(({ theme }) => ({
-  backgroundColor: theme.palette.neutral["white"],
+  backgroundColor: theme.palette["white"],
   padding: "24px",
   borderRadius: "16px",
 }));
 
 export const StyledTable = styled(Table)(({ theme }) => ({
   ".MuiTableCell-root": {
-    borderColor: theme.palette.neutral["100"],
+    borderColor: theme.palette.text["disabled"],
     padding: "0",
   },
   ".MuiTableCell-head": {

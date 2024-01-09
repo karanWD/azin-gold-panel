@@ -1,19 +1,27 @@
-import React, { useState } from "react";
-import axios, { AxiosRequestConfig } from "axios";
+import { useState } from "react";
+import axios, {
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosRequestHeaders,
+  CreateAxiosDefaults,
+} from "axios";
 import { getCookie } from "cookies-next";
 import { ApiRoutes } from "../enums/ApiRoutes";
 import { toast } from "react-toastify";
-const hashedCookie = "aebc8a60f2fde26146e08d8cc0bc5371"; /*azingold-admin-auth*/
-const instance = axios.create({
-  baseURL: ApiRoutes.BASE_URL,
-});
 
-instance.interceptors.request.use((req: any) => {
+/*azingold-admin-auth*/
+const hashedCookie = "aebc8a60f2fde26146e08d8cc0bc5371";
+
+const axiosConfig = { baseURL: ApiRoutes.BASE_URL };
+const instance: AxiosInstance = axios.create(
+  axiosConfig as CreateAxiosDefaults
+);
+instance.interceptors.request.use((req) => {
   const cookie =
     getCookie(hashedCookie) && JSON.parse(getCookie(hashedCookie) as string);
   req.headers = {
     Authorization: `Bearer ${cookie.token}`,
-  };
+  } as AxiosRequestHeaders;
   return req;
 });
 
@@ -45,7 +53,7 @@ const UseFetch = () => {
         error: null,
       });
       return Promise.resolve(res.data);
-    } catch (e: any) {
+    } catch (e) {
       setResponse({
         loading: false,
         response: null,

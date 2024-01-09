@@ -1,8 +1,7 @@
 import { Box, BoxProps, styled } from "@mui/material";
-import React from "react";
 
 export const StyledChangeStatusModal = styled(Box)<BoxProps>(({ theme }) => ({
-  backgroundColor: theme.palette.neutral["white"],
+  backgroundColor: theme.palette["white"],
   width: "718px",
   borderRadius: "16px",
   padding: "20px",
@@ -33,7 +32,7 @@ export const StyledChangeStatusModal = styled(Box)<BoxProps>(({ theme }) => ({
     justifyContent: "space-between",
   },
   ".product-image-container": {
-    border: `1px solid ${theme.palette.neutral[100]}`,
+    border: `1px solid ${theme.palette.text.disabled}`,
     borderRadius: "8px",
     padding: "2px",
   },
@@ -44,7 +43,7 @@ export const StyledChangeStatusModal = styled(Box)<BoxProps>(({ theme }) => ({
     },
   },
   ".weight-container": {
-    color: theme.palette.neutral[300],
+    color: theme.palette.text["tertiary"],
   },
   ".select-status-container": {
     width: "320px",

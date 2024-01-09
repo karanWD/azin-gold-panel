@@ -1,10 +1,10 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import { Switch } from "@mui/material";
 import { ApiRoutes } from "../../../enums/ApiRoutes";
 import UseFetch from "../../../hooks/useFetch";
 
 type Props = {
-  updateHandler?: () => void;
+  updateHandler: () => void;
   status: boolean;
   productId?: string;
 };
@@ -23,7 +23,7 @@ const ChangeStatusProduct: FC<Props> = ({
       data: {
         isActive: `${!status}`,
       },
-    }).then((res) => {
+    }).then(() => {
       updateHandler();
     });
   };

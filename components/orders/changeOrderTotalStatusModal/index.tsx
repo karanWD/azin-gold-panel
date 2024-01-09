@@ -44,7 +44,7 @@ const ChangeOrderTotalStatusModal: FC<Props> = ({
       data: {
         status: newStatus,
       },
-    }).then((res) => {
+    }).then(() => {
       toast.success("وضعیت با موفقیت بروزرسانی شد");
       updateHandler();
     });

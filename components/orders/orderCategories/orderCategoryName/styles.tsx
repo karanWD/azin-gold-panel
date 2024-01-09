@@ -1,17 +1,20 @@
 import { Box, BoxProps, styled } from "@mui/material";
+import { ORDER_STATUSES } from "../../../../enums/OrderStatuses";
+import { Statuses } from "../../../../data/Statuses";
 
 interface CategoryNameType extends BoxProps {
-  color: "info" | "warning" | "default" | "success" | "error";
+  orderType: ORDER_STATUSES;
 }
+
 export const StyledOrderCategoryName = styled(Box)<CategoryNameType>(
-  ({ theme, color }) => ({
+  ({ theme, orderType }) => ({
     ".order-detail-state-title-container": {
       display: "flex",
       alignItems: "center",
       columnGap: "8px",
       ".order-state-icon": {
-        backgroundColor: theme.palette.neutral["white"],
-        border: `1px dashed ${theme.palette.neutral["200"]}`,
+        backgroundColor: theme.palette["white"],
+        border: `1px dashed ${theme.palette.text["tertiary"]}`,
         borderRadius: "8px",
         padding: "6px 10px",
         width: "40px",
@@ -21,7 +24,7 @@ export const StyledOrderCategoryName = styled(Box)<CategoryNameType>(
         justifyContent: "center",
       },
       ".order-state-title": {
-        color: theme.palette.state[color].main,
+        color: Statuses[orderType].color(theme),
       },
     },
   })

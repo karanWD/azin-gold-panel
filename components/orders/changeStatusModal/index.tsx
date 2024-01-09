@@ -16,13 +16,14 @@ import useFetch from "../../../hooks/useFetch";
 import { ApiRoutes } from "../../../enums/ApiRoutes";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
+import { OrdersSubProduct } from "../../../types";
 
 interface Props {
   selectedItems: {
     orderId: string;
     groupId: string;
     currentStatus: string;
-    items: Array<any>;
+    items: Array<OrdersSubProduct>;
   } | null;
   closeHandler: () => void;
   updateHandler: () => void;
@@ -78,7 +79,7 @@ const ChangeStatusModal: FC<Props> = ({
           quantity: item.quantity,
         })),
       },
-    }).then((res) => {
+    }).then(() => {
       toast.success("وضعیت با موفقیت بروزرسانی شد");
       updateHandler();
     });

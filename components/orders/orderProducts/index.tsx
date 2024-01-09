@@ -2,16 +2,21 @@ import React, { FC } from "react";
 import { StyledOrderProducts } from "./styles";
 import { Box, Checkbox, Typography } from "@mui/material";
 import Image from "next/image";
+import { OrdersProductItem, OrdersSubProduct } from "../../../types";
 
 type Props = {
-  data: any;
+  data: OrdersProductItem[];
   selectedData: {
     orderId: string;
     groupId: string;
     currentStatus: string;
-    items: Array<any>;
+    items: Array<OrdersSubProduct>;
   } | null;
-  handleChange: (isChecked: boolean, productItem: any, groupId: string) => void;
+  handleChange: (
+    isChecked: boolean,
+    productItem: OrdersSubProduct,
+    groupId: string
+  ) => void;
 };
 const OrderProducts: FC<Props> = ({ data, handleChange, selectedData }) => {
   return (

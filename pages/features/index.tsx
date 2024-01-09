@@ -33,7 +33,7 @@ const handleDate = (timestamp: string): string => {
 };
 
 const FeaturesPage: NextPage = () => {
-  const { response, error, loading, request } = useFetch();
+  const { response, loading, request } = useFetch();
   const [page, setPage] = useState<number>(1);
 
   const fetchFeaturesList = (page) => {
@@ -61,14 +61,7 @@ const FeaturesPage: NextPage = () => {
       updatedAt: (
         <Typography variant="body3">{handleDate(item.updatedAt)}</Typography>
       ),
-      more: (
-        <MoreDetail
-          userId={item._id}
-          orderId={item._id}
-          trackingId={item.tracking}
-          updateHandler={() => page}
-        />
-      ),
+      more: <MoreDetail />,
     }));
   }, []);
 

@@ -1,8 +1,12 @@
-import React from "react";
+import React, { FC } from "react";
 import { StyledOrderInfo } from "./styles";
 import { Box, Typography } from "@mui/material";
+import { OrderDetailResponse } from "../../../types";
 
-const OrderInfo = ({ data }) => {
+type Props = {
+  data: OrderDetailResponse;
+};
+const OrderInfo: FC<Props> = ({ data }) => {
   return (
     <StyledOrderInfo>
       <Box className="order-info-columns">
@@ -36,7 +40,11 @@ const OrderInfo = ({ data }) => {
 
 export default OrderInfo;
 
-export const OrderInfoItem = ({ title, value }) => {
+type OrderInfoProps = {
+  title: string;
+  value: string;
+};
+export const OrderInfoItem: FC<OrderInfoProps> = ({ title, value }) => {
   return (
     <Box className="order-info-item-container">
       <Typography variant="body3" className="order-info-item-title">

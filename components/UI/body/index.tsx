@@ -7,7 +7,7 @@ import KeyboardArrowLeftRoundedIcon from "@mui/icons-material/KeyboardArrowLeftR
 import KeyboardArrowRightRoundedIcon from "@mui/icons-material/KeyboardArrowRightRounded";
 
 type Props = {
-  data: { [key: string]: string | number | boolean | ReactNode };
+  data: { [key: string]: string | number | boolean | ReactNode }[];
   page: number;
   totalPages: number;
   setPage: (value: number) => void;

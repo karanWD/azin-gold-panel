@@ -1,6 +1,6 @@
 import { Box, BoxProps, styled } from "@mui/material";
 
-export const StyledMoreDetail = styled(Box)<BoxProps>(({ theme }) => ({
+export const StyledMoreDetail = styled(Box)<BoxProps>(() => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",

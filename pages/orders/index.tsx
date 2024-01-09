@@ -23,7 +23,7 @@ const tableHeading: string[] = [
 ];
 
 const OrdersPage: NextPage = () => {
-  const { response, error, loading, request } = useFetch();
+  const { response, loading, request } = useFetch();
   const [page, setPage] = useState<number>(1);
 
   const fetchOrderList = (page) => {
@@ -40,7 +40,7 @@ const OrdersPage: NextPage = () => {
 
   const formatData = useCallback((data) => {
     if (!data) return null;
-    return data.map((item, index) => ({
+    return data.map((item) => ({
       index: <Typography variant="body3">{item.index}</Typography>,
       createdAt: (
         <Typography variant="body3">

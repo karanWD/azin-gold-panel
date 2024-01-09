@@ -4,9 +4,11 @@ import OrderCategoryName from "./orderCategoryName";
 import { Box, Button, Modal, Typography } from "@mui/material";
 import OrderProducts from "../orderProducts";
 import ChangeStatusModal from "../changeStatusModal";
+import { OrderProductsStatus, OrdersSubProduct } from "../../../types";
+import { ORDER_STATUSES } from "../../../enums/OrderStatuses";
 
 type Props = {
-  data: { [key: string]: Array<any> };
+  data: OrderProductsStatus;
   orderId: string;
   updateHandler: () => void;
 };
@@ -14,7 +16,7 @@ type SelectedItems = {
   orderId: string;
   groupId: string;
   currentStatus: string;
-  items: Array<any>;
+  items: Array<OrdersSubProduct>;
 } | null;
 
 const OrderCategories: FC<Props> = ({ data, orderId, updateHandler }) => {
@@ -23,7 +25,7 @@ const OrderCategories: FC<Props> = ({ data, orderId, updateHandler }) => {
 
   const changeHandler = (
     isChecked: boolean,
-    selectedData: any,
+    selectedData: OrdersSubProduct,
     id: string,
     key: string
   ): void => {
@@ -61,7 +63,7 @@ const OrderCategories: FC<Props> = ({ data, orderId, updateHandler }) => {
               flexDirection="column"
               gap="18px"
             >
-              <OrderCategoryName type={key} />
+              <OrderCategoryName type={key as ORDER_STATUSES} />
               <OrderProducts
                 data={value}
                 selectedData={selectedItems}

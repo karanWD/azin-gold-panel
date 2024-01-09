@@ -1,7 +1,7 @@
 import { Box, BoxProps, styled } from "@mui/material";
 
 export const StyledOrderInfo = styled(Box)<BoxProps>(({ theme }) => ({
-  backgroundColor: theme.palette.neutral["white"],
+  backgroundColor: theme.palette["white"],
   padding: "20px",
   borderRadius: "12px",
   display: "flex",
@@ -17,10 +17,10 @@ export const StyledOrderInfo = styled(Box)<BoxProps>(({ theme }) => ({
     justifyContent: "space-between",
     alignItems: "center",
     ".order-info-item-title": {
-      color: theme.palette.neutral.main,
+      color: theme.palette.text["secondary"],
     },
     ".order-info-item-value": {
-      color: theme.palette.neutral[900],
+      color: theme.palette.text["brand"],
     },
   },
 }));

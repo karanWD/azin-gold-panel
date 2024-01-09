@@ -14,8 +14,12 @@ const FeaturesItem: FC<Props> = ({ modes }) => {
   return (
     <>
       <StyledFeatures>
-        {modes.map((item) => (
-          <Typography className="space-item" variant="body3">
+        {modes.map((item, index) => (
+          <Typography
+            className="space-item"
+            variant="body3"
+            key={"FEATURE_ITEM_" + index}
+          >
             {item.title}{" "}
           </Typography>
         ))}

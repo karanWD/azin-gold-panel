@@ -1,11 +1,11 @@
-import { TableBody, TableCell, TableHead, TableRow } from "@mui/material";
 import React, { FC, ReactNode } from "react";
 import { StyledContainer, StyledTable } from "./styles";
+import { TableBody, TableCell, TableHead, TableRow } from "@mui/material";
 
 type TableProps = {
   data: {
     [key: string]: string | number | boolean | ReactNode;
-  };
+  }[];
   headings: string[];
 };
 

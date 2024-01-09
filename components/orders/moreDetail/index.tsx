@@ -1,8 +1,7 @@
 import React, { FC, useState } from "react";
 import { StyledMoreDetail } from "./styles";
-import { Box, Modal, Button, Popover, Typography } from "@mui/material";
+import { Button, Modal, Popover, Typography } from "@mui/material";
 import Image from "next/image";
-import { useRouter } from "next/router";
 import Link from "next/link";
 import ChangeOrderTotalStatusModal from "../changeOrderTotalStatusModal";
 
@@ -19,7 +18,6 @@ const MoreDetail: FC<Props> = ({
   trackingId,
   updateHandler,
 }) => {
-  const router = useRouter();
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
     null
   );

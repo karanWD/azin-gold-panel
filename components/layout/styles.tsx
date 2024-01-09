@@ -1,6 +1,6 @@
 import { Box, BoxProps, styled } from "@mui/material";
 
-export const StyledLayout = styled(Box)<BoxProps>(({ theme }) => ({
+export const StyledLayout = styled(Box)<BoxProps>(() => ({
   display: "flex",
   ".sidebar-container": {
     flexBasis: "280px",

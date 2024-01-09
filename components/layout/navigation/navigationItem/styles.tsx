@@ -6,7 +6,7 @@ interface Props extends BoxProps {
 }
 
 export const StyledNavigationItem = styled(Box)<Props>(
-  ({ theme, isActive, isDisabled }) => ({
+  ({ isActive, isDisabled }) => ({
     padding: "4px 0",
     opacity: isDisabled ? 0.3 : 1,
     pointerEvents: isDisabled ? "none" : "unset",

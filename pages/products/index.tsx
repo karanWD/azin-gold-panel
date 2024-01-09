@@ -22,10 +22,10 @@ const tableHeading: string[] = [
 ];
 
 const ProductsPage: NextPage = () => {
-  const { response, error, loading, request } = useFetch();
+  const { response, loading, request } = useFetch();
   const [page, setPage] = useState<number>(1);
 
-  const fetchProductsList = (page) => {
+  const fetchProductsList = (page: number) => {
     request({
       url: ApiRoutes.ADMIN_PRODUCTS + `?page=${page}`,
       // for filters

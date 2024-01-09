@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { Statuses } from "../../../../data/Statuses";
@@ -12,10 +12,10 @@ const images = {
   [ORDER_STATUSES.DELIVERED]: "/images/delivered.svg",
   [ORDER_STATUSES.CANCELED]: "/images/canceled.svg",
 };
-
-const OrderCategoryName = ({ type }) => {
+type Props = { type: ORDER_STATUSES };
+const OrderCategoryName: FC<Props> = ({ type }) => {
   return (
-    <StyledOrderCategoryName color={Statuses[type].color}>
+    <StyledOrderCategoryName orderType={type}>
       <Box className="order-detail-state-title-container">
         <Box className="order-state-icon">
           <Image

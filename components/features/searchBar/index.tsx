@@ -1,9 +1,7 @@
-import React, { FC } from "react";
-import { TextField, Typography } from "@mui/material";
+import React from "react";
 import { StyledContainer, StyledTextField } from "./styles";
 
-type Props = {};
-const SearchBar: FC<Props> = ({}) => {
+const SearchBar = () => {
   return (
     <StyledContainer>
       <StyledTextField

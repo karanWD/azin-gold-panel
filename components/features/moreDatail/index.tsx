@@ -1,25 +1,11 @@
-import React, { FC, useState } from "react";
+import { MouseEvent, useState } from "react";
 import { StyledMoreDetail } from "./styles";
 import { Button, Popover, Typography } from "@mui/material";
 import Image from "next/image";
 
-type Props = {
-  userId: string;
-  orderId: string;
-  trackingId: string;
-  updateHandler: () => void;
-};
-const MoreDetail: FC<Props> = ({
-  orderId,
-  userId,
-  trackingId,
-  updateHandler,
-}) => {
-  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
-    null
-  );
-
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+const MoreDetail = () => {
+  const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
+  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {

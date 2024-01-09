@@ -15,11 +15,11 @@ export const StyledProductsPage = styled(Box)<BoxProps>(() => ({
 }));
 
 export const StyledItemBox = styled(Box)<BoxProps>(({ theme }) => ({
-  backgroundColor: theme.palette.neutral["white"],
+  backgroundColor: theme.palette["white"],
   padding: "24px",
   margin: "24px",
   borderRadius: "16px",
   "title-item": {
-    color: theme.palette.neutral[900],
+    color: theme.palette.text["brand"],
   },
 }));
