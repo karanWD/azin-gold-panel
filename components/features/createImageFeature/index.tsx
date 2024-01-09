@@ -3,10 +3,10 @@ import { Box, TextField, Typography } from "@mui/material";
 import { StyledCreateImage } from "./styles";
 
 type Props = {
-    
+    amountInput: string;
+    setAmountInput: () => void;
 }
-const InputImageFeature: FC<Props> = ({}) => {
-    const [valueInput , setValueInput] = useState("")
+const InputImageFeature: FC<Props> = ({amountInput, setAmountInput}) => {
     
     return (
         <StyledCreateImage>
@@ -16,8 +16,8 @@ const InputImageFeature: FC<Props> = ({}) => {
                 type="file"
                 className="create-header-Input"
                 placeholder=" عکس محصول را وارد کنید ."
-                value={valueInput}
-                onChange={(e) => setValueInput(e.target.value)}
+                value={amountInput}
+                onChange={(e) => setAmountInput(e.target.value)}
             />
         </StyledCreateImage>
     )

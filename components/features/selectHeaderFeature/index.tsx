@@ -3,13 +3,15 @@ import { Box, Button, FormControlLabel, Radio, RadioGroup, Typography } from "@m
 import { StyledSelectFeature } from "./styles";
 import CloseIcon from "@mui/icons-material/Close";
 import { useRouter } from "next/router";
+import { DISPLAY_MODES } from "../../../enums/DisplayModes";
+import { DisplayModes } from "../../../data/DisplayModes";
 
 type Props = {
     closeHandler: any;
 }
 const SelectHeaderFeature: FC<Props> = ({closeHandler}) => {
     const [radioValue , setRadioValue]=useState<string>("")
-    const [getLabel , setGetLabel]=useState<string>("tt")
+    const [getLabel , setGetLabel]=useState<string>("")
 
     const router = useRouter()
 
@@ -19,22 +21,21 @@ const SelectHeaderFeature: FC<Props> = ({closeHandler}) => {
     }
 
     const LabelHandler = (e) => {
-        if(e.target.value === "default"){
+        if(e.target.value === DISPLAY_MODES.DEFAULT){
             setGetLabel("حالت عادی")
-        }else if(e.target.value === "color"){
+        }else if(e.target.value === DISPLAY_MODES.COLOR){
             setGetLabel("رنگ")
-        }else if(e.target.value === "product"){
+        }else if(e.target.value === DISPLAY_MODES.PRODUCT){
             setGetLabel("شمارنده")
-        }else if(e.target.value === "expandable"){
+        }else if(e.target.value === DISPLAY_MODES.EXPANDABLE){
             setGetLabel("دارای عکس")
         }
     }
 
     const pushHandler = () => {
-        router.push(`/features/createFeature?${radioValue}&title=${getLabel}`)
+        router.push(`/features/createFeature?mode=${radioValue}&title=${getLabel}`)
     }
 
-    console.log(radioValue)
     return (
         <StyledSelectFeature>
             <Box className='header-feature'>
@@ -47,10 +48,10 @@ const SelectHeaderFeature: FC<Props> = ({closeHandler}) => {
                     value={radioValue} 
                     onChange={(e) => CangeHandler(e)}
                 >
-                    <FormControlLabel value="default" control={<Radio />} label="حالت عادی" />
-                    <FormControlLabel value="color" control={<Radio />} label="رنگ" />
-                    <FormControlLabel value="product" control={<Radio />} label="شمارنده" />
-                    <FormControlLabel value="expandable" control={<Radio />} label="دارای عکس" />
+                    <FormControlLabel value={DISPLAY_MODES.DEFAULT} control={<Radio />} label={DisplayModes[DISPLAY_MODES.DEFAULT].text} />
+                    <FormControlLabel value={DISPLAY_MODES.COLOR} control={<Radio />} label={DisplayModes[DISPLAY_MODES.COLOR].text} />
+                    <FormControlLabel value={DISPLAY_MODES.PRODUCT} control={<Radio />} label={DisplayModes[DISPLAY_MODES.PRODUCT].text} />
+                    <FormControlLabel value={DISPLAY_MODES.EXPANDABLE} control={<Radio />} label={DisplayModes[DISPLAY_MODES.EXPANDABLE].text} />
                 </RadioGroup>
                 <Box className="register-feature-header">
                     <Button color="primary" variant="contained" onClick={pushHandler}>

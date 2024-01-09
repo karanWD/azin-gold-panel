@@ -1,12 +1,12 @@
-import React,{FC, useState} from "react";
+import React,{FC, ReactNode, useState} from "react";
 import { Box, TextField, Typography } from "@mui/material";
 import { StyledCreateHeader } from "./styles";
 
 type Props = {
-   
+    amountInput: string;
+    setAmountInput: () => void;
 }
-const InputHeaderFeature: FC<Props> = ({}) => {
-    const [valueInput , setValueInput] = useState("")
+const InputHeaderFeature: FC<Props> = ({amountInput,setAmountInput}) => {
     
     return (
         <StyledCreateHeader>
@@ -18,8 +18,8 @@ const InputHeaderFeature: FC<Props> = ({}) => {
                 variant="outlined"
                 className="create-header-Input"
                 placeholder=" عنوان ویژگی را وارد کنید ."
-                value={valueInput}
-                onChange={(e) => setValueInput(e.target.value)}
+                value={amountInput}
+                onChange={(e) => setAmountInput(e.target.value)}
             />
         </StyledCreateHeader>
     )

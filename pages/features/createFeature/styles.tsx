@@ -35,6 +35,10 @@ export const StyledAddFeature = styled(Box)<BoxProps>(({theme})=>({
   ".back-icon":{
     margin: "3px",
     rotate: "180deg"
+  },
+  ".register-feature":{
+    display: 'flex',
+    justifyContent: 'flex-end'
   }
 }))
 
