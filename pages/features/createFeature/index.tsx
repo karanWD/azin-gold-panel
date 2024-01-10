@@ -32,29 +32,42 @@ const FeaturPage: NextPage = () => {
 
   const { request } = UseFetch();
 
-  //   const editStatusProducts = (e) => {
+  // const editStatusProducts = (e) => {
 
-  //     console.log(formData)
-  //     request({
-  //     headers:{setContentType:"multipart/form-data"},
-  //       method: "POST",
-  //       url: ApiRoutes.ADMIN_FEATURES_GROUPS,
-  //       data: {
-  //         header: headerInput,
-  //         features: [{sequence:sortInput , title:valueInput}],
-  //         displayMode: router.query.mode,
-  //       },
-  //     }).then((res) => {
-  //       console.log(res);
-  //     });
-  //   };
+  //   console.log(formData)
 
+  // };
+
+  console.log(headerInput);
+  const temp = [
+    { title: valueInput, sequence: sortInput },
+  ];
 
   const submitHandler = (e: any) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData);
-    return;
+
+    console.log(headerInput);
+
+    const formData = new FormData();
+    formData.append("header", headerInput);
+
+    for (let i = 0; i < temp.length; i++) {
+      for (const key in temp[i]) {
+        formData.append(`features[${i}][${key}]`, temp[i][key]);
+      }
+    }
+
+    formData.append("displayMode", router.query.mode.toString());
+    console.log(formData);
+
+    request({
+      method: "POST",
+      url: ApiRoutes.ADMIN_FEATURES_GROUPS,
+      data: formData,
+      headers: { "Content-Type": "multipart/form-data" },
+    }).then((res) => {
+      console.log(res);
+    });
   };
 
   return (

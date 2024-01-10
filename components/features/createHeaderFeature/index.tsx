@@ -4,7 +4,7 @@ import { StyledCreateHeader } from "./styles";
 
 type Props = {
     amountInput: string;
-    setAmountInput: () => void;
+    setAmountInput: (value:string) => void;
 }
 const InputHeaderFeature: FC<Props> = ({amountInput,setAmountInput}) => {
     
