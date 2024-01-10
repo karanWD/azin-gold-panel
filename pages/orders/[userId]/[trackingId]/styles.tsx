@@ -21,7 +21,7 @@ export const StyledOrderDetailPage = styled(Box)<BoxProps>(({ theme }) => ({
     alignItems: "center",
     justifyContent: "space-between",
     columnGap: "16px",
-    color: theme.palette.text["brand"],
+    color: theme.palette.txt["brand"],
   },
   ".order-detail-title": {
     display: "flex",
@@ -30,6 +30,6 @@ export const StyledOrderDetailPage = styled(Box)<BoxProps>(({ theme }) => ({
     fontSize: "20px",
     fontWeight: "700",
     fontFamily: "IRANSansX_Bold",
-    color: theme.palette.text["brand"],
+    color: theme.palette.txt["brand"],
   },
 }));

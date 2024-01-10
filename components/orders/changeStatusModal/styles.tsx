@@ -32,7 +32,7 @@ export const StyledChangeStatusModal = styled(Box)<BoxProps>(({ theme }) => ({
     justifyContent: "space-between",
   },
   ".product-image-container": {
-    border: `1px solid ${theme.palette.text.disabled}`,
+    border: `1px solid ${theme.palette.txt.disabled}`,
     borderRadius: "8px",
     padding: "2px",
   },
@@ -43,7 +43,7 @@ export const StyledChangeStatusModal = styled(Box)<BoxProps>(({ theme }) => ({
     },
   },
   ".weight-container": {
-    color: theme.palette.text["tertiary"],
+    color: theme.palette.txt["tertiary"],
   },
   ".select-status-container": {
     width: "320px",

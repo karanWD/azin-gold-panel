@@ -15,12 +15,12 @@ export const StyledOrderProducts = styled(Box)(({ theme }) => ({
   ".products-name-container": {
     ".products-name": {
       padding: "12px 20px 0 20px",
-      color: theme.palette.text["brand"],
+      color: theme.palette.txt["brand"],
     },
     ".products-wage": {
       padding: "0 20px 0 20px",
       marginTop: "4px",
-      color: theme.palette.text["tertiary"],
+      color: theme.palette.txt["tertiary"],
     },
   },
   ".sub-products-container": {
@@ -29,7 +29,7 @@ export const StyledOrderProducts = styled(Box)(({ theme }) => ({
     flexDirection: "column",
     rowGap: "20px",
     padding: "20px 32px",
-    backgroundColor: theme.palette.background["neutral"]["B"],
+    backgroundColor: theme.palette.bg.neutral["B"],
   },
   ".product-item-container": {
     display: "flex",
@@ -37,12 +37,12 @@ export const StyledOrderProducts = styled(Box)(({ theme }) => ({
     justifyContent: "space-between",
   },
   ".product-item-weight": {
-    color: theme.palette.text["tertiary"],
+    color: theme.palette.txt["tertiary"],
   },
   ".product-item-info-title": {
-    color: theme.palette.text["tertiary"],
+    color: theme.palette.txt["tertiary"],
   },
   ".product-item-info-value": {
-    color: theme.palette.text["brand"],
+    color: theme.palette.txt["brand"],
   },
 }));

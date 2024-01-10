@@ -17,10 +17,10 @@ export const StyledOrderInfo = styled(Box)<BoxProps>(({ theme }) => ({
     justifyContent: "space-between",
     alignItems: "center",
     ".order-info-item-title": {
-      color: theme.palette.text["secondary"],
+      color: theme.palette.txt.secondary,
     },
     ".order-info-item-value": {
-      color: theme.palette.text["brand"],
+      color: theme.palette.txt.brand,
     },
   },
 }));

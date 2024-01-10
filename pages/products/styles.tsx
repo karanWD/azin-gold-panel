@@ -20,6 +20,6 @@ export const StyledItemBox = styled(Box)<BoxProps>(({ theme }) => ({
   margin: "24px",
   borderRadius: "16px",
   "title-item": {
-    color: theme.palette.text["brand"],
+    color: theme.palette.txt["brand"],
   },
 }));

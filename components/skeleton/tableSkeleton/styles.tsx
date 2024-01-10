@@ -8,7 +8,7 @@ export const StyledContainer = styled(Box)<BoxProps>(({ theme }) => ({
 
 export const StyledTable = styled(Table)(({ theme }) => ({
   ".MuiTableCell-root": {
-    borderColor: theme.palette.text["disabled"],
+    borderColor: theme.palette.outline["disabled"],
     padding: "0",
   },
   ".MuiTableCell-head": {

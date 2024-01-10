@@ -1,109 +1,3 @@
-import { Palette } from "@mui/material/styles/createPalette";
-
-// declare module '@mui/material/styles' {
-//   interface Palette {
-//     white?: string;
-//     black?: string;
-//     primary?: {
-//       main?: string;
-//     };
-//     background?: {
-//       neutral?: string;
-//       brand?: string;
-//       secondary?: string;
-//       success?: string;
-//       error?: string;
-//       warning?: string;
-//       tertiary?: string;
-//     };
-//     text?: {
-//       brand?: string;
-//       secondary?: string;
-//       tertiary?: string;
-//       disabled?: string;
-//       primary?: string;
-//       secondaryInverted?: string;
-//       tertiaryInverted?: string;
-//       disabledInverted?: string;
-//       success?: string;
-//       error?: string;
-//       warning?: string;
-//       brandSecondary?: string;
-//       brandTertiary?: string;
-//       white?: string;
-//       black?: string;
-//     };
-//     outline?: {
-//       brand?: string;
-//       secondary?: string;
-//       tertiary?: string;
-//       disabled?: string;
-//       primary?: string;
-//       secondaryInverted?: string;
-//       tertiaryInverted?: string;
-//       disabledInverted?: string;
-//       success?: string;
-//       error?: string;
-//       warning?: string;
-//       brandSecondary?: string;
-//       brandTertiary?: string;
-//       white?: string;
-//       black?: string;
-//     };
-//   }
-//
-//   interface PaletteOptions {
-//     white: string;
-//     black: string;
-//     primary: {
-//       main: string;
-//     };
-//     background: {
-//       neutral: string;
-//       brand: string;
-//       secondary: string;
-//       success: string;
-//       error: string;
-//       warning: string;
-//       tertiary: string;
-//     };
-//     text: {
-//       brand: string;
-//       secondary: string;
-//       tertiary: string;
-//       disabled: string;
-//       primary: string;
-//       secondaryInverted: string;
-//       tertiaryInverted: string;
-//       disabledInverted: string;
-//       success: string;
-//       error: string;
-//       warning: string;
-//       brandSecondary: string;
-//       brandTertiary: string;
-//       white: string;
-//       black: string;
-//     };
-//     outline: {
-//       brand: string;
-//       secondary: string;
-//       tertiary: string;
-//       disabled: string;
-//       primary: string;
-//       secondaryInverted: string;
-//       tertiaryInverted: string;
-//       disabledInverted: string;
-//       success: string;
-//       error: string;
-//       warning: string;
-//       brandSecondary: string;
-//       brandTertiary: string;
-//       white: string;
-//       black: string;
-//     };
-//   }
-// }
-
 interface BackgroundPaletteType {
   A?: string;
   B?: string;
@@ -112,50 +6,84 @@ interface BackgroundPaletteType {
   tonal?: string;
 }
 
-interface TextPaletteType {
-  brand?: string;
-  secondary?: string;
-  tertiary?: string;
-  disabled?: string;
-  primary?: string;
-  secondaryInverted?: string;
-  tertiaryInverted?: string;
-  disabledInverted?: string;
-  success?: string;
-  error?: string;
-  warning?: string;
-  brandSecondary?: string;
-  brandTertiary?: string;
-  white?: string;
-  black?: string;
+declare module "@mui/material/styles" {
+  interface Palette {
+    bg: Palette["primary"];
+    core: Palette["primary"];
+    txt: Palette["primary"];
+    outline: Palette["primary"];
+  }
+
+  interface PaletteOptions {
+    bg?: PaletteOptions["primary"];
+    core?: PaletteOptions["primary"];
+    txt?: PaletteOptions["primary"];
+    outline?: PaletteOptions["primary"];
+  }
+
+  interface PaletteColor {
+    primary?: BackgroundPaletteType | string;
+    secondary?: BackgroundPaletteType | string;
+    tertiary?: BackgroundPaletteType | string;
+    brand?: BackgroundPaletteType | string;
+    brandSecondary?: BackgroundPaletteType | string;
+    brandTertiary?: BackgroundPaletteType | string;
+    secondaryInverted?: BackgroundPaletteType | string;
+    tertiaryInverted?: BackgroundPaletteType | string;
+    disabledInverted?: BackgroundPaletteType | string;
+    success?: BackgroundPaletteType | string;
+    error?: BackgroundPaletteType | string;
+    warning?: BackgroundPaletteType | string;
+    disabled?: BackgroundPaletteType | string;
+    neutral?: BackgroundPaletteType | string;
+    white?: string;
+    black?: string;
+  }
+  interface PaletteColorOptions {
+    primary?: BackgroundPaletteType | string;
+    secondary?: BackgroundPaletteType | string;
+    tertiary?: BackgroundPaletteType | string;
+    brand?: BackgroundPaletteType | string;
+    brandSecondary?: BackgroundPaletteType | string;
+    brandTertiary?: BackgroundPaletteType | string;
+    secondaryInverted?: BackgroundPaletteType | string;
+    tertiaryInverted?: BackgroundPaletteType | string;
+    disabledInverted?: BackgroundPaletteType | string;
+    success?: BackgroundPaletteType | string;
+    error?: BackgroundPaletteType | string;
+    warning?: BackgroundPaletteType | string;
+    disabled?: BackgroundPaletteType | string;
+    neutral?: BackgroundPaletteType | string;
+    white?: string;
+    black?: string;
+  }
+  interface SimplePaletteColorOptions {
+    primary?: BackgroundPaletteType | string;
+    secondary?: BackgroundPaletteType | string;
+    tertiary?: BackgroundPaletteType | string;
+    brand?: BackgroundPaletteType | string;
+    brandSecondary?: BackgroundPaletteType | string;
+    brandTertiary?: BackgroundPaletteType | string;
+    secondaryInverted?: BackgroundPaletteType | string;
+    tertiaryInverted?: BackgroundPaletteType | string;
+    disabledInverted?: BackgroundPaletteType | string;
+    success?: BackgroundPaletteType | string;
+    error?: BackgroundPaletteType | string;
+    warning?: BackgroundPaletteType | string;
+    disabled?: BackgroundPaletteType | string;
+    neutral?: BackgroundPaletteType | string;
+    white?: string;
+    black?: string;
+  }
 }
 
-export interface CustomPaletteOptions extends Palette {
-  white?: string;
-  black?: string;
-  primary?: {
-    main?: string;
-  };
-  background?: {
-    neutral?: BackgroundPaletteType;
-    brand?: BackgroundPaletteType;
-    secondary?: BackgroundPaletteType;
-    success?: BackgroundPaletteType;
-    error?: BackgroundPaletteType;
-    warning?: BackgroundPaletteType;
-    tertiary?: BackgroundPaletteType;
-  };
-  text?: TextPaletteType;
-  outline?: TextPaletteType;
-}
-
-export const palette: CustomPaletteOptions = {
-  white: "#FFF",
-  black: "#000",
-  primary: {
+export const palette = {
+  core: {
     main: "#B99637",
+    white: "#FFF",
+    black: "#000",
   },
-  background: {
+  bg: {
     neutral: {
       A: "#F8F9FC",
       B: "#F2F3F6",
@@ -206,7 +134,7 @@ export const palette: CustomPaletteOptions = {
       tonal: "#F3EEFF",
     },
   },
-  text: {
+  txt: {
     brand: "#1C1D1F",
     secondary: "#5B5C5F",
     tertiary: "#97989B",
@@ -220,8 +148,6 @@ export const palette: CustomPaletteOptions = {
     warning: "#E06E16",
     brandSecondary: "#B99637",
     brandTertiary: "#7B50E8",
-    white: "#FFF",
-    black: "#000",
   },
   outline: {
     brand: "#1C1D1F",
@@ -237,7 +163,5 @@ export const palette: CustomPaletteOptions = {
     warning: "#E06E16",
     brandSecondary: "#A68427",
     brandTertiary: "#8758FF",
-    white: "#FFF",
-    black: "#000",
   },
 };

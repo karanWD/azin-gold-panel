@@ -5,7 +5,7 @@ export const StyledPageHeader = styled(Box)<BoxProps>(({ theme }) => ({
   alignItems: "center",
   justifyContent: "space-between",
   ".page-title": {
-    color: theme.palette.text["brand"],
+    color: theme.palette.txt.brand,
   },
   ".profile-container": {
     display: "flex",
@@ -13,9 +13,9 @@ export const StyledPageHeader = styled(Box)<BoxProps>(({ theme }) => ({
     alignItems: "center",
   },
   ".username-container": {
-    color: theme.palette.text["brand"],
+    color: theme.palette.txt["brand"],
   },
   ".welcome-message": {
-    color: theme.palette.text["tertiary"],
+    color: theme.palette.txt["tertiary"],
   },
 }));

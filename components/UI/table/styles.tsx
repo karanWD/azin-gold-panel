@@ -2,18 +2,18 @@ import { Box, BoxProps, styled, Table } from "@mui/material";
 
 export const StyledTable = styled(Table)(({ theme }) => ({
   ".MuiTableCell-root": {
-    borderColor: theme.palette.text["disabled"],
+    borderColor: theme.palette.txt["disabled"],
   },
   ".MuiTableCell-head": {
     fontSize: "14px",
     lineHeight: "28px",
     fontWeight: "400",
     textAlign: "right",
-    color: theme.palette.text["secondary"],
+    color: theme.palette.txt.secondary,
     padding: "0 0 8px 0",
   },
   ".MuiTableCell-body": {
-    color: theme.palette.text.secondary,
+    color: theme.palette.txt.secondary,
     height: "69px",
     fontSize: "14px",
     lineHeight: "28px",
@@ -25,7 +25,7 @@ export const StyledTable = styled(Table)(({ theme }) => ({
 }));
 
 export const StyledContainer = styled(Box)<BoxProps>(({ theme }) => ({
-  backgroundColor: theme.palette["white"],
+  backgroundColor: theme.palette.core.white,
   padding: "24px",
   borderRadius: "16px",
 }));

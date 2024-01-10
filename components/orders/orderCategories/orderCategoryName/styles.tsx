@@ -14,7 +14,7 @@ export const StyledOrderCategoryName = styled(Box)<CategoryNameType>(
       columnGap: "8px",
       ".order-state-icon": {
         backgroundColor: theme.palette["white"],
-        border: `1px dashed ${theme.palette.text["tertiary"]}`,
+        border: `1px dashed ${theme.palette.txt["tertiary"]}`,
         borderRadius: "8px",
         padding: "6px 10px",
         width: "40px",
