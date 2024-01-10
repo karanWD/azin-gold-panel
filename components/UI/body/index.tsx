@@ -1,27 +1,20 @@
-import React, { FC, ReactNode } from "react";
-import { StyledBody } from "./styles";
-import Table from "../../../components/UI/table";
-import TableSkeleton from "../../../components/skeleton/tableSkeleton/tableSkeleton";
-import { Box, Pagination, PaginationItem } from "@mui/material";
-import KeyboardArrowLeftRoundedIcon from "@mui/icons-material/KeyboardArrowLeftRounded";
-import KeyboardArrowRightRoundedIcon from "@mui/icons-material/KeyboardArrowRightRounded";
+import React, { FC, ReactNode } from 'react'
+import { StyledBody } from './styles'
+import Table from '../../../components/UI/table'
+import TableSkeleton from '../../../components/skeleton/tableSkeleton/tableSkeleton'
+import { Box, Pagination, PaginationItem } from '@mui/material'
+import KeyboardArrowLeftRoundedIcon from '@mui/icons-material/KeyboardArrowLeftRounded'
+import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRightRounded'
 
 type Props = {
-  data: { [key: string]: string | number | boolean | ReactNode }[];
-  page: number;
-  totalPages: number;
-  setPage: (value: number) => void;
-  loading: boolean;
-  tableHeading: Array<string>;
-};
-const PageBody: FC<Props> = ({
-  data,
-  page,
-  totalPages,
-  setPage,
-  loading,
-  tableHeading,
-}) => {
+  data: { [key: string]: string | number | boolean | ReactNode }[]
+  page: number
+  totalPages: number
+  setPage: (value: number) => void
+  loading: boolean
+  tableHeading: Array<string>
+}
+const PageBody: FC<Props> = ({ data, page, totalPages, setPage, loading, tableHeading }) => {
   return (
     <StyledBody>
       {loading || !data ? (
@@ -51,7 +44,7 @@ const PageBody: FC<Props> = ({
         </>
       )}
     </StyledBody>
-  );
-};
+  )
+}
 
-export default PageBody;
+export default PageBody

@@ -1,8 +1,8 @@
-import { AppProps } from "next/app";
-import "../styles/globals.css";
-import { ThemeProvider } from "@mui/material";
-import theme from "../theme";
-import Layout from "../components/layout";
+import { AppProps } from 'next/app'
+import '../styles/globals.css'
+import { ThemeProvider } from '@mui/material'
+import theme from '../theme'
+import Layout from '../components/layout'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
       </Layout>
     </ThemeProvider>
-  );
+  )
 }
 
-export default MyApp;
+export default MyApp

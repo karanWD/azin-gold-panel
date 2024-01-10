@@ -1,11 +1,11 @@
-import React, { FC } from "react";
-import { Typography } from "@mui/material";
-import { DisplayModes } from "../../../data/DisplayModes";
-import { DISPLAY_MODES } from "../../../enums/DisplayModes";
+import React, { FC } from 'react'
+import { Typography } from '@mui/material'
+import { DisplayModes } from '../../../data/DisplayModes'
+import { DISPLAY_MODES } from '../../../enums/DisplayModes'
 
 type Props = {
-  modes: DISPLAY_MODES;
-};
+  modes: DISPLAY_MODES
+}
 const DisplayMode: FC<Props> = ({ modes }) => {
   return (
     <>
@@ -13,7 +13,7 @@ const DisplayMode: FC<Props> = ({ modes }) => {
         {DisplayModes[modes].text}
       </Typography>
     </>
-  );
-};
+  )
+}
 
-export default DisplayMode;
+export default DisplayMode
