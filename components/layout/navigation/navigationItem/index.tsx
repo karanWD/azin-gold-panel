@@ -1,23 +1,17 @@
-import React, { FC } from "react";
-import { Box, Typography } from "@mui/material";
-import Link from "next/link";
-import { StyledNavigationItem } from "./styles";
-import Image from "next/image";
+import React, { FC } from 'react'
+import { Box, Typography } from '@mui/material'
+import Link from 'next/link'
+import { StyledNavigationItem } from './styles'
+import Image from 'next/image'
 
 type Props = {
-  icon: string;
-  href: string;
-  title: string;
-  isActive: boolean;
-  isDisabled: boolean;
-};
-const NavigationItem: FC<Props> = ({
-  icon,
-  href,
-  title,
-  isActive,
-  isDisabled,
-}) => {
+  icon: string
+  href: string
+  title: string
+  isActive: boolean
+  isDisabled: boolean
+}
+const NavigationItem: FC<Props> = ({ icon, href, title, isActive, isDisabled }) => {
   return (
     <StyledNavigationItem isActive={isActive} isDisabled={isDisabled}>
       <Link href={href} passHref>
@@ -27,7 +21,7 @@ const NavigationItem: FC<Props> = ({
         </Box>
       </Link>
     </StyledNavigationItem>
-  );
-};
+  )
+}
 
-export default NavigationItem;
+export default NavigationItem
