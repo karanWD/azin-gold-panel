@@ -3,10 +3,9 @@ import { Box, TextField, Typography } from "@mui/material";
 import { StyledCreateSort } from "./styles";
 
 type Props = {
-    amountInput: string;
-    setAmountInput: () => void;
+    onChangeHandler: (value:string) => void;
 }
-const InputSortFeature: FC<Props> = ({amountInput, setAmountInput}) => {
+const InputSortFeature: FC<Props> = ({onChangeHandler}) => {
     const [valueInput , setValueInput] = useState<string>("1")
     return (
         <StyledCreateSort >
@@ -17,8 +16,8 @@ const InputSortFeature: FC<Props> = ({amountInput, setAmountInput}) => {
                 type="search"
                 variant="outlined"
                 className="create-sort-Input"
-                value={amountInput}
-                onChange={(e) => setAmountInput(e.target.value)}
+                required
+                onChange={(e) => onChangeHandler(e.target.value)}
             />
         </StyledCreateSort>
     )

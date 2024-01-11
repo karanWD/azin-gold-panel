@@ -3,11 +3,9 @@ import { Box, TextField, Typography } from "@mui/material";
 import { StyledCreateDescription } from "./styles";
 
 type Props = {
-    amountInput: string;
-    setAmountInput: () => void;
+    onChangeHandler: (value:string) => void;
 }
-const InputDescriptionFeature: FC<Props> = ({amountInput, setAmountInput}) => {
-    const [valueInput , setValueInput] = useState("")
+const InputDescriptionFeature: FC<Props> = ({onChangeHandler}) => {
     
     return (
         <StyledCreateDescription>
@@ -19,8 +17,7 @@ const InputDescriptionFeature: FC<Props> = ({amountInput, setAmountInput}) => {
                 variant="outlined"
                 className="create-header-Input"
                 placeholder=" توضیح ویژگی را وارد کنید ."
-                value={amountInput}
-                onChange={(e) => setAmountInput(e.target.value)}
+                onChange={(e) => onChangeHandler(e.target.value)}
             />
         </StyledCreateDescription>
     )

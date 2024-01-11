@@ -3,11 +3,9 @@ import { Box, TextField, Typography } from "@mui/material";
 import { StyledCreateValue } from "./styles";
 
 type Props = {
-    amountInput: string;
-    setAmountInput: () => void;
+    onChangeHandler: (value:string) => void;
 }
-const InputValueFeature: FC<Props> = ({amountInput, setAmountInput}) => {
-    const [valueInput , setValueInput] = useState("")
+const InputValueFeature: FC<Props> = ({onChangeHandler}) => {
     
     return (
         <StyledCreateValue>
@@ -19,8 +17,8 @@ const InputValueFeature: FC<Props> = ({amountInput, setAmountInput}) => {
                 variant="outlined"
                 className="create-header-Input"
                 placeholder=" مقدار ویژگی را وارد کنید ."
-                value={amountInput}
-                onChange={(e) => setAmountInput(e.target.value)}
+                required
+                onChange={(e) => onChangeHandler(e.target.value)}
             />
         </StyledCreateValue>
     )
