@@ -1,11 +1,11 @@
 import { StyledProductsPage } from "./styles";
 import { NextPage } from "next";
 import useFetch from "../../hooks/useFetch";
-import { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { ApiRoutes } from "../../enums/ApiRoutes";
 import PageHeader from "../../components/reusable/pageHeader";
 import { Box, Typography } from "@mui/material";
-import MoreDetail from "../../components/orders/moreDetail";
+import MoreDetail from "../../components/reusable/moreDetail";
 import ChangeStatusProduct from "../../components/products/changeStatusProducts";
 import PageBody from "../../components/UI/body";
 import HandleDate from "../../components/reusable/handelDate";
@@ -28,13 +28,8 @@ const ProductsPage: NextPage = () => {
   const [page, setPage] = useState<number>(1);
 
   const fetchProductsList = (page: number) => {
-    request({
-      url: ApiRoutes.ADMIN_PRODUCTS + `?page=${page}`,
-      // for filters
-      //status=CANCELED&fromDate=2023-12-25T00:00:00Z&toDate=2023-12-28T00:00:00Z&name=م&tracking=87
-    });
+    request({ url: ApiRoutes.ADMIN_PRODUCTS + `?page=${page}` });
   };
-
   useEffect(() => {
     fetchProductsList(page);
   }, [page]);
@@ -50,18 +45,15 @@ const ProductsPage: NextPage = () => {
       features: <Typography variant="body3">{item.numbersOfFeatureGroups}</Typography>,
       status: (
         <ChangeStatusProduct
-          updateHandler={() => fetchProductsList(page)}
           status={item.isActive}
           productId={item._id}
         />
       ),
       more: (
-        <MoreDetail
-          userId={item._id}
-          orderId={item._id}
-          trackingId={item.tracking}
-          updateHandler={() => fetchProductsList(page)}
-        />
+        <MoreDetail>
+          <Link href={`/products/${item._id}/show`}>جزئیات محصول</Link>
+          <Link href={`/orders/${item._id}/edit`}>ویرایش</Link>
+        </MoreDetail>
       ),
     }));
   }, []);
@@ -84,6 +76,7 @@ const ProductsPage: NextPage = () => {
         loading={loading}
         tableHeading={tableHeading}
       />
+
     </StyledProductsPage>
   );
 };
