@@ -1,21 +1,15 @@
-import React, { FC } from "react";
-import { StyledSwitch } from "@/components/UI/switch/styles";
+import React, { FC } from 'react'
+import { StyledSwitch } from '@/components/UI/switch/styles'
 
 interface SwitchPropTypes {
-  checked: boolean;
-  onChange: (e: any) => void;
-  disabled?: boolean;
-  name?: string;
-  size?: "small" | "medium";
+  checked: boolean
+  onChange: (e: any) => void
+  disabled?: boolean
+  name?: string
+  size?: 'small' | 'medium'
 }
 
-const Switch: FC<SwitchPropTypes> = ({
-                                       name,
-                                       checked,
-                                       onChange,
-                                       disabled,
-                                       size = "small",
-                                     }) => {
+const Switch: FC<SwitchPropTypes> = ({ name, checked, onChange, disabled, size = 'small' }) => {
   return (
     <StyledSwitch
       name={name}
@@ -25,6 +19,6 @@ const Switch: FC<SwitchPropTypes> = ({
       focusVisibleClassName=".Mui-focusVisible"
       size={size}
     />
-  );
-};
-export default Switch;
+  )
+}
+export default Switch
