@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from 'react'
-import { StyledButton } from '@/components/UI/Button/styles'
-import { Typography } from '@mui/material'
+import { StyledButton } from '@/components/UI/button/styles'
+import { CircularProgress, Typography } from '@mui/material'
 
 interface ButtonPropsType {
   children: string | ReactNode | string[]
@@ -13,6 +13,7 @@ interface ButtonPropsType {
   disabled?: boolean
   loading?: boolean
   id?: string
+  width?: string
 }
 
 const Button: FC<ButtonPropsType> = ({
@@ -24,6 +25,7 @@ const Button: FC<ButtonPropsType> = ({
   loading,
   onClick,
   id,
+  width,
 }) => {
   return (
     <StyledButton
@@ -34,8 +36,9 @@ const Button: FC<ButtonPropsType> = ({
       size={size}
       format={format}
       type={type}
+      width={width}
       id={id}>
-      <Typography variant="button1">{children}</Typography>
+      {loading ? <CircularProgress /> : <Typography variant="button1">{children}</Typography>}
     </StyledButton>
   )
 }

@@ -2,16 +2,31 @@ import React, { FC, useEffect } from 'react'
 import useFetch from '../../../../hooks/useFetch'
 import { ApiRoutes } from '../../../../enums/ApiRoutes'
 import { StyledProductFeature } from '@/components/products/create/productFeature/styles'
-import { Box, FormControl, InputLabel, MenuItem, Select, Typography } from '@mui/material'
+import { Box, MenuItem, Typography } from '@mui/material'
 import { DisplayModes } from '../../../../data/DisplayModes'
+import SelectBox from '@/components/UI/select'
+import { DISPLAY_MODES } from '../../../../enums/DisplayModes'
+
+type FeatureGroupType = {
+  createdAt: string
+  displayMode: DISPLAY_MODES
+  features: { title: string; sequence: number }[]
+  header: string
+  index: number
+  updatedAt: string
+  _id: string
+}
 
 type Props = {
   selectHandler: (value: string) => void
-  features: string[]
+  selectedFeatures: FeatureGroupType[]
 }
-const ProductFeature: FC<Props> = ({ selectHandler }) => {
+const ProductFeature: FC<Props> = ({ selectHandler, selectedFeatures }) => {
   const { response, request } = useFetch()
-  const changeHandler = (value) => selectHandler(value)
+  const changeHandler = (value) => {
+    const target = response?.featureGroups.find((item) => item._id === value)
+    selectHandler(target)
+  }
 
   useEffect(() => {
     request({
@@ -22,55 +37,29 @@ const ProductFeature: FC<Props> = ({ selectHandler }) => {
   return (
     response?.featureGroups && (
       <StyledProductFeature>
-        <FormControl className="feature-select" size="small">
-          <InputLabel id="demo-select-small-label">
-            <Typography variant="body3">ویژگی مورد نظر خود را انتخاب کنید.</Typography>
-          </InputLabel>
-          <Select
-            value=""
-            label={'ویژگی مورد نظر خود را انتخاب کنید.'}
-            className="select-status-container"
-            size={'small'}
-            MenuProps={{
-              sx: {
-                '& .MuiOutlinedInput-notchedOutline': {
-                  display: 'none',
-                },
-                '& .MuiPaper-root': {
-                  maxHeight: '320px',
-                },
-                '& .MuiButtonBase-root': {
-                  width: '100%',
-                },
-                '& .options-container': {
-                  width: '100%',
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                },
-                '& .Mui-selected': {
-                  backgroundColor: 'primary.main',
-                  color: 'text.white',
-                },
-              },
-            }}
-            onChange={(e) => changeHandler(e.target.value)}>
-            {response.featureGroups.map((item, index) => {
-              return (
-                <MenuItem key={'FEATURE_GROUP_' + index} value={item._id}>
-                  <Box className="options-container">
-                    <Typography className="product-feature-options" variant={'button2'}>
-                      {item.header}
-                    </Typography>
-                    <Typography className="product-feature-options" variant={'body3'}>
-                      {DisplayModes[item.displayMode].text}
-                    </Typography>
-                  </Box>
-                </MenuItem>
-              )
-            })}
-          </Select>
-        </FormControl>
-        <Box></Box>
+        <SelectBox
+          value=""
+          label={'ویژگی‌ها'}
+          changeHandler={changeHandler}
+          placeHolder={'ویژگی مورد نظر خود را انتخاب کنید.'}>
+          {response.featureGroups.map((item, index) => {
+            const isDisabled = !!selectedFeatures.find(
+              (selectedItem) => selectedItem._id === item._id
+            )
+            return (
+              <MenuItem key={'FEATURE_GROUP_' + index} value={item._id} disabled={isDisabled}>
+                <Box className={`options-container ${isDisabled ? 'option-disabled' : ''}`}>
+                  <Typography className="product-feature-options" variant={'button2'}>
+                    {item.header}
+                  </Typography>
+                  <Typography className="product-feature-options" variant={'body3'}>
+                    {DisplayModes[item.displayMode].text}
+                  </Typography>
+                </Box>
+              </MenuItem>
+            )
+          })}
+        </SelectBox>
       </StyledProductFeature>
     )
   )

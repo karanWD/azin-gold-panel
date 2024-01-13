@@ -9,7 +9,6 @@ export const StyledCreateProduct = styled(Box)(({ theme }) => ({
     color: theme.palette.txt.white,
   },
   '.submit-button-container': {
-    width: 'fit-content',
     marginLeft: '0',
     marginRight: 'auto',
   },
