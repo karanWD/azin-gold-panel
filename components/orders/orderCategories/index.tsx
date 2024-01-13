@@ -1,27 +1,27 @@
-import React, { FC, useState } from "react";
-import { StyledOrderCategories } from "./styles";
-import OrderCategoryName from "./orderCategoryName";
-import { Box, Button, Modal, Typography } from "@mui/material";
-import OrderProducts from "../orderProducts";
-import ChangeStatusModal from "../changeStatusModal";
-import { OrderProductsStatus, OrdersSubProduct } from "../../../types";
-import { ORDER_STATUSES } from "../../../enums/OrderStatuses";
+import React, { FC, useState } from 'react'
+import { StyledOrderCategories } from './styles'
+import OrderCategoryName from './orderCategoryName'
+import { Box, Button, Modal, Typography } from '@mui/material'
+import OrderProducts from '../orderProducts'
+import ChangeStatusModal from '../changeStatusModal'
+import { OrderProductsStatus, OrdersSubProduct } from '../../../types'
+import { ORDER_STATUSES } from '../../../enums/OrderStatuses'
 
 type Props = {
-  data: OrderProductsStatus;
-  orderId: string;
-  updateHandler: () => void;
-};
+  data: OrderProductsStatus
+  orderId: string
+  updateHandler: () => void
+}
 type SelectedItems = {
-  orderId: string;
-  groupId: string;
-  currentStatus: string;
-  items: Array<OrdersSubProduct>;
-} | null;
+  orderId: string
+  groupId: string
+  currentStatus: string
+  items: Array<OrdersSubProduct>
+} | null
 
 const OrderCategories: FC<Props> = ({ data, orderId, updateHandler }) => {
-  const [selectedItems, setSelectedItems] = useState<SelectedItems>(null);
-  const [openModal, setOpenModal] = useState<boolean>(false);
+  const [selectedItems, setSelectedItems] = useState<SelectedItems>(null)
+  const [openModal, setOpenModal] = useState<boolean>(false)
 
   const changeHandler = (
     isChecked: boolean,
@@ -34,23 +34,21 @@ const OrderCategories: FC<Props> = ({ data, orderId, updateHandler }) => {
         groupId: id,
         orderId: orderId,
         currentStatus: key,
-      };
+      }
       setSelectedItems((prevState) => ({
         ...temp,
         items: [...(prevState?.items ?? []), selectedData],
-      }));
+      }))
     } else {
-      const temp = selectedItems.items.filter(
-        (item) => item._id !== selectedData._id
-      );
-      setSelectedItems((prevState) => ({ ...prevState, items: temp }));
+      const temp = selectedItems.items.filter((item) => item._id !== selectedData._id)
+      setSelectedItems((prevState) => ({ ...prevState, items: temp }))
     }
-  };
+  }
 
   const closeHandler = () => {
-    setOpenModal(false);
-    setSelectedItems(null);
-  };
+    setOpenModal(false)
+    setSelectedItems(null)
+  }
 
   return (
     <StyledOrderCategories>
@@ -58,11 +56,10 @@ const OrderCategories: FC<Props> = ({ data, orderId, updateHandler }) => {
         return (
           value.length > 0 && (
             <Box
-              key={"ORDER_CATEGORY_ITEM_" + index}
+              key={'ORDER_CATEGORY_ITEM_' + index}
               display="flex"
               flexDirection="column"
-              gap="18px"
-            >
+              gap="18px">
               <OrderCategoryName type={key as ORDER_STATUSES} />
               <OrderProducts
                 data={value}
@@ -73,14 +70,10 @@ const OrderCategories: FC<Props> = ({ data, orderId, updateHandler }) => {
               />
             </Box>
           )
-        );
+        )
       })}
-      <Box mr={"auto"} ml={0}>
-        <Button
-          color="primary"
-          onClick={() => setOpenModal(true)}
-          variant="contained"
-        >
+      <Box mr={'auto'} ml={0}>
+        <Button color="primary" onClick={() => setOpenModal(true)} variant="contained">
           <Typography variant="button2">تغییر وضعیت محصولات</Typography>
         </Button>
       </Box>
@@ -92,7 +85,7 @@ const OrderCategories: FC<Props> = ({ data, orderId, updateHandler }) => {
         />
       </Modal>
     </StyledOrderCategories>
-  );
-};
+  )
+}
 
-export default OrderCategories;
+export default OrderCategories

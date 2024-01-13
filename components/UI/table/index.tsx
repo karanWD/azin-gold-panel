@@ -1,13 +1,13 @@
-import React, { FC, ReactNode } from "react";
-import { StyledContainer, StyledTable } from "./styles";
-import { TableBody, TableCell, TableHead, TableRow } from "@mui/material";
+import React, { FC, ReactNode } from 'react'
+import { StyledContainer, StyledTable } from './styles'
+import { TableBody, TableCell, TableHead, TableRow } from '@mui/material'
 
 type TableProps = {
   data: {
-    [key: string]: string | number | boolean | ReactNode;
-  }[];
-  headings: string[];
-};
+    [key: string]: string | number | boolean | ReactNode
+  }[]
+  headings: string[]
+}
 
 const Table: FC<TableProps> = ({ data, headings }) => {
   return (
@@ -26,14 +26,14 @@ const Table: FC<TableProps> = ({ data, headings }) => {
           {data.map((item, idx) => (
             <TableRow key={idx}>
               {Object.values(item).map((content, index) => (
-                <TableCell key={"TABLE_ROW_" + index}>{content}</TableCell>
+                <TableCell key={'TABLE_ROW_' + index}>{content}</TableCell>
               ))}
             </TableRow>
           ))}
         </TableBody>
       </StyledTable>
     </StyledContainer>
-  );
-};
+  )
+}
 
-export default Table;
+export default Table

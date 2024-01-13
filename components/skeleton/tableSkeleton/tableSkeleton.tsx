@@ -1,8 +1,8 @@
-import React from "react";
-import { Skeleton, TableBody, TableCell, TableRow } from "@mui/material";
-import { StyledContainer, StyledTable } from "./styles";
+import React from 'react'
+import { Skeleton, TableBody, TableCell, TableRow } from '@mui/material'
+import { StyledContainer, StyledTable } from './styles'
 
-const ITEMS = [null, null, null, null, null, null, null, null, null];
+const ITEMS = [null, null, null, null, null, null, null, null, null]
 
 const TableSkeleton = () => {
   return (
@@ -12,9 +12,9 @@ const TableSkeleton = () => {
           {ITEMS.map((item, idx) => (
             <TableRow key={idx}>
               {ITEMS.map((content, index) => (
-                <TableCell key={"TABLE_ROW_" + index}>
+                <TableCell key={'TABLE_ROW_' + index}>
                   <Skeleton
-                    sx={{ maxWidth: "90%" }}
+                    sx={{ maxWidth: '90%' }}
                     animation="wave"
                     variant="text"
                     width="124px"
@@ -27,7 +27,7 @@ const TableSkeleton = () => {
         </TableBody>
       </StyledTable>
     </StyledContainer>
-  );
-};
+  )
+}
 
-export default TableSkeleton;
+export default TableSkeleton

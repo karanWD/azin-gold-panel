@@ -1,18 +1,18 @@
-import React from "react";
-import Image from "next/image";
-import { Box } from "@mui/material";
-import { NavigationLinks } from "./data/links";
-import NavigationItem from "./navigationItem";
-import { StyledNavigation } from "./styles";
-import { useRouter } from "next/router";
+import React from 'react'
+import Image from 'next/image'
+import { Box } from '@mui/material'
+import { NavigationLinks } from './data/links'
+import NavigationItem from './navigationItem'
+import { StyledNavigation } from './styles'
+import { useRouter } from 'next/router'
 
 const Navigation = () => {
-  const router = useRouter();
+  const router = useRouter()
   return (
     <StyledNavigation>
       <Image
-        src={"/images/logo.jpg"}
-        alt={"آذین گلد | Azin Gold"}
+        src={'/images/logo.jpg'}
+        alt={'آذین گلد | Azin Gold'}
         layout="fixed"
         height={40}
         width={111}
@@ -20,7 +20,7 @@ const Navigation = () => {
       <Box className="links-container">
         {NavigationLinks.map((item, index) => (
           <NavigationItem
-            key={"NAVIGATION_ITEM_" + index}
+            key={'NAVIGATION_ITEM_' + index}
             icon={item.icon}
             href={item.href}
             title={item.title}
@@ -30,7 +30,7 @@ const Navigation = () => {
         ))}
       </Box>
     </StyledNavigation>
-  );
-};
+  )
+}
 
-export default Navigation;
+export default Navigation

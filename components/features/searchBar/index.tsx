@@ -1,5 +1,5 @@
-import React from "react";
-import { StyledContainer, StyledTextField } from "./styles";
+import React from 'react'
+import { StyledContainer, StyledTextField } from './styles'
 
 const SearchBar = () => {
   return (
@@ -13,7 +13,7 @@ const SearchBar = () => {
         size="small"
       />
     </StyledContainer>
-  );
-};
+  )
+}
 
-export default SearchBar;
+export default SearchBar

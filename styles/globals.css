@@ -1,13 +1,13 @@
 @font-face {
   font-family: IRANSansX;
-  src: url("/fonts/IRANSansXFaNum-Medium.woff2") format("woff2");
+  src: url('/fonts/IRANSansXFaNum-Medium.woff2') format('woff2');
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: IRANSansX_Bold;
-  src: url("/fonts/IRANSansXFaNum-Bold.woff2") format("woff2");
+  src: url('/fonts/IRANSansXFaNum-Bold.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
@@ -40,8 +40,8 @@ a {
   text-decoration: none;
 }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }

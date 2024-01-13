@@ -1,23 +1,11 @@
-import { createTheme, ThemeOptions } from "@mui/material";
-import { palette } from "./palette";
-import { CustomTypographyOptions, typography } from "./typography";
-
-interface CustomThemeOptions extends ThemeOptions {
-  palette?: any;
-  typography?: CustomTypographyOptions;
-}
-
-const defaultTheme = createTheme();
+import { createTheme } from '@mui/material'
+import { palette } from './palette'
+import { typography } from './typography'
+import { PaletteOptions } from '@mui/material/styles/createPalette'
 
 const theme = createTheme({
-  palette: {
-    ...defaultTheme.palette,
-    ...palette,
-  } as any,
-  typography: {
-    ...defaultTheme.typography,
-    ...typography,
-  } as any,
-} as CustomThemeOptions);
+  palette: palette as PaletteOptions,
+  typography: typography,
+})
 
-export default theme;
+export default theme

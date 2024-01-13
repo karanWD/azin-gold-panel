@@ -1,7 +1,7 @@
-import { Box } from "@mui/material";
-import { ReactNode } from "react";
-import Navigation from "./navigation";
-import { StyledLayout } from "./styles";
+import { Box } from '@mui/material'
+import { ReactNode } from 'react'
+import Navigation from './navigation'
+import { StyledLayout } from './styles'
 
 const LayoutIndex = ({ children }: { children: ReactNode }) => {
   return (
@@ -11,7 +11,7 @@ const LayoutIndex = ({ children }: { children: ReactNode }) => {
       </Box>
       <Box className="content-container">{children}</Box>
     </StyledLayout>
-  );
-};
+  )
+}
 
-export default LayoutIndex;
+export default LayoutIndex
