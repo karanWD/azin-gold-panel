@@ -1,8 +1,9 @@
 import React,{FC, useState} from "react";
-import { InputAdornment, TextField, Typography } from "@mui/material";
+import { Box, InputAdornment, TextField, Typography } from "@mui/material";
 import { StyledContainer } from "./styles";
 import SearchIcon from '@mui/icons-material/Search';
 import { NextPage } from "next";
+import Image from "next/image";
 
 const SearchBar: NextPage = () => {
 
@@ -23,7 +24,9 @@ const SearchBar: NextPage = () => {
                 InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <SearchIcon className="icon-search" fontSize="large" />
+                        <Box  className="icon-search">
+                          <Image src={"/icons/search.svg"} alt={"جزئیات"} width={24} height={24}/>
+                        </Box>
                        {/* { valueInput ? "" : <Typography variant="body3">جستجو کنید .</Typography>} */}
                       </InputAdornment>
                     ),

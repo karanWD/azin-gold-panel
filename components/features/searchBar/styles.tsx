@@ -6,9 +6,12 @@ export const StyledContainer = styled(Box)<BoxProps>(({theme})=>({
     borderRadius:'16px',
     ".search-Input":{
         backgroundColor:theme.palette.neutral["white"],
-        borderRadius:'8px',
+        borderRadius:'1px',
         width: "376px",
         direction: "rtl",
+        '::placeholder': {
+          color: 'black',
+        },
     },
     ".header-search":{
       display: "block",
@@ -16,7 +19,7 @@ export const StyledContainer = styled(Box)<BoxProps>(({theme})=>({
       marginBottom: "2px"
     },
     ".icon-search":{
-        font:"40px",
-        color: theme.palette.neutral["main"],
+      width: "24px",
+      height: "24px"
     },
   }))
