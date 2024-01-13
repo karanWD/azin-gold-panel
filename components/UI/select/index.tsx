@@ -8,16 +8,17 @@ type Props = {
   changeHandler: (value: string) => void
   value: string
   children: ReactNode
+  width?: string
 }
-const SelectBox: FC<Props> = ({ label, placeHolder, value, changeHandler, children }) => {
+const SelectBox: FC<Props> = ({ width, label, placeHolder, value, changeHandler, children }) => {
   return (
-    <StyledSelect>
+    <StyledSelect width={width}>
       {label && (
         <Typography component="div" className="select-label" variant="body3">
           {label}
         </Typography>
       )}
-      <FormControl className="feature-select" size="small">
+      <FormControl className="options-container" size="small" fullWidth>
         {placeHolder && (
           <InputLabel>
             <Typography className="select-label" variant="body3">

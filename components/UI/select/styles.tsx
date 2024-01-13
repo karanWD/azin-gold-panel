@@ -1,7 +1,10 @@
-import { Box, styled } from '@mui/material'
+import { Box, BoxProps, styled } from '@mui/material'
 
-export const StyledSelect = styled(Box)(({ theme }) => ({
-  direction: 'rtl',
+interface selectType extends BoxProps {
+  width: string
+}
+export const StyledSelect = styled(Box)<selectType>(({ theme, width }) => ({
+  width: width,
   '.select-label': {
     color: theme.palette.txt.secondary,
   },
@@ -16,5 +19,8 @@ export const StyledSelect = styled(Box)(({ theme }) => ({
     right: 0,
     left: 'unset',
     transform: 'translate(-14px, 9px) scale(1)',
+  },
+  '.MuiOutlinedInput-notchedOutline': {
+    borderRadius: '8px',
   },
 }))

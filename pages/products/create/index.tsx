@@ -11,7 +11,7 @@ import ProductFeatureList from '@/components/products/create/productFeaturesList
 import { DISPLAY_MODES } from '../../../enums/DisplayModes'
 import useFetch from '../../../hooks/useFetch'
 import { ApiRoutes } from '../../../enums/ApiRoutes'
-import { toast } from 'react-toastify'
+import { useRouter } from 'next/router'
 
 type FeatureGroupType = {
   createdAt: string
@@ -30,7 +30,7 @@ type informationType = {
   staticNotice: string
   dynamicNotice: string
   featureGroups: FeatureGroupType[]
-  // producer: string /*تولیدکنندگان فعلا نداریم */
+  producer: string /*تولیدکنندگان فعلا نداریم */
 }
 const DEFAULT_VALUES = {
   title: '',
@@ -38,12 +38,14 @@ const DEFAULT_VALUES = {
   minimumSoldMultiple: '',
   staticNotice: '',
   dynamicNotice: '',
+  producer: '',
   featureGroups: [],
 }
 
 const CreateProductPage = () => {
-  const [data, setData] = useState<informationType>(DEFAULT_VALUES)
+  const router = useRouter()
   const { request, loading } = useFetch()
+  const [data, setData] = useState<informationType>(DEFAULT_VALUES)
   const changeHandler = (value: string | number, key: string) => {
     setData((prevState) => ({
       ...prevState,
@@ -64,14 +66,20 @@ const CreateProductPage = () => {
   }
 
   const submitHandler = () => {
+    const values = {
+      ...data,
+      wage: +data.wage,
+      minimumSoldMultiple: +data.minimumSoldMultiple,
+      featureGroups: data.featureGroups.map((item) => item._id),
+    }
+    delete values.producer
+
     request({
+      method: 'POST',
       url: ApiRoutes.ADMIN_PRODUCTS,
-      data: {
-        ...data,
-        featureGroups: data.featureGroups.map((item) => item._id),
-      },
-    }).then(() => {
-      toast.success('محصول با موفقیت افزوده شد.')
+      data: values,
+    }).then((res) => {
+      router.push(StaticRoutes.CREATE_PRODUCT + '/' + res.id)
     })
   }
 

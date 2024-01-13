@@ -38,6 +38,7 @@ const ProductFeature: FC<Props> = ({ selectHandler, selectedFeatures }) => {
     response?.featureGroups && (
       <StyledProductFeature>
         <SelectBox
+          width={'340px'}
           value=""
           label={'ویژگی‌ها'}
           changeHandler={changeHandler}

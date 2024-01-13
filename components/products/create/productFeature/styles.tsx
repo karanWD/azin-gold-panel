@@ -7,7 +7,4 @@ export const StyledProductFeature = styled(Box)(() => ({
   '.option-disabled': {
     pointerEvents: 'none',
   },
-  '.feature-select': {
-    minWidth: '340px',
-  },
 }))
