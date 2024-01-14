@@ -3,7 +3,7 @@ import { StyledAddFeature } from "./styles";
 import { Box, Button, Typography } from "@mui/material";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import { useEffect, useState } from "react";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import InputHeaderFeature from "./createHeaderFeature";
 import InputSortFeature from "./createSortFeature";
 import InputValueFeature from "./createValueFeature";
@@ -14,6 +14,7 @@ import UseFetch from "../../../hooks/useFetch";
 import { ApiRoutes } from "../../../enums/ApiRoutes";
 import { DISPLAY_MODES } from "../../../enums/DisplayModes";
 import DeleteIcon from '@mui/icons-material/Delete';
+import Image from "next/image";
 
 const CreateFeatureComponent: NextPage = () => {
   const [numberValues, setNumberValues] = useState<number>(1);
@@ -129,7 +130,7 @@ const CreateFeatureComponent: NextPage = () => {
                 ) : (
                   <></>
                 )}
-                <DeleteIcon onClick={() => deleteHandler(i.id)} className="delete-row" fontSize="large"/>
+                <Image src={"/icons/trash.svg"} alt={"جزئیات"} width={24} height={24} onClick={() => deleteHandler(i.id)} className="delete-row"/>
               </Box>
             </>
           ))}
@@ -148,7 +149,7 @@ const CreateFeatureComponent: NextPage = () => {
               ])
             }
           >
-            <AddCircleIcon className="add-value-icon" />
+            <AddCircleOutlineIcon className="add-value-icon" />
             <Typography className="add-value" variant="button1">
               افزودن مقدار
             </Typography>

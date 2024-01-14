@@ -43,7 +43,7 @@ const MoreDetail : FC<Props> = ({ featureId }) => {
           },
         }}>
           <Box>
-            <Link href={`/features/${featureId}`}>
+            <Link href={`/features`}>
               <Typography className="pointer-item" variant="button2">
                 ویرایش
               </Typography>
