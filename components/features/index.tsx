@@ -49,7 +49,7 @@ import { HandleDate } from "../../modules";
           features:<FeaturesItem modes={item.features}/>,
           createdAt:<Typography variant="body3"> {HandleDate(item.createdAt)}</Typography>,
           updatedAt: <Typography variant="body3">{HandleDate(item.updatedAt)}</Typography>,
-          more: <MoreDetail userId={item._id} orderId={item._id} trackingId={item.tracking} updateHandler={()=>(page)}/>
+          more: <MoreDetail featureId={item._id}/>
         }))
       }, [])
 

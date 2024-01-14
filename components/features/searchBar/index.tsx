@@ -36,4 +36,4 @@ const SearchBar: NextPage = () => {
     )
 }
 
-export default SearchBar;
+export default SearchBar

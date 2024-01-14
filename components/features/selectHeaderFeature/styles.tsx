@@ -1,7 +1,7 @@
 import {Box, BoxProps, styled} from "@mui/material";
 
 export const StyledSelectFeature = styled(Box)<BoxProps>(({theme})=>({
-    backgroundColor: theme.palette.neutral["white"],
+    backgroundColor: theme.palette.primary["white"],
     width: '360px',
     borderRadius: '16px',
     padding: '20px',

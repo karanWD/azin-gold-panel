@@ -1,5 +1,5 @@
-import {Box, BoxProps, styled} from "@mui/material";
+import { Box, styled } from '@mui/material'
 
-export const StyledHeaderTypography = styled(Box)<BoxProps>(({theme}) => ({
-    color:theme.palette.neutral["900"]
-  }))
+export const StyledHeaderTypography = styled(Box)<any>(({ theme }) => ({
+  color: theme.palette.txt.brand,
+}))

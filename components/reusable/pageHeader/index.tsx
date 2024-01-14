@@ -13,7 +13,7 @@ const PageHeader: FC<Props> = ({title,children}) => {
   //Because of Next serve side error of not matching client
   const [username, setUsername] = useState()
   useEffect(() => {
-    const userData = getCookie("aebc8a60f2fde26146e08d8cc0bc5371")
+    const userData = getCookie('aebc8a60f2fde26146e08d8cc0bc5371')
     const user = userData && JSON.parse(userData)
     setUsername(user.name)
   }, [])
@@ -31,9 +31,9 @@ const PageHeader: FC<Props> = ({title,children}) => {
           <Typography component="p" variant={"caption"} className="welcome-message">خوش آمدید</Typography>
           <Typography component="p" variant={"subtitle3"} className="username-container">{username}</Typography>
         </Box>
-      </Box>
-    </StyledPageHeader>
-  );
-};
+       </Box> 
+      </StyledPageHeader>
+    )
+}
 
-export default PageHeader;
+export default PageHeader

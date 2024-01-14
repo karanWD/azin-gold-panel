@@ -10,7 +10,7 @@ const InputHeaderFeature: FC<Props> = ({amountInput,setAmountInput}) => {
     
     return (
         <StyledCreateHeader>
-            <Typography className="header-search" variant="body3">عنوان</Typography>
+            <Typography className="title-input" variant="body3">عنوان</Typography>
             <TextField
                 dir="ltr"
                 size="small"

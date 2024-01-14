@@ -1,8 +1,7 @@
-import {Box, BoxProps, styled} from "@mui/material";
-import React from "react";
+import { Box, BoxProps, styled } from '@mui/material'
 
-export const StyledChangeStatusModal = styled(Box)<BoxProps>(({theme}) => ({
-  backgroundColor: theme.palette.neutral["white"],
+export const StyledChangeStatusModal = styled(Box)<BoxProps>(({ theme }) => ({
+  backgroundColor: theme.palette.primary['white'],
   width: '718px',
   borderRadius: '16px',
   padding: '20px',
@@ -13,41 +12,41 @@ export const StyledChangeStatusModal = styled(Box)<BoxProps>(({theme}) => ({
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  ".change-status-modal-header": {
+  '.change-status-modal-header': {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
-  ".change-status-modal-footer": {
+  '.change-status-modal-footer': {
     display: 'flex',
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
   },
-  ".change-status-products-container": {
+  '.change-status-products-container': {
     display: 'flex',
     flexDirection: 'column',
-    rowGap: '12px'
+    rowGap: '12px',
   },
-  ".change-status-products": {
+  '.change-status-products': {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: "space-between",
+    justifyContent: 'space-between',
   },
-  ".product-image-container": {
-    border: `1px solid ${theme.palette.neutral[100]}`,
+  '.product-image-container': {
+    border: `1px solid ${theme.palette.txt.disabled}`,
     borderRadius: '8px',
-    padding: '2px'
+    padding: '2px',
   },
-  ".product-quantity": {
+  '.product-quantity': {
     width: '78px',
     input: {
-      textAlign: 'center'
+      textAlign: 'center',
     },
   },
-  ".weight-container": {
-    color: theme.palette.neutral[300]
+  '.weight-container': {
+    color: theme.palette.txt['tertiary'],
   },
-  ".select-status-container":{
-    width:'320px',
-    direction:'rtl'
-  }
+  '.select-status-container': {
+    width: '320px',
+    direction: 'rtl',
+  },
 }))

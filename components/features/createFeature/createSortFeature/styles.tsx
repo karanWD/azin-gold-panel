@@ -3,31 +3,31 @@ import {Box, BoxProps, styled} from "@mui/material";
 export const StyledCreateSort = styled(Box)<BoxProps>(({theme})=>({
     marginLeft: "20px",
   ".container": {
-    backgroundColor:theme.palette.neutral["white"],
+    backgroundColor:theme.palette.primary["white"],
     padding:'24px',
     borderRadius:'16px'
   },
   ".create-header-Input":{
-    backgroundColor:theme.palette.neutral["white"],
+    backgroundColor:theme.palette.primary["white"],
     borderRadius:'8px',
     width: "320px",
     direction: "rtl",
   },
   ".create-sort-Input":{
-    backgroundColor:theme.palette.neutral["white"],
+    backgroundColor:theme.palette.primary["white"],
     borderRadius:'8px',
     width: "80px",
     direction: "rtl",
   },
   ".create-value-Input":{
-    backgroundColor:theme.palette.neutral["white"],
+    backgroundColor:theme.palette.primary["white"],
     borderRadius:'8px',
     width: "320px",
     direction: "rtl",
   },
   ".header-search":{
     display: "block",
-    color: theme.palette.neutral["main"],
+    color: theme.palette.txt["secondary"],
     marginBottom: "2px"
   },
   ".add-value":{
@@ -42,7 +42,7 @@ export const StyledCreateSort = styled(Box)<BoxProps>(({theme})=>({
     marginTop:"20px"
   },
   ".header-search-box":{
-    borderBottom: `1px solid ${theme.palette.neutral[100]}`,
+    borderBottom: `1px solid ${theme.palette.primary[100]}`,
     paddingBottom: "20px"
   },
   ".box-values-list":{

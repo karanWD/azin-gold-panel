@@ -7,5 +7,5 @@ import ProductsComponents from "../../components/products";
        <ProductsComponents />
      );
 }
- 
-export default ProductsPage;
+
+export default ProductsPage

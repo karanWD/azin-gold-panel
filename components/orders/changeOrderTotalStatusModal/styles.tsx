@@ -1,7 +1,7 @@
-import {Box, BoxProps, styled} from "@mui/material";
+import { Box, BoxProps, styled } from '@mui/material'
 
-export const StyledChangeOrderTotalStatus = styled(Box)<BoxProps>(({theme})=>({
-  backgroundColor: theme.palette.neutral["white"],
+export const StyledChangeOrderTotalStatus = styled(Box)<BoxProps>(({ theme }) => ({
+  backgroundColor: theme.palette.primary['white'],
   width: '360px',
   borderRadius: '16px',
   padding: '20px',
@@ -12,18 +12,18 @@ export const StyledChangeOrderTotalStatus = styled(Box)<BoxProps>(({theme})=>({
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  ".change-status-modal-header": {
+  '.change-status-modal-header': {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
-  ".change-status-modal-footer": {
+  '.change-status-modal-footer': {
     display: 'flex',
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
   },
-  ".change-status-modal-body":{
+  '.change-status-modal-body': {
     display: 'flex',
     flexDirection: 'column',
     rowGap: '4px',
-  }
+  },
 }))

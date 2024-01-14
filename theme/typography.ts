@@ -1,69 +1,54 @@
-import {
-  TypographyOptions,
-  TypographyStyleOptions,
-} from '@mui/material/styles/createTypography'
-/* eslint-disable  no-unused-vars */
-declare module '@mui/material/styles' {
-  interface TypographyVariants {
-    title1:TypographyStyleOptions
-    title2:TypographyStyleOptions
-    title3:TypographyStyleOptions
-    title4:TypographyStyleOptions
-    subtitle1:TypographyStyleOptions
-    subtitle2:TypographyStyleOptions
-    subtitle3:TypographyStyleOptions
-    button1:TypographyStyleOptions
-    button2:TypographyStyleOptions
-    button3:TypographyStyleOptions
-    body1:TypographyStyleOptions
-    body2:TypographyStyleOptions
-    body3:TypographyStyleOptions
-    caption:TypographyStyleOptions
-  }
+import { TypographyOptions } from '@mui/material/styles/createTypography'
 
-  // allow configuration using `createTheme`
-  interface TypographyVariantsOptions {
-    title1?:TypographyStyleOptions
-    title2?:TypographyStyleOptions
-    title3?:TypographyStyleOptions
-    title4?:TypographyStyleOptions
-    subtitle1?:TypographyStyleOptions
-    subtitle2?:TypographyStyleOptions
-    subtitle3?:TypographyStyleOptions
-    button1?:TypographyStyleOptions
-    button2?:TypographyStyleOptions
-    button3?:TypographyStyleOptions
-    body1?:TypographyStyleOptions
-    body2?:TypographyStyleOptions
-    body3?:TypographyStyleOptions
-    caption?:TypographyStyleOptions
-  }
+interface TypographyType {
+  fontFamily: string
+  fontWeight: string
+  fontSize: string
+  lineHeight: string
+
+  [key: string]: string
 }
 
-// Update the Typography's variant prop options
+export interface CustomTypographyOptions extends TypographyOptions {
+  title1?: TypographyType
+  title2?: TypographyType
+  title3?: TypographyType
+  title4?: TypographyType
+  subtitle1?: TypographyType
+  subtitle2?: TypographyType
+  subtitle3?: TypographyType
+  button1?: TypographyType
+  button2?: TypographyType
+  button3?: TypographyType
+  body1?: TypographyType
+  body2?: TypographyType
+  body3?: TypographyType
+  caption?: TypographyType
+}
+
 declare module '@mui/material/Typography' {
   interface TypographyPropsVariantOverrides {
-    title1:true
-    title2:true
-    title3:true
-    title4:true
-    subtitle1:true
-    subtitle2:true
-    subtitle3:true
-    button1:true
-    button2:true
-    button3:true
-    body1:true
-    body2:true
-    body3:true
-    caption:true
+    title1: true
+    title2: true
+    title3: true
+    title4: true
+    subtitle1: true
+    subtitle2: true
+    subtitle3: true
+    button1: true
+    button2: true
+    button3: true
+    body1: true
+    body2: true
+    body3: true
+    caption: true
   }
 }
 
-export const typography: TypographyOptions = {
+export const typography: CustomTypographyOptions = {
   title1: {
     fontFamily: 'IRANSansX_Bold',
-    fontWeight: "bold",
+    fontWeight: 'bold',
     fontSize: '32px',
     lineHeight: '56px',
   },
@@ -71,79 +56,78 @@ export const typography: TypographyOptions = {
     fontFamily: 'IRANSansX_Bold',
     fontSize: '24px',
     lineHeight: '40px',
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   title3: {
     fontFamily: 'IRANSansX_Bold',
     fontSize: '20px',
     lineHeight: '40px',
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   title4: {
     fontFamily: 'IRANSansX_Bold',
     fontSize: '16px',
     lineHeight: '32px',
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   subtitle1: {
     fontFamily: 'IRANSansX',
     fontSize: '18px',
     lineHeight: '36px',
-    fontWeight: "normal",
+    fontWeight: 'normal',
   },
   subtitle2: {
     fontFamily: 'IRANSansX',
     fontSize: '16px',
     lineHeight: '32px',
-    fontWeight: "normal",
+    fontWeight: 'normal',
   },
   subtitle3: {
     fontFamily: 'IRANSansX',
     fontSize: '14px',
     lineHeight: '28px',
-    fontWeight: "normal",
+    fontWeight: 'normal',
   },
   button1: {
     fontFamily: 'IRANSansX',
     fontSize: '16px',
     lineHeight: '32px',
-    fontWeight: "normal",
+    fontWeight: 'normal',
   },
   button2: {
     fontFamily: 'IRANSansX',
     fontSize: '14px',
     lineHeight: '28px',
-    fontWeight: "normal",
+    fontWeight: 'normal',
   },
   button3: {
     fontFamily: 'IRANSansX',
     fontSize: '12px',
     lineHeight: '24px',
-    fontWeight: "normal",
+    fontWeight: 'normal',
   },
   body1: {
     fontFamily: 'IRANSansX',
     fontSize: '18px',
     lineHeight: '36px',
-    fontWeight: "normal",
+    fontWeight: 'normal',
   },
   body2: {
     fontFamily: 'IRANSansX',
     fontSize: '16px',
     lineHeight: '32px',
-    fontWeight: "normal",
+    fontWeight: 'normal',
   },
   body3: {
     fontFamily: 'IRANSansX',
     fontSize: '14px',
     lineHeight: '28px',
-    fontWeight: "normal",
+    fontWeight: 'normal',
   },
   caption: {
     fontFamily: 'IRANSansX',
     fontSize: '12px',
     lineHeight: '24px',
-    fontWeight: "normal",
+    fontWeight: 'normal',
   },
-
-}
+} as CustomTypographyOptions

@@ -5,8 +5,9 @@ export const StyledAddFeature = styled(Box)<BoxProps>(({theme})=>({
   flexDirection:'column',
   rowGap:'24px',
   ".container": {
-    backgroundColor:theme.palette.neutral["white"],
+    backgroundColor:theme.palette.primary["white"],
     padding:'24px',
+    margin: "20px 0 20px 0",
     borderRadius:'16px'
   },
   ".add-value":{
@@ -21,7 +22,7 @@ export const StyledAddFeature = styled(Box)<BoxProps>(({theme})=>({
     marginTop:"20px"
   },
   ".header-box":{
-    borderBottom: `1px solid ${theme.palette.neutral[100]}`,
+    borderBottom: `1px solid ${theme.palette.primary[100]}`,
     paddingBottom: "20px"
   },
   ".box-values-list":{
@@ -41,7 +42,8 @@ export const StyledAddFeature = styled(Box)<BoxProps>(({theme})=>({
     justifyContent: 'flex-end'
   },
   ".delete-row":{
-   marginTop: "40px"
+    margin: "2px",
+    marginTop: "40px",
   }
 }))
 

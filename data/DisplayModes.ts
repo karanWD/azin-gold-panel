@@ -1,16 +1,16 @@
-import { DISPLAY_MODES } from "../enums/DisplayModes";
+import { DISPLAY_MODES } from '../enums/DisplayModes'
 
 export const DisplayModes = {
   [DISPLAY_MODES.DEFAULT]: {
-    text: "عادی",
+    text: 'عادی',
   },
   [DISPLAY_MODES.COLOR]: {
-    text: "رنگ",
+    text: 'رنگ',
   },
   [DISPLAY_MODES.EXPANDABLE]: {
-    text: "دارای عکس",
+    text: 'دارای عکس',
   },
   [DISPLAY_MODES.PRODUCT]: {
-    text: "شمارنده",
-  }
-};
+    text: 'شمارنده',
+  },
+}

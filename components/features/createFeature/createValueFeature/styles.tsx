@@ -3,18 +3,18 @@ import {Box, BoxProps, styled} from "@mui/material";
 export const StyledCreateValue = styled(Box)<BoxProps>(({theme})=>({
     marginLeft: "20px",
   ".container": {
-    backgroundColor:theme.palette.neutral["white"],
+    backgroundColor:theme.palette["white"],
     padding:'24px',
     borderRadius:'16px'
   },
   ".create-header-Input":{
-    backgroundColor:theme.palette.neutral["white"],
+    backgroundColor:theme.palette["white"],
     borderRadius:'8px',
     width: "320px",
     direction: "rtl",
   },
   ".create-sort-Input":{
-    backgroundColor:theme.palette.neutral["white"],
+    backgroundColor:theme.palette["white"],
     borderRadius:'8px',
     width: "80px",
     direction: "rtl",
@@ -24,7 +24,7 @@ export const StyledCreateValue = styled(Box)<BoxProps>(({theme})=>({
   },
   ".header-search":{
     display: "block",
-    color: theme.palette.neutral["main"],
+    color: theme.palette.txt["secondary"],
     marginBottom: "2px"
   },
   ".add-value":{
@@ -39,7 +39,7 @@ export const StyledCreateValue = styled(Box)<BoxProps>(({theme})=>({
     marginTop:"20px"
   },
   ".header-search-box":{
-    borderBottom: `1px solid ${theme.palette.neutral[100]}`,
+    borderBottom: `1px solid ${theme.palette[100]}`,
     paddingBottom: "20px"
   },
   ".box-values-list":{
