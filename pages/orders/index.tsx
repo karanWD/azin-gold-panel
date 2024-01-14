@@ -1,14 +1,16 @@
 import { NextPage } from 'next'
 import useFetch from '../../hooks/useFetch'
-import { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { ApiRoutes } from '../../enums/ApiRoutes'
 import OrdersStatus from '../../components/orders/ordersStatus'
 import { StyledOrderPage } from './styles'
 import PageHeader from '../../components/reusable/pageHeader'
-import { Typography } from '@mui/material'
-import MoreDetail from '../../components/orders/moreDetail'
+import { Modal, Typography } from '@mui/material'
+import MoreDetail from '../../components/reusable/moreDetail'
 import PageBody from '../../components/UI/body'
 import HandleDate from '../../components/reusable/handelDate'
+import ChangeOrderTotalStatusModal from '@/components/orders/changeOrderTotalStatusModal'
+import Link from 'next/link'
 
 const tableHeading: string[] = [
   'ردیف',
@@ -25,13 +27,9 @@ const tableHeading: string[] = [
 const OrdersPage: NextPage = () => {
   const { response, loading, request } = useFetch()
   const [page, setPage] = useState<number>(1)
-
+  const [openModal, setOpenModal] = useState<boolean>(false)
   const fetchOrderList = (page) => {
-    request({
-      url: ApiRoutes.ADMIN_ORDERS + `?page=${page}`,
-      // for filters
-      //status=CANCELED&fromDate=2023-12-25T00:00:00Z&toDate=2023-12-28T00:00:00Z&name=م&tracking=87
-    })
+    request({ url: ApiRoutes.ADMIN_ORDERS + `?page=${page}` })
   }
 
   useEffect(() => {
@@ -52,12 +50,12 @@ const OrdersPage: NextPage = () => {
       ),
       count: <Typography variant="body3">{item.order.totalQuantity + ' عدد '}</Typography>,
       more: (
-        <MoreDetail
-          userId={item._id}
-          orderId={item.order._id}
-          trackingId={item.order.tracking}
-          updateHandler={() => fetchOrderList(page)}
-        />
+        <MoreDetail>
+          <Link href={`/orders/${item._id}/${item.tracking}`}>جزئیات سفارش</Link>
+          <Typography variant="button2" onClick={() => setOpenModal(true)}>
+            تغییر وضعیت
+          </Typography>
+        </MoreDetail>
       ),
     }))
   }, [])
@@ -73,6 +71,14 @@ const OrdersPage: NextPage = () => {
         loading={loading}
         tableHeading={tableHeading}
       />
+      <Modal open={openModal} onClose={() => setOpenModal(false)}>
+        <ChangeOrderTotalStatusModal
+          closeHandler={() => setOpenModal(false)}
+          updateHandler={() => fetchOrderList(page)}
+          orderId={response?.orders?.orderId}
+          userId={response?.orders?._id as string}
+        />
+      </Modal>
     </StyledOrderPage>
   )
 }

@@ -1,10 +1,14 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, ReactNode, useEffect, useState } from 'react'
 import { StyledPageHeader } from './styles'
 import { Box, Typography } from '@mui/material'
 import Image from 'next/image'
 import { getCookie } from 'cookies-next'
 
-const PageHeader: FC<{ title: string }> = ({ title }) => {
+type Props = {
+  title: string
+  children?: ReactNode
+}
+const PageHeader: FC<Props> = ({ title, children }) => {
   //Because of Next serve side error of not matching client
   const [username, setUsername] = useState()
   useEffect(() => {
@@ -16,9 +20,10 @@ const PageHeader: FC<{ title: string }> = ({ title }) => {
   return (
     username && (
       <StyledPageHeader>
-        <Typography variant={'title2'} className="page-title">
-          {title}
-        </Typography>
+        <Box className="page-title">
+          <Typography variant={'title2'}>{title}</Typography>
+          {children}
+        </Box>
         <Box className="profile-container">
           <Image
             src="/images/user-avatar.png"

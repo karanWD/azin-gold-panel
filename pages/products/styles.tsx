@@ -1,6 +1,6 @@
 import { Box, BoxProps, styled } from '@mui/material'
 
-export const StyledProductsPage = styled(Box)<BoxProps>(() => ({
+export const StyledProductsPage = styled(Box)<BoxProps>(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   rowGap: '24px',
@@ -11,6 +11,12 @@ export const StyledProductsPage = styled(Box)<BoxProps>(() => ({
     width: '100%',
     display: 'flex',
     justifyContent: 'center',
+  },
+  '.create-product-button': {
+    display: 'flex',
+    alignItems: 'center',
+    columnGap: '4px',
+    color: theme.palette.primary.main,
   },
 }))
 

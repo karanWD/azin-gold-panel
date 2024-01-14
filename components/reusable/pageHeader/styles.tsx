@@ -6,6 +6,9 @@ export const StyledPageHeader = styled(Box)<BoxProps>(({ theme }) => ({
   justifyContent: 'space-between',
   '.page-title': {
     color: theme.palette.txt.brand,
+    display: 'flex',
+    alignItems: 'center',
+    columnGap: '24px',
   },
   '.profile-container': {
     display: 'flex',

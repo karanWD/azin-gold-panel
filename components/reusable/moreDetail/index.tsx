@@ -1,20 +1,14 @@
-import React, { FC, useState } from 'react'
+import React, { FC, ReactNode } from 'react'
 import { StyledMoreDetail } from './styles'
-import { Button, Modal, Popover, Typography } from '@mui/material'
+import { Button, Popover } from '@mui/material'
 import Image from 'next/image'
-import Link from 'next/link'
-import ChangeOrderTotalStatusModal from '../changeOrderTotalStatusModal'
 
 type Props = {
-  userId: string
-  orderId: string
-  trackingId: string
-  updateHandler: () => void
+  children?: ReactNode
 }
 
-const MoreDetail: FC<Props> = ({ orderId, userId, trackingId, updateHandler }) => {
+const MoreDetail: FC<Props> = ({ children }) => {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null)
-  const [openModal, setOpenModal] = useState<boolean>(false)
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget)
   }
@@ -46,19 +40,8 @@ const MoreDetail: FC<Props> = ({ orderId, userId, trackingId, updateHandler }) =
             boxShadow: '0 6px 16px rgba(0,0,0,0.08)',
           },
         }}>
-        <Link href={`/orders/${userId}/${trackingId}`}>جزئیات سفارش</Link>
-        <Typography variant="button2" onClick={() => setOpenModal(true)}>
-          تغییر وضعیت
-        </Typography>
+        {children}
       </Popover>
-      <Modal open={openModal} onClose={() => setOpenModal(false)}>
-        <ChangeOrderTotalStatusModal
-          closeHandler={() => setOpenModal(false)}
-          updateHandler={updateHandler}
-          orderId={orderId}
-          userId={userId as string}
-        />
-      </Modal>
     </StyledMoreDetail>
   )
 }
