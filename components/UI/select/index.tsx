@@ -19,7 +19,7 @@ const SelectBox: FC<Props> = ({ width, label, placeHolder, value, changeHandler,
         </Typography>
       )}
       <FormControl className="options-container" size="small" fullWidth>
-        {placeHolder && (
+        {placeHolder && !value && (
           <InputLabel>
             <Typography className="select-label" variant="body3">
               {placeHolder}
