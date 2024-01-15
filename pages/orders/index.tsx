@@ -1,10 +1,7 @@
-import {NextPage} from "next";
-import OrdersComponents from "../../components/orders";
+import { NextPage } from 'next'
+import OrdersComponents from '../../components/orders'
 
 const OrdersPage: NextPage = () => {
-
-  return (
-    <OrdersComponents />
-  )
+  return <OrdersComponents />
 }
 export default OrdersPage

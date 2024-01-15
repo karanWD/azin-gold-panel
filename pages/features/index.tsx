@@ -1,8 +1,8 @@
-import { NextPage } from "next";
-import FeaturesComponents from "../../components/features";
+import { NextPage } from 'next'
+import FeaturesComponents from '../../components/features'
 
 const FeaturesPage: NextPage = () => {
-  return <FeaturesComponents />;
-};
+  return <FeaturesComponents />
+}
 
-export default FeaturesPage;
+export default FeaturesPage

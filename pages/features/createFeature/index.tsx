@@ -1,11 +1,8 @@
-import { NextPage } from "next";
-import CreateFeatureComponent from "../../../components/features/createFeature";
+import { NextPage } from 'next'
+import CreateFeatureComponent from '../../../components/features/createFeature'
 
 const CreateFeaturePage: NextPage = () => {
+  return <CreateFeatureComponent />
+}
 
-  return (
-    <CreateFeatureComponent />
-  );
-};
-
-export default CreateFeaturePage;
+export default CreateFeaturePage

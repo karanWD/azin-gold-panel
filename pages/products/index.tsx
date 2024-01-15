@@ -1,11 +1,8 @@
-import {NextPage} from "next";
-import ProductsComponents from "../../components/products";
-    
-    const ProductsPage: NextPage = () => {
+import { NextPage } from 'next'
+import ProductsComponents from '../../components/products'
 
-    return ( 
-       <ProductsComponents />
-     );
+const ProductsPage: NextPage = () => {
+  return <ProductsComponents />
 }
 
 export default ProductsPage

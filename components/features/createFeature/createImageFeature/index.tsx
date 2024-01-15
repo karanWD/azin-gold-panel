@@ -1,12 +1,12 @@
-import React, { FC, useState } from "react";
-import { Box, TextField, Typography } from "@mui/material";
-import { StyledCreateImage } from "./styles";
+import React, { FC, useState } from 'react'
+import { Box, Typography } from '@mui/material'
+import { StyledCreateImage } from './styles'
 
 type Props = {
-  editFeature?: boolean;
-  setImageInput: any;
-};
-const InputImageFeature: FC<Props> = ({ setImageInput,editFeature }) => {
+  editFeature?: boolean
+  setImageInput: any
+}
+const InputImageFeature: FC<Props> = ({ setImageInput, editFeature }) => {
   return (
     <StyledCreateImage>
       <Typography className="title-input" variant="body3">
@@ -22,7 +22,7 @@ const InputImageFeature: FC<Props> = ({ setImageInput,editFeature }) => {
         onChange={(e) => setImageInput((p) => [...p, e.target.files[0]])}
       />
     </StyledCreateImage>
-  );
-};
+  )
+}
 
-export default InputImageFeature;
+export default InputImageFeature

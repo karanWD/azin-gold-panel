@@ -2,7 +2,7 @@ import { Box, BoxProps, styled, Table } from '@mui/material'
 
 export const StyledTable = styled(Table)(({ theme }) => ({
   '.MuiTableCell-root': {
-    borderColor: theme.palette.txt['disabled'],
+    borderColor: theme.palette.bg.neutral['B'],
   },
   '.MuiTableCell-head': {
     fontSize: '14px',

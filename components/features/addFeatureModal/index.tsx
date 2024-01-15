@@ -1,30 +1,25 @@
-import React,{FC, useState} from "react";
-import { Box, Modal, Typography } from "@mui/material";
-import { StyledAddFeatureModal } from "./styles";
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import SelectHeaderFeature from "../selectHeaderFeature";
-type Props = {
-    
-}
-const AddFeatureModal: FC<Props> = ({}) => {
-    const [openModal,setOpenModal]=useState<boolean>(false)
+import React, { FC, useState } from 'react'
+import { Box, Modal, Typography } from '@mui/material'
+import { StyledAddFeatureModal } from './styles'
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
+import SelectHeaderFeature from '../selectHeaderFeature'
 
-    return (
-        <StyledAddFeatureModal>
-            <Box className="box-child" onClick={()=>setOpenModal(true)}>
-                <AddCircleOutlineIcon className="add-features-icon"/>
-                <Typography className="add-features" variant="button1">
-                    افزودن ویژگی  
-                </Typography>
-            </Box>
-            <Modal
-                open={openModal}
-                onClose={()=>setOpenModal(false)}
-            >
-                <SelectHeaderFeature closeHandler={()=>setOpenModal(false)}/>
-            </Modal>
-        </StyledAddFeatureModal>
-    )
+const AddFeatureModal = () => {
+  const [openModal, setOpenModal] = useState<boolean>(false)
+
+  return (
+    <StyledAddFeatureModal>
+      <Box className="box-child" onClick={() => setOpenModal(true)}>
+        <AddCircleOutlineIcon className="add-features-icon" />
+        <Typography className="add-features" variant="button1">
+          افزودن ویژگی
+        </Typography>
+      </Box>
+      <Modal open={openModal} onClose={() => setOpenModal(false)}>
+        <SelectHeaderFeature closeHandler={() => setOpenModal(false)} />
+      </Modal>
+    </StyledAddFeatureModal>
+  )
 }
 
-export default AddFeatureModal;
+export default AddFeatureModal

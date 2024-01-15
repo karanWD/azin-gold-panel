@@ -8,7 +8,7 @@ type Props = {
   featureId: string
 }
 
-const MoreDetail : FC<Props> = ({ featureId }) => {
+const MoreDetail: FC<Props> = ({ featureId }) => {
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null)
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget)
@@ -42,13 +42,13 @@ const MoreDetail : FC<Props> = ({ featureId }) => {
             cursor: 'pointer',
           },
         }}>
-          <Box>
-            <Link href={`/features`}>
-              <Typography className="pointer-item" variant="button2">
-                ویرایش
-              </Typography>
-            </Link>
-          </Box>
+        <Box>
+          <Link href={`/features`}>
+            <Typography className="pointer-item" variant="button2">
+              ویرایش
+            </Typography>
+          </Link>
+        </Box>
       </Popover>
     </StyledMoreDetail>
   )
