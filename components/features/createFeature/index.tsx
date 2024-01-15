@@ -2,7 +2,7 @@ import { NextPage } from 'next'
 import { StyledAddFeature } from './styles'
 import { Box, Button, Typography } from '@mui/material'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
 import InputHeaderFeature from './createHeaderFeature'
 import InputSortFeature from './createSortFeature'
@@ -13,11 +13,10 @@ import { useRouter } from 'next/router'
 import UseFetch from '../../../hooks/useFetch'
 import { ApiRoutes } from '../../../enums/ApiRoutes'
 import { DISPLAY_MODES } from '../../../enums/DisplayModes'
-import DeleteIcon from '@mui/icons-material/Delete'
 import Image from 'next/image'
 
 const CreateFeatureComponent: NextPage = () => {
-  const [numberValues, setNumberValues] = useState<number>(1)
+  // const [numberValues, setNumberValues] = useState<number>(1)
   const router = useRouter()
 
   const [headerInput, setHeaderInput] = useState<string>('')
@@ -62,7 +61,7 @@ const CreateFeatureComponent: NextPage = () => {
       url: ApiRoutes.ADMIN_FEATURES_GROUPS,
       data: formData,
       headers: { 'Content-Type': 'multipart/form-data' },
-    }).then((res) => {})
+    }).then(() => {})
   }
 
   return (
@@ -79,24 +78,17 @@ const CreateFeatureComponent: NextPage = () => {
           <Box className="header-box">
             <InputHeaderFeature amountInput={headerInput} setAmountInput={setHeaderInput} />
           </Box>
-          {temp.map((i, index) => (
+          {temp.map((i) => (
             <>
               <Box className="box-values-list">
-                <InputSortFeature
-                  onChangeHandler={(value) => changeHandler(value, i.id, 'sequence')}
-                />
-                <InputValueFeature
-                  onChangeHandler={(value) => changeHandler(value, i.id, 'title')}
-                />
+                <InputSortFeature onChangeHandler={(value) => changeHandler(value, i.id, 'sequence')} />
+                <InputValueFeature onChangeHandler={(value) => changeHandler(value, i.id, 'title')} />
                 {router.query.mode === DISPLAY_MODES.PRODUCT ? (
-                  <InputDescriptionFeature
-                    onChangeHandler={(value) => changeHandler(value, i.id, 'tooltip')}
-                  />
+                  <InputDescriptionFeature onChangeHandler={(value) => changeHandler(value, i.id, 'tooltip')} />
                 ) : (
                   <></>
                 )}
-                {router.query.mode === DISPLAY_MODES.COLOR ||
-                router.query.mode === DISPLAY_MODES.EXPANDABLE ? (
+                {router.query.mode === DISPLAY_MODES.COLOR || router.query.mode === DISPLAY_MODES.EXPANDABLE ? (
                   <InputImageFeature setImageInput={setImageInput} />
                 ) : (
                   <></>

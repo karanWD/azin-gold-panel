@@ -23,12 +23,7 @@ const OrderCategories: FC<Props> = ({ data, orderId, updateHandler }) => {
   const [selectedItems, setSelectedItems] = useState<SelectedItems>(null)
   const [openModal, setOpenModal] = useState<boolean>(false)
 
-  const changeHandler = (
-    isChecked: boolean,
-    selectedData: OrdersSubProduct,
-    id: string,
-    key: string
-  ): void => {
+  const changeHandler = (isChecked: boolean, selectedData: OrdersSubProduct, id: string, key: string): void => {
     if (isChecked) {
       const temp = {
         groupId: id,
@@ -55,11 +50,7 @@ const OrderCategories: FC<Props> = ({ data, orderId, updateHandler }) => {
       {Object.entries(data).map(([key, value], index) => {
         return (
           value.length > 0 && (
-            <Box
-              key={'ORDER_CATEGORY_ITEM_' + index}
-              display="flex"
-              flexDirection="column"
-              gap="18px">
+            <Box key={'ORDER_CATEGORY_ITEM_' + index} display="flex" flexDirection="column" gap="18px">
               <OrderCategoryName type={key as ORDER_STATUSES} />
               <OrderProducts
                 data={value}
@@ -78,11 +69,7 @@ const OrderCategories: FC<Props> = ({ data, orderId, updateHandler }) => {
         </Button>
       </Box>
       <Modal open={openModal} onClose={closeHandler}>
-        <ChangeStatusModal
-          selectedItems={selectedItems}
-          closeHandler={closeHandler}
-          updateHandler={updateHandler}
-        />
+        <ChangeStatusModal selectedItems={selectedItems} closeHandler={closeHandler} updateHandler={updateHandler} />
       </Modal>
     </StyledOrderCategories>
   )

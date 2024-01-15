@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { useState } from 'react'
 import { Box, Modal, Typography } from '@mui/material'
 import { StyledAddFeatureModal } from './styles'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'

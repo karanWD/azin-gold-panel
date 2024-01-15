@@ -61,10 +61,7 @@ const generateData = (list) => {
 const SubproductsList: FC<Props> = ({ data }) => {
   return (
     <StyledSubproductsList>
-      <Table
-        data={generateData(data?.subProducts) as any}
-        headings={generateTitles(data?.product?.featureGroups)}
-      />
+      <Table data={generateData(data?.subProducts) as any} headings={generateTitles(data?.product?.featureGroups)} />
     </StyledSubproductsList>
   )
 }

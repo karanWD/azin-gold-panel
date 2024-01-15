@@ -9,6 +9,9 @@ type Props = {
 }
 
 const MoreDetail: FC<Props> = ({ featureId }) => {
+  //for removing error until code is complete
+  //TODO remove log after completing code
+  console.log(featureId)
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null)
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget)

@@ -9,6 +9,7 @@ import { Typography } from '@mui/material'
 import MoreDetail from './moreDetail'
 import PageBody from '../reusable/body'
 import { HandleDate } from '../../modules'
+import PaginationWrapper from '@/components/reusable/pagination'
 
 const tableHeading: string[] = [
   'ردیف',
@@ -23,7 +24,7 @@ const tableHeading: string[] = [
 ]
 
 const OrdersComponents: NextPage = () => {
-  const { response, error, loading, request } = useFetch()
+  const { response, loading, request } = useFetch()
   const [page, setPage] = useState<number>(1)
 
   const fetchOrderList = (page) => {
@@ -40,16 +41,14 @@ const OrdersComponents: NextPage = () => {
 
   const formatData = useCallback((data) => {
     if (!data) return null
-    return data.map((item, index) => ({
+    return data.map((item) => ({
       index: <Typography variant="body3">{item.index}</Typography>,
       createdAt: <Typography variant="body3"> {HandleDate(item.order.createdAt)}</Typography>,
       tracking: <Typography variant="body3">{item.order.tracking}</Typography>,
       username: <Typography variant="body3">{item.name}</Typography>,
       status: <OrdersStatus status={item.order.status} type={'TEXT'} />,
       weight: <Typography variant="body3">{item.order.totalWeight + ' گرم '}</Typography>,
-      weightWithWage: (
-        <Typography variant="body3">{item.order.totalWeightWithWage + ' گرم '}</Typography>
-      ),
+      weightWithWage: <Typography variant="body3">{item.order.totalWeightWithWage + ' گرم '}</Typography>,
       count: <Typography variant="body3">{item.order.totalQuantity + ' عدد '}</Typography>,
       more: (
         <MoreDetail
@@ -65,14 +64,8 @@ const OrdersComponents: NextPage = () => {
   return (
     <StyledOrderPage>
       <PageHeader title="سفارشات" />
-      <PageBody
-        data={formatData(response?.orders)}
-        totalPages={response?.totalPages}
-        page={page}
-        setPage={setPage}
-        loading={loading}
-        tableHeading={tableHeading}
-      />
+      <PageBody data={formatData(response?.orders)} loading={loading} tableHeading={tableHeading} />
+      <PaginationWrapper page={page} total={response?.totalPages} onChange={(value) => setPage(value)} />
     </StyledOrderPage>
   )
 }

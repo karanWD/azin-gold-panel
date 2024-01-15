@@ -1,5 +1,5 @@
-import React, { FC, useState } from 'react'
-import { Box, Typography } from '@mui/material'
+import React, { FC } from 'react'
+import { Typography } from '@mui/material'
 import { StyledCreateImage } from './styles'
 
 type Props = {

@@ -4,7 +4,7 @@ import useFetch from '../../hooks/useFetch'
 import { useCallback, useEffect, useState } from 'react'
 import { ApiRoutes } from '../../enums/ApiRoutes'
 import PageHeader from '../reusable/pageHeader'
-import { Box, Typography } from '@mui/material'
+import { Typography } from '@mui/material'
 import MoreDetail from './moreDatail'
 import HeaderFeatures from './headerFeatures'
 import FeaturesItem from './featuresItem'
@@ -13,19 +13,12 @@ import SearchBar from './searchBar'
 import PageBody from '../reusable/body'
 import AddFeatureModal from './addFeatureModal'
 import { HandleDate } from '../../modules'
+import PaginationWrapper from '@/components/reusable/pagination'
 
-const tableHeading: string[] = [
-  'ردیف',
-  'عنوان',
-  'نوع ویژگی',
-  'مقادیر',
-  'تاریخ ایجاد ',
-  'تاریخ بروز رسانی',
-  'جزئیات',
-]
+const tableHeading: string[] = ['ردیف', 'عنوان', 'نوع ویژگی', 'مقادیر', 'تاریخ ایجاد ', 'تاریخ بروز رسانی', 'جزئیات']
 
 const FeaturesComponents: NextPage = () => {
-  const { response, error, loading, request } = useFetch()
+  const { response, loading, request } = useFetch()
   const [page, setPage] = useState<number>(1)
 
   const fetchFeaturesList = (page) => {
@@ -59,14 +52,8 @@ const FeaturesComponents: NextPage = () => {
         <AddFeatureModal />
       </PageHeader>
       <SearchBar />
-      <PageBody
-        data={formatData(response?.featureGroups)}
-        totalPages={response?.totalPages}
-        page={page}
-        setPage={setPage}
-        loading={loading}
-        tableHeading={tableHeading}
-      />
+      <PageBody data={formatData(response?.featureGroups)} loading={loading} tableHeading={tableHeading} />
+      <PaginationWrapper page={page} total={response?.totalPages} onChange={(value) => setPage(value)} />
     </StyledPropertyPage>
   )
 }

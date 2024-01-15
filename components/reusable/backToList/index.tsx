@@ -14,10 +14,7 @@ const BackToList: FC<Props> = ({ title, link }) => {
 
   return (
     <StyledBackToList>
-      <Typography
-        variant="body3"
-        className="back-button"
-        onClick={() => (link ? router.push(link) : router.back())}>
+      <Typography variant="body3" className="back-button" onClick={() => (link ? router.push(link) : router.back())}>
         <EastIcon />
         بازگشت به لیست
       </Typography>

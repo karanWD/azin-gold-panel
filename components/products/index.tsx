@@ -9,6 +9,7 @@ import MoreDetail from '../orders/moreDetail'
 import ChangeStatusProduct from '../products/changeStatusProducts'
 import PageBody from '../reusable/body'
 import { HandleDate } from '../../modules'
+import PaginationWrapper from '@/components/reusable/pagination'
 
 const tableHeading: string[] = [
   'ردیف',
@@ -22,7 +23,7 @@ const tableHeading: string[] = [
 ]
 
 const ProductsComponents: NextPage = () => {
-  const { response, error, loading, request } = useFetch()
+  const { response, loading, request } = useFetch()
   const [page, setPage] = useState<number>(1)
 
   const fetchProductsList = (page) => {
@@ -46,13 +47,7 @@ const ProductsComponents: NextPage = () => {
       updatedAt: <Typography variant="body3">{HandleDate(item.updatedAt)}</Typography>,
       wage: <Typography variant="body3">{item.wage + ' گرم '}</Typography>,
       features: <Typography variant="body3">{item.numbersOfFeatureGroups}</Typography>,
-      status: (
-        <ChangeStatusProduct
-          updateHandler={() => fetchProductsList(page)}
-          status={item.isActive}
-          productId={item._id}
-        />
-      ),
+      status: <ChangeStatusProduct status={item.isActive} productId={item._id} />,
       more: (
         <MoreDetail
           userId={item._id}
@@ -67,14 +62,8 @@ const ProductsComponents: NextPage = () => {
   return (
     <StyledProductsPage>
       <PageHeader title="محصولات" />
-      <PageBody
-        data={formatData(response?.products)}
-        totalPages={response?.totalPages}
-        page={page}
-        setPage={setPage}
-        loading={loading}
-        tableHeading={tableHeading}
-      />
+      <PageBody data={formatData(response?.products)} loading={loading} tableHeading={tableHeading} />
+      <PaginationWrapper page={page} total={response?.totalPages} onChange={(value) => setPage(value)} />
     </StyledProductsPage>
   )
 }

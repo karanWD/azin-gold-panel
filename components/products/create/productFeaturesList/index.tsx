@@ -20,11 +20,7 @@ const ProductFeatureList: FC<Props> = ({ list, deleteHandler }) => {
   return (
     <StyledFeaturesList>
       {list.map((item, index) => (
-        <Chip
-          key={'FEATURES_LIST_ITEM_' + index}
-          label={item.header}
-          handleDelete={() => deleteHandler(item._id)}
-        />
+        <Chip key={'FEATURES_LIST_ITEM_' + index} label={item.header} handleDelete={() => deleteHandler(item._id)} />
       ))}
     </StyledFeaturesList>
   )

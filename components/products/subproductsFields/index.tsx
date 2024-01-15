@@ -6,9 +6,16 @@ import TextField from '@/components/UI/textField'
 import Button from '@/components/UI/button'
 import Image from 'next/image'
 import useFetch from '../../../hooks/useFetch'
-import { ApiRoutes } from '../../../enums/ApiRoutes'
 import { useRouter } from 'next/router'
 import ImageGalleryModal from '@/components/products/imageGalleryModal'
+import { ApiRoutes } from '../../../enums/ApiRoutes'
+
+type GalleryType = {
+  id: string
+  name: string
+  file: any
+  thumbnail: boolean
+}
 
 type FeatureGroupType = {
   header: string
@@ -28,30 +35,37 @@ const SubProductsFields: FC<Props> = ({ fields, updateHandler }) => {
     setFieldData((prev) => ({ ...prev, [key]: value }))
   }
 
+  const submitGalleryHandler = (gallery: GalleryType[]) => {
+    setFieldData((prev) => ({
+      ...prev,
+      thumbnailIndex: gallery.findIndex((item) => item.thumbnail === true),
+      images: gallery.map((item) => item.file),
+    }))
+    setImageModal(false)
+  }
+
   const submitHandler = () => {
-    let params = {
-      features: [],
-      weight: 0,
-      category: '',
-      // thumbnailIndex: '',
-      // images: '',
-    }
+    let index = 0
+    const formData = new FormData()
+
+    formData.append('category', fieldData['نوع محصول'])
+    formData.append('weight', fieldData['weight'])
+    formData.append('thumbnailIndex', fieldData['thumbnailIndex'])
+    formData.append('images', fieldData['images'])
     for (const item in fieldData) {
-      if (item !== 'نوع محصول' && item !== 'weight') {
-        params.features.push(fieldData[item])
+      if (item !== 'نوع محصول' && item !== 'weight' && item !== 'thumbnailIndex' && item !== 'images') {
+        formData.append(`features[${index}]`, fieldData[item])
+        index++
       }
     }
-    params = {
-      ...params,
-      // weight: fieldData.weight,
-      category: fieldData['نوع محصول'],
-      // thumbnailIndex: '',
-      // images: '',
-    }
+
     request({
       url: ApiRoutes.ADMIN_PRODUCTS + '/' + query.id + '/combination',
       method: 'POST',
-      data: params,
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+      data: formData,
     }).then(() => updateHandler())
   }
 
@@ -95,13 +109,7 @@ const SubProductsFields: FC<Props> = ({ fields, updateHandler }) => {
         </Box>
         <Box className="field-actions">
           <Box onClick={() => setImageModal(true)}>
-            <Image
-              src={'/images/add-image.svg'}
-              alt={'add-image'}
-              width={24}
-              height={24}
-              layout="fixed"
-            />
+            <Image src={'/images/add-image.svg'} alt={'add-image'} width={24} height={24} layout="fixed" />
           </Box>
           <Box>
             <Button loading={loading} format={'primary'} onClick={submitHandler}>
@@ -111,7 +119,7 @@ const SubProductsFields: FC<Props> = ({ fields, updateHandler }) => {
         </Box>
       </Box>
       <Modal open={imageModal} onClose={() => setImageModal(false)}>
-        <ImageGalleryModal closeHandler={() => setImageModal(false)} />
+        <ImageGalleryModal closeHandler={() => setImageModal(false)} submitHandler={submitGalleryHandler} />
       </Modal>
     </StyledSubproductFields>
   )

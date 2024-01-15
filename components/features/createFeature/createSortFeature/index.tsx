@@ -1,7 +1,5 @@
-import React, { FC, useState } from 'react'
-import { Box, Typography } from '@mui/material'
+import React, { FC } from 'react'
 import { StyledCreateSort } from './styles'
-import { StyledTextField } from '@/components/UI/textField/styles'
 import TextField from '@/components/UI/textField'
 
 type Props = {
@@ -9,7 +7,7 @@ type Props = {
   onChangeHandler: (value: string) => void
 }
 const InputSortFeature: FC<Props> = ({ onChangeHandler, editFeature }) => {
-  const [valueInput, setValueInput] = useState<string>('1')
+  // const [valueInput, setValueInput] = useState<string>('1')
   return (
     <StyledCreateSort>
       <TextField

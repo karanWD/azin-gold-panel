@@ -1,4 +1,4 @@
-import { Box, BoxProps, styled, TextField, TextFieldProps } from '@mui/material'
+import { Box, BoxProps, styled } from '@mui/material'
 
 export const StyledContainer = styled(Box)<BoxProps>(({ theme }) => ({
   backgroundColor: theme.palette.primary['white'],

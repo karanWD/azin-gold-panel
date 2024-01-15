@@ -1,5 +1,4 @@
-import React, { FC, useState } from 'react'
-import { Box, Typography } from '@mui/material'
+import React, { FC } from 'react'
 import { StyledCreateDescription } from './styles'
 import TextField from '@/components/UI/textField'
 

@@ -30,11 +30,7 @@ const OrderDetailPage = () => {
         updateHandler={fetchOrderDetail}
       />
       <OrderInfo data={response} />
-      <OrderCategories
-        data={response.order.products}
-        orderId={response.order._id}
-        updateHandler={fetchOrderDetail}
-      />
+      <OrderCategories data={response.order.products} orderId={response.order._id} updateHandler={fetchOrderDetail} />
     </StyledOrderDetailPage>
   ) : (
     <OrderDetailSkeleton />

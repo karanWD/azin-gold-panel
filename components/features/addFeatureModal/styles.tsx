@@ -1,6 +1,6 @@
 import { Box, BoxProps, styled } from '@mui/material'
 
-export const StyledAddFeatureModal = styled(Box)<BoxProps>(({ theme }) => ({
+export const StyledAddFeatureModal = styled(Box)<BoxProps>(() => ({
   '.add-features': {
     marginTop: '10px',
   },

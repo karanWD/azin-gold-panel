@@ -1,7 +1,7 @@
 import { Box, BoxProps, styled, Table } from '@mui/material'
 
 export const StyledContainer = styled(Box)<BoxProps>(({ theme }) => ({
-  backgroundColor: theme.palette['white'],
+  backgroundColor: theme.palette.primary['white'],
   padding: '24px',
   borderRadius: '16px',
 }))
