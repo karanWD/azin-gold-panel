@@ -1,10 +1,14 @@
 import React, { FC, useState } from 'react'
 import { StyledSubproductFields } from '@/components/products/subproductsFields/styles'
-import { Box, Divider, MenuItem, Typography } from '@mui/material'
+import { Box, Divider, MenuItem, Modal, Typography } from '@mui/material'
 import Select from '@/components/UI/select'
 import TextField from '@/components/UI/textField'
 import Button from '@/components/UI/button'
 import Image from 'next/image'
+import useFetch from '../../../hooks/useFetch'
+import { ApiRoutes } from '../../../enums/ApiRoutes'
+import { useRouter } from 'next/router'
+import ImageGalleryModal from '@/components/products/imageGalleryModal'
 
 type FeatureGroupType = {
   header: string
@@ -12,14 +16,44 @@ type FeatureGroupType = {
 }
 type Props = {
   fields: FeatureGroupType[]
+  updateHandler: () => void
 }
-const SubProductsFields: FC<Props> = ({ fields }) => {
+const SubProductsFields: FC<Props> = ({ fields, updateHandler }) => {
+  const { query } = useRouter()
+  const { request, loading } = useFetch()
   const [fieldData, setFieldData] = useState({})
+  const [imageModal, setImageModal] = useState(false)
+
   const selectHandler = (value: string | number, key: string) => {
     setFieldData((prev) => ({ ...prev, [key]: value }))
   }
 
-  const addImageHandler = () => {}
+  const submitHandler = () => {
+    let params = {
+      features: [],
+      weight: 0,
+      category: '',
+      // thumbnailIndex: '',
+      // images: '',
+    }
+    for (const item in fieldData) {
+      if (item !== 'نوع محصول' && item !== 'weight') {
+        params.features.push(fieldData[item])
+      }
+    }
+    params = {
+      ...params,
+      // weight: fieldData.weight,
+      category: fieldData['نوع محصول'],
+      // thumbnailIndex: '',
+      // images: '',
+    }
+    request({
+      url: ApiRoutes.ADMIN_PRODUCTS + '/' + query.id + '/combination',
+      method: 'POST',
+      data: params,
+    }).then(() => updateHandler())
+  }
 
   return (
     <StyledSubproductFields>
@@ -60,7 +94,7 @@ const SubProductsFields: FC<Props> = ({ fields }) => {
           </Box>
         </Box>
         <Box className="field-actions">
-          <Box onClick={addImageHandler}>
+          <Box onClick={() => setImageModal(true)}>
             <Image
               src={'/images/add-image.svg'}
               alt={'add-image'}
@@ -70,10 +104,15 @@ const SubProductsFields: FC<Props> = ({ fields }) => {
             />
           </Box>
           <Box>
-            <Button format={'primary'}>ثبت</Button>
+            <Button loading={loading} format={'primary'} onClick={submitHandler}>
+              ثبت
+            </Button>
           </Box>
         </Box>
       </Box>
+      <Modal open={imageModal} onClose={() => setImageModal(false)}>
+        <ImageGalleryModal closeHandler={() => setImageModal(false)} />
+      </Modal>
     </StyledSubproductFields>
   )
 }

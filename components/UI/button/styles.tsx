@@ -12,19 +12,19 @@ export const StyledButton = styled(Button)<any>(({ theme, format, width, size })
   const SIZES = {
     small: {
       height: '28px',
-      padding: '0 4px',
+      padding: '2px 12px',
     },
     medium: {
       height: '32px',
-      padding: '0 8px',
+      padding: '2px 16px',
     },
     large: {
       height: '40px',
-      padding: '0 12px',
+      padding: '2px 20px',
     },
     extra_large: {
       height: '48px',
-      padding: '0 16px',
+      padding: '2px 24px',
     },
   }
 
@@ -36,7 +36,6 @@ export const StyledButton = styled(Button)<any>(({ theme, format, width, size })
     padding: SIZES[size].padding,
     width: width ? width : '100%',
     display: 'flex',
-    flex: '1 1 0',
     alignItems: 'center',
     columnGap: '8px',
     borderRadius: '8px',
