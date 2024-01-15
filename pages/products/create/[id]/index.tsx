@@ -12,11 +12,14 @@ const ProductGroupsPage = () => {
   const { id } = router.query
   const { request, response, loading } = useFetch()
 
+  const updateHandler = (id: string) => {
+    request({
+      url: ApiRoutes.ADMIN_PRODUCTS + '/' + id + '/combination?page=1',
+    })
+  }
+
   useEffect(() => {
-    id &&
-      request({
-        url: ApiRoutes.ADMIN_PRODUCTS + '/' + id + '/combination?page=1',
-      })
+    id && updateHandler(id as string)
   }, [id])
 
   return (
@@ -24,7 +27,10 @@ const ProductGroupsPage = () => {
     !loading && (
       <StyledProductGroups>
         <BackToList title={'تکمیل اطلاعات محصول'} />
-        <SubProductsFields fields={response?.product.featureGroups} />
+        <SubProductsFields
+          fields={response?.product.featureGroups}
+          updateHandler={() => updateHandler(id as string)}
+        />
         <SubproductsList data={response} />
       </StyledProductGroups>
     )
