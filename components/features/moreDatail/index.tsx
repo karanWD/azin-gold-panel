@@ -1,9 +1,14 @@
-import { MouseEvent, useState } from 'react'
+import { FC, MouseEvent, useState } from 'react'
 import { StyledMoreDetail } from './styles'
-import { Button, Popover, Typography } from '@mui/material'
+import { Box, Button, Popover, Typography } from '@mui/material'
 import Image from 'next/image'
+import Link from 'next/link'
 
-const MoreDetail = () => {
+type Props = {
+  featureId: string
+}
+
+const MoreDetail: FC<Props> = ({ featureId }) => {
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null)
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget)
@@ -37,9 +42,13 @@ const MoreDetail = () => {
             cursor: 'pointer',
           },
         }}>
-        <Typography className="pointer-item" variant="button2">
-          ویرایش
-        </Typography>
+        <Box>
+          <Link href={`/features`}>
+            <Typography className="pointer-item" variant="button2">
+              ویرایش
+            </Typography>
+          </Link>
+        </Box>
       </Popover>
     </StyledMoreDetail>
   )

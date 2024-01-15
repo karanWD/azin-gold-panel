@@ -5,7 +5,7 @@ export const StyledOrderProducts = styled(Box)(({ theme }) => ({
   flexDirection: 'column',
   rowGap: '12px',
   '.products-container': {
-    backgroundColor: theme.palette['white'],
+    backgroundColor: theme.palette.primary['white'],
     display: 'flex',
     flexDirection: 'column',
     rowGap: '12px',

@@ -8,6 +8,7 @@ type Props = {
   title: string
   children?: ReactNode
 }
+
 const PageHeader: FC<Props> = ({ title, children }) => {
   //Because of Next serve side error of not matching client
   const [username, setUsername] = useState()
@@ -20,8 +21,10 @@ const PageHeader: FC<Props> = ({ title, children }) => {
   return (
     username && (
       <StyledPageHeader>
-        <Box className="page-title">
-          <Typography variant={'title2'}>{title}</Typography>
+        <Box className="profile-container">
+          <Typography variant={'title2'} className="page-title">
+            {title}
+          </Typography>
           {children}
         </Box>
         <Box className="profile-container">

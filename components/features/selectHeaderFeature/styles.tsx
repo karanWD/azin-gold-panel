@@ -1,6 +1,6 @@
 import { Box, BoxProps, styled } from '@mui/material'
 
-export const StyledChangeOrderTotalStatus = styled(Box)<BoxProps>(({ theme }) => ({
+export const StyledSelectFeature = styled(Box)<BoxProps>(({ theme }) => ({
   backgroundColor: theme.palette.primary['white'],
   width: '360px',
   borderRadius: '16px',
@@ -12,18 +12,16 @@ export const StyledChangeOrderTotalStatus = styled(Box)<BoxProps>(({ theme }) =>
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  '.change-status-modal-header': {
+  '.register-feature-header': {
+    display: 'flex',
+    justifyContent: 'flex-end',
+  },
+  '.header-feature': {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  '.change-status-modal-footer': {
-    display: 'flex',
-    justifyContent: 'flex-end',
-  },
-  '.change-status-modal-body': {
-    display: 'flex',
-    flexDirection: 'column',
-    rowGap: '4px',
+  '.radio-group': {
+    marginLeft: '5px',
   },
 }))

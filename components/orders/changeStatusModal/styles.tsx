@@ -1,7 +1,7 @@
 import { Box, BoxProps, styled } from '@mui/material'
 
 export const StyledChangeStatusModal = styled(Box)<BoxProps>(({ theme }) => ({
-  backgroundColor: theme.palette['white'],
+  backgroundColor: theme.palette.primary['white'],
   width: '718px',
   borderRadius: '16px',
   padding: '20px',

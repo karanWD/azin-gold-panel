@@ -12,7 +12,7 @@ export const StyledOrderCategoryName = styled(Box)<CategoryNameType>(({ theme, o
     alignItems: 'center',
     columnGap: '8px',
     '.order-state-icon': {
-      backgroundColor: theme.palette['white'],
+      backgroundColor: theme.palette.primary['white'],
       border: `1px dashed ${theme.palette.txt['tertiary']}`,
       borderRadius: '8px',
       padding: '6px 10px',
