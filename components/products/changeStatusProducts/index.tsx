@@ -5,6 +5,7 @@ import Switch from '@/components/UI/switch'
 
 type Props = {
   status: boolean
+  updateHandler: any
   productId?: string
 }
 

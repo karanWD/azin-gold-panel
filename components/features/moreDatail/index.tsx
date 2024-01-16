@@ -8,7 +8,7 @@ type Props = {
   featureId: string
 }
 
-const MoreDetail: FC<Props> = ({ featureId }) => {
+const MoreDetail: FC<Props> = () => {
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null)
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget)
