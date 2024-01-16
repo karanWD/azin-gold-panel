@@ -1,7 +1,8 @@
 import React, { FC } from 'react'
 import { StyledSubproductsList } from '@/components/products/subproductsList/styles'
 import Table from '@/components/UI/table'
-import Switch from '@/components/UI/switch'
+import ListActions from '@/components/products/subproductsList/actions'
+import SubProductsStatus from '@/components/products/subproductsList/subProductsStatus'
 
 type FeatureItemType = {
   _id: string
@@ -32,7 +33,7 @@ type Props = {
 
 const generateTitles = (data: FeatureGroupType[]) => {
   const featureTitles = data?.map((item) => item.header)
-  return ['ردیف', ...featureTitles, 'وزن', 'فعال/غیرفعال', 'عملیات']
+  return ['ردیف', ...featureTitles, 'وزن', 'دسته‌بندی', 'فعال/غیرفعال', 'عملیات']
 }
 
 const generateData = (list) => {
@@ -51,7 +52,9 @@ const generateData = (list) => {
     temp = {
       ...temp,
       _weight: `${item.weight}گرم`,
-      _isActive: <Switch checked={item.isActive} onChange={() => {}} />,
+      category: item.category?.title ? item.category?.title : 'ثبت نشده است',
+      _isActive: <SubProductsStatus status={item.isActive} id={item._id} />,
+      actions: <ListActions />,
     }
     res.push(temp)
   }
