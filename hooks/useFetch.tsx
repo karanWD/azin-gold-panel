@@ -1,10 +1,5 @@
 import { useState } from 'react'
-import axios, {
-  AxiosInstance,
-  AxiosRequestConfig,
-  AxiosRequestHeaders,
-  CreateAxiosDefaults,
-} from 'axios'
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosRequestHeaders, CreateAxiosDefaults } from 'axios'
 import { getCookie } from 'cookies-next'
 import { ApiRoutes } from '../enums/ApiRoutes'
 import { toast } from 'react-toastify'

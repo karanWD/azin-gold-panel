@@ -5,6 +5,6 @@ export const StyledBody = styled(Box)<BoxProps>(() => ({
     width: '100%',
     display: 'flex',
     justifyContent: 'center',
-    marginTop: "20px"
+    marginTop: '20px',
   },
 }))

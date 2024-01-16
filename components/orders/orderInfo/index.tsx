@@ -20,10 +20,7 @@ const OrderInfo: FC<Props> = ({ data }) => {
       <Box className="order-info-columns">
         <OrderInfoItem title="تعداد سفارش:" value={data.order.totalQuantity + ' عدد '} />
         <OrderInfoItem title="وزن کل حدودی:" value={data.order.totalWeight + ' گرم '} />
-        <OrderInfoItem
-          title="وزن کل حدودی با اجرت:"
-          value={data.order.totalWeightWithWage + ' گرم '}
-        />
+        <OrderInfoItem title="وزن کل حدودی با اجرت:" value={data.order.totalWeightWithWage + ' گرم '} />
       </Box>
       <Box className="order-info-columns"></Box>
     </StyledOrderInfo>

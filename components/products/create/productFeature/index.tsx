@@ -44,9 +44,7 @@ const ProductFeature: FC<Props> = ({ selectHandler, selectedFeatures }) => {
           changeHandler={changeHandler}
           placeHolder={'ویژگی مورد نظر خود را انتخاب کنید.'}>
           {response.featureGroups.map((item, index) => {
-            const isDisabled = !!selectedFeatures.find(
-              (selectedItem) => selectedItem._id === item._id
-            )
+            const isDisabled = !!selectedFeatures.find((selectedItem) => selectedItem._id === item._id)
             return (
               <MenuItem key={'FEATURE_GROUP_' + index} value={item._id} disabled={isDisabled}>
                 <Box className={`options-container ${isDisabled ? 'option-disabled' : ''}`}>

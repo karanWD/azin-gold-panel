@@ -10,13 +10,7 @@ const Navigation = () => {
   const router = useRouter()
   return (
     <StyledNavigation>
-      <Image
-        src={'/images/logo.jpg'}
-        alt={'آذین گلد | Azin Gold'}
-        layout="fixed"
-        height={40}
-        width={111}
-      />
+      <Image src={'/images/logo.jpg'} alt={'آذین گلد | Azin Gold'} layout="fixed" height={40} width={111} />
       <Box className="links-container">
         {NavigationLinks.map((item, index) => (
           <NavigationItem

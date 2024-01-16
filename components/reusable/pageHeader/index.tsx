@@ -28,13 +28,7 @@ const PageHeader: FC<Props> = ({ title, children }) => {
           {children}
         </Box>
         <Box className="profile-container">
-          <Image
-            src="/images/user-avatar.png"
-            alt={'کاربر آذین گلد'}
-            width={40}
-            height={40}
-            layout="fixed"
-          />
+          <Image src="/images/user-avatar.png" alt={'کاربر آذین گلد'} width={40} height={40} layout="fixed" />
           <Box>
             <Typography component="p" variant={'caption'} className="welcome-message">
               خوش آمدید

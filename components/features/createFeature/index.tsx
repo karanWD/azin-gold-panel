@@ -64,8 +64,6 @@ const CreateFeatureComponent: NextPage = () => {
     }).then(() => {})
   }
 
-
-
   return (
     <StyledAddFeature>
       <form onSubmit={submitHandler}>
@@ -83,21 +81,14 @@ const CreateFeatureComponent: NextPage = () => {
           {temp.map((i) => (
             <>
               <Box className="box-values-list">
-                <InputSortFeature
-                  onChangeHandler={(value) => changeHandler(value, i.id, 'sequence')}
-                />
-                <InputValueFeature
-                  onChangeHandler={(value) => changeHandler(value, i.id, 'title')}
-                />
+                <InputSortFeature onChangeHandler={(value) => changeHandler(value, i.id, 'sequence')} />
+                <InputValueFeature onChangeHandler={(value) => changeHandler(value, i.id, 'title')} />
                 {router.query.mode === DISPLAY_MODES.PRODUCT ? (
-                  <InputDescriptionFeature
-                    onChangeHandler={(value) => changeHandler(value, i.id, 'tooltip')}
-                  />
+                  <InputDescriptionFeature onChangeHandler={(value) => changeHandler(value, i.id, 'tooltip')} />
                 ) : (
                   <></>
                 )}
-                {router.query.mode === DISPLAY_MODES.COLOR ||
-                router.query.mode === DISPLAY_MODES.EXPANDABLE ? (
+                {router.query.mode === DISPLAY_MODES.COLOR || router.query.mode === DISPLAY_MODES.EXPANDABLE ? (
                   <InputImageFeature setImageInput={setImageInput} />
                 ) : (
                   <></>
@@ -134,7 +125,7 @@ const CreateFeatureComponent: NextPage = () => {
           </Box>
         </Box>
         <Box className="register-feature">
-          <Button width="40px" format='primary' type="submit">
+          <Button width="40px" format="primary" type="submit">
             <Typography variant={'button2'}>ثبت</Typography>
           </Button>
         </Box>

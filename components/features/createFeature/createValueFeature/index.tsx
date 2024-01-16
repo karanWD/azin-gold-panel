@@ -20,8 +20,8 @@ const InputValueFeature: FC<Props> = ({ onChangeHandler, editFeature }) => {
           setValue(e.target.value)
         }}
         value={value}
-        error={value===""}
-        helperText={value === "" ? 'مقدار ویژگی را وارد کنید !' : ' '}
+        error={value === ''}
+        helperText={value === '' ? 'مقدار ویژگی را وارد کنید !' : ' '}
         required
       />
     </StyledCreateValue>

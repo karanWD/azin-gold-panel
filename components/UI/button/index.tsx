@@ -38,7 +38,7 @@ const Button: FC<ButtonPropsType> = ({
       type={type}
       width={width}
       id={id}>
-      {loading ? <CircularProgress /> : <Typography variant="button1">{children}</Typography>}
+      {loading ? <CircularProgress /> : <Typography variant="button2">{children}</Typography>}
     </StyledButton>
   )
 }

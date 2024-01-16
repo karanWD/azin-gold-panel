@@ -20,12 +20,7 @@ const generateOptions = (): { text: string; value: string }[] =>
     value: key,
   }))
 
-const ChangeOrderTotalStatusModal: FC<Props> = ({
-  closeHandler,
-  updateHandler,
-  userId,
-  orderId,
-}) => {
+const ChangeOrderTotalStatusModal: FC<Props> = ({ closeHandler, updateHandler, userId, orderId }) => {
   const options = generateOptions()
   const [newStatus, setNewStatus] = useState<string>(options[0].value)
   const { loading, request } = useFetch()
