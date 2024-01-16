@@ -1,5 +1,4 @@
-import React, { FC, ReactNode, useState } from 'react'
-import { Box, Typography } from '@mui/material'
+import React, { FC } from 'react'
 import { StyledCreateHeader } from './styles'
 import TextField from '@/components/UI/textField'
 
@@ -15,8 +14,10 @@ const InputHeaderFeature: FC<Props> = ({ amountInput, setAmountInput }) => {
         className="create-header-Input"
         placeholder=" عنوان ویژگی را وارد کنید ."
         value={amountInput}
-        required
         onChange={(e) => setAmountInput(e.target.value)}
+        error={amountInput===""}
+        helperText={amountInput === "" ? 'عنوان ویژگی را وارد کنید !' : ' '}
+        required
       />
     </StyledCreateHeader>
   )

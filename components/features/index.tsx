@@ -4,7 +4,7 @@ import useFetch from '../../hooks/useFetch'
 import { useCallback, useEffect, useState } from 'react'
 import { ApiRoutes } from '../../enums/ApiRoutes'
 import PageHeader from '../reusable/pageHeader'
-import { Box, Typography } from '@mui/material'
+import { Typography } from '@mui/material'
 import MoreDetail from './moreDatail'
 import HeaderFeatures from './headerFeatures'
 import FeaturesItem from './featuresItem'
@@ -25,7 +25,7 @@ const tableHeading: string[] = [
 ]
 
 const FeaturesComponents: NextPage = () => {
-  const { response, error, loading, request } = useFetch()
+  const { response, loading, request } = useFetch()
   const [page, setPage] = useState<number>(1)
 
   const fetchFeaturesList = (page) => {

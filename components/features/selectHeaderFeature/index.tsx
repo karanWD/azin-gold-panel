@@ -1,10 +1,11 @@
 import React, { FC, useState } from 'react'
-import { Box, Button, FormControlLabel, Radio, RadioGroup, Typography } from '@mui/material'
+import { Box, FormControlLabel, Radio, RadioGroup, Typography } from '@mui/material'
 import { StyledSelectFeature } from './styles'
 import CloseIcon from '@mui/icons-material/Close'
 import { useRouter } from 'next/router'
 import { DISPLAY_MODES } from '../../../enums/DisplayModes'
 import { DisplayModes } from '../../../data/DisplayModes'
+import Button from '@/components/UI/button'
 
 type Props = {
   closeHandler: any
@@ -66,7 +67,7 @@ const SelectHeaderFeature: FC<Props> = ({ closeHandler }) => {
           />
         </RadioGroup>
         <Box className="register-feature-header">
-          <Button color="primary" variant="contained" onClick={pushHandler}>
+          <Button width="80px" format={'primary'} onClick={pushHandler}>
             <Typography variant={'button2'}>ثبت</Typography>
           </Button>
         </Box>

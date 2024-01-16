@@ -36,7 +36,6 @@ export const StyledButton = styled(Button)<any>(({ theme, format, width, size })
     padding: SIZES[size].padding,
     width: width ? width : '100%',
     display: 'flex',
-    flex: '1 1 0',
     alignItems: 'center',
     columnGap: '8px',
     borderRadius: '8px',

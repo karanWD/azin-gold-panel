@@ -1,15 +1,17 @@
 import React, { FC, useState } from 'react'
-import { Box, Typography } from '@mui/material'
+import { Typography } from '@mui/material'
 import { StyledCreateImage } from './styles'
+import TextField from '@/components/UI/textField'
 
 type Props = {
   editFeature?: boolean
   setImageInput: any
 }
 const InputImageFeature: FC<Props> = ({ setImageInput, editFeature }) => {
+  const [value, setValue] = useState<any>([""])
   return (
     <StyledCreateImage>
-      <Typography className="title-input" variant="body3">
+       <Typography className="title-input" variant="body3">
         عکس ویژگی
       </Typography>
       <input

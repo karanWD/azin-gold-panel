@@ -70,7 +70,7 @@ const SubProductsFields: FC<Props> = ({ fields }) => {
             />
           </Box>
           <Box>
-            <Button format={'primary'}>ثبت</Button>
+            <Button width='80px' format={'primary'}>ثبت</Button>
           </Box>
         </Box>
       </Box>

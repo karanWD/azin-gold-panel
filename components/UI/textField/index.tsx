@@ -7,12 +7,13 @@ type InputProps = {
 } & TextFieldProps
 
 const TextField: FC<InputProps> = ({ label, ...rest }) => {
+
   return (
     <StyledTextFieldContainer>
       <Typography variant={'body3'} className="label-container">
         {label}
       </Typography>
-      <StyledTextField {...rest} />
+      <StyledTextField {...rest}/>
     </StyledTextFieldContainer>
   )
 }

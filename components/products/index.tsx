@@ -22,7 +22,7 @@ const tableHeading: string[] = [
 ]
 
 const ProductsComponents: NextPage = () => {
-  const { response, error, loading, request } = useFetch()
+  const { response, loading, request } = useFetch()
   const [page, setPage] = useState<number>(1)
 
   const fetchProductsList = (page) => {
