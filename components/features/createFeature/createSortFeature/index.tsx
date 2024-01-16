@@ -19,8 +19,8 @@ const InputSortFeature: FC<Props> = ({ onChangeHandler, editFeature }) => {
           setValue(e.target.value)
         }}
         value={value}
-        error={value===""}
-        helperText={value === "" ? 'ترتیب نمایش را وارد کنید !' : ' '}
+        error={value === ''}
+        helperText={value === '' ? 'ترتیب نمایش را وارد کنید !' : ' '}
         required
       />
     </StyledCreateSort>

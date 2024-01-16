@@ -64,8 +64,6 @@ const CreateFeatureComponent: NextPage = () => {
     }).then(() => {})
   }
 
-
-
   return (
     <StyledAddFeature>
       <form onSubmit={submitHandler}>
@@ -134,7 +132,7 @@ const CreateFeatureComponent: NextPage = () => {
           </Box>
         </Box>
         <Box className="register-feature">
-          <Button width="40px" format='primary' type="submit">
+          <Button width="40px" format="primary" type="submit">
             <Typography variant={'button2'}>ثبت</Typography>
           </Button>
         </Box>

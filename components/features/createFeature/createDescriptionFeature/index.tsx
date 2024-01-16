@@ -1,7 +1,6 @@
-import React, { FC,useState } from 'react'
+import React, { FC, useState } from 'react'
 import { StyledCreateDescription } from './styles'
 import TextField from '@/components/UI/textField'
-
 
 type Props = {
   editFeature?: boolean
@@ -21,7 +20,6 @@ const InputDescriptionFeature: FC<Props> = ({ onChangeHandler, editFeature }) =>
           setValue(e.target.value)
         }}
         value={value}
-
       />
     </StyledCreateDescription>
   )
