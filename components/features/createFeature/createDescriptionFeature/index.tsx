@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { StyledCreateDescription } from './styles'
 import TextField from '@/components/UI/textField'
 
@@ -7,6 +7,7 @@ type Props = {
   onChangeHandler: (value: string) => void
 }
 const InputDescriptionFeature: FC<Props> = ({ onChangeHandler, editFeature }) => {
+  const [value, setValue] = useState<string>()
   return (
     <StyledCreateDescription>
       <TextField
@@ -14,7 +15,11 @@ const InputDescriptionFeature: FC<Props> = ({ onChangeHandler, editFeature }) =>
         className="create-description-Input"
         disabled={editFeature}
         placeholder=" توضیح ویژگی را وارد کنید ."
-        onChange={(e) => onChangeHandler(e.target.value)}
+        onChange={(e) => {
+          onChangeHandler(e.target.value)
+          setValue(e.target.value)
+        }}
+        value={value}
       />
     </StyledCreateDescription>
   )

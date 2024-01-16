@@ -112,7 +112,7 @@ const SubProductsFields: FC<Props> = ({ fields, updateHandler }) => {
             <Image src={'/images/add-image.svg'} alt={'add-image'} width={24} height={24} layout="fixed" />
           </Box>
           <Box>
-            <Button loading={loading} format={'primary'} onClick={submitHandler}>
+            <Button width="80px" loading={loading} format={'primary'} onClick={submitHandler}>
               ثبت
             </Button>
           </Box>

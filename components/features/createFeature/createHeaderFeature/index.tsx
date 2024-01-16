@@ -14,8 +14,10 @@ const InputHeaderFeature: FC<Props> = ({ amountInput, setAmountInput }) => {
         className="create-header-Input"
         placeholder=" عنوان ویژگی را وارد کنید ."
         value={amountInput}
-        required
         onChange={(e) => setAmountInput(e.target.value)}
+        error={amountInput === ''}
+        helperText={amountInput === '' ? 'عنوان ویژگی را وارد کنید !' : ' '}
+        required
       />
     </StyledCreateHeader>
   )
