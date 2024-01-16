@@ -51,14 +51,7 @@ const ChangeStatusModal: FC<Props> = ({ selectedItems, closeHandler, updateHandl
   const submitHandler = () => {
     request({
       method: 'PATCH',
-      url:
-        ApiRoutes.ADMIN_ORDERS +
-        '/' +
-        query.userId +
-        '/' +
-        finalValues.orderId +
-        '/' +
-        finalValues.groupId,
+      url: ApiRoutes.ADMIN_ORDERS + '/' + query.userId + '/' + finalValues.orderId + '/' + finalValues.groupId,
       data: {
         currentGroupStatus: finalValues.currentStatus,
         newStatus: newStatus,
@@ -82,11 +75,7 @@ const ChangeStatusModal: FC<Props> = ({ selectedItems, closeHandler, updateHandl
       <Box className="change-status-modal-body">
         <Typography>وضعیت</Typography>
         <FormControl>
-          <Select
-            className="select-status-container"
-            size={'small'}
-            value={newStatus}
-            onChange={handleChange}>
+          <Select className="select-status-container" size={'small'} value={newStatus} onChange={handleChange}>
             {generateOptions().map((item, index) => (
               <MenuItem key={'OPTION_ITEM_' + index} value={item.value}>
                 {item.text}

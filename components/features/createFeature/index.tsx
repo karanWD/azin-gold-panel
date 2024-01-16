@@ -81,21 +81,14 @@ const CreateFeatureComponent: NextPage = () => {
           {temp.map((i) => (
             <>
               <Box className="box-values-list">
-                <InputSortFeature
-                  onChangeHandler={(value) => changeHandler(value, i.id, 'sequence')}
-                />
-                <InputValueFeature
-                  onChangeHandler={(value) => changeHandler(value, i.id, 'title')}
-                />
+                <InputSortFeature onChangeHandler={(value) => changeHandler(value, i.id, 'sequence')} />
+                <InputValueFeature onChangeHandler={(value) => changeHandler(value, i.id, 'title')} />
                 {router.query.mode === DISPLAY_MODES.PRODUCT ? (
-                  <InputDescriptionFeature
-                    onChangeHandler={(value) => changeHandler(value, i.id, 'tooltip')}
-                  />
+                  <InputDescriptionFeature onChangeHandler={(value) => changeHandler(value, i.id, 'tooltip')} />
                 ) : (
                   <></>
                 )}
-                {router.query.mode === DISPLAY_MODES.COLOR ||
-                router.query.mode === DISPLAY_MODES.EXPANDABLE ? (
+                {router.query.mode === DISPLAY_MODES.COLOR || router.query.mode === DISPLAY_MODES.EXPANDABLE ? (
                   <InputImageFeature setImageInput={setImageInput} />
                 ) : (
                   <></>

@@ -36,20 +36,10 @@ const OrderProducts: FC<Props> = ({ data, handleChange, selectedData }) => {
                   <Box className="product-item-container" key={'ORDER_SUBPRODUCT_ITEM_' + index}>
                     <Box display="flex" alignItems="center" gap="8px">
                       <Checkbox
-                        checked={
-                          !!selectedData?.items.find(
-                            (selectedItems) => selectedItems._id === productItem._id
-                          )
-                        }
+                        checked={!!selectedData?.items.find((selectedItems) => selectedItems._id === productItem._id)}
                         onChange={(e) => handleChange(e.target.checked, productItem, item._id)}
                       />
-                      <Image
-                        src={productItem.thumbnail}
-                        alt={'aaa'}
-                        layout="fixed"
-                        width={36}
-                        height={36}
-                      />
+                      <Image src={productItem.thumbnail} alt={'aaa'} layout="fixed" width={36} height={36} />
                       <Typography variant="button2">{productItem.title}</Typography>
                       <Typography variant="caption" className="product-item-weight">
                         ({productItem.weight} گرم )

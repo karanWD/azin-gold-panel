@@ -5,10 +5,11 @@ import { useCallback, useEffect, useState } from 'react'
 import { ApiRoutes } from '../../enums/ApiRoutes'
 import PageHeader from '../reusable/pageHeader'
 import { Typography } from '@mui/material'
-import MoreDetail from '../orders/moreDetail'
 import ChangeStatusProduct from '../products/changeStatusProducts'
 import PageBody from '../reusable/body'
 import { HandleDate } from '../../modules'
+import PaginationWrapper from '@/components/reusable/pagination'
+import MoreDetail from './moreDetail'
 
 const tableHeading: string[] = [
   'ردیف',
@@ -33,6 +34,8 @@ const ProductsComponents: NextPage = () => {
     })
   }
 
+  console.log(response)
+
   useEffect(() => {
     fetchProductsList(page)
   }, [page])
@@ -46,35 +49,16 @@ const ProductsComponents: NextPage = () => {
       updatedAt: <Typography variant="body3">{HandleDate(item.updatedAt)}</Typography>,
       wage: <Typography variant="body3">{item.wage + ' گرم '}</Typography>,
       features: <Typography variant="body3">{item.numbersOfFeatureGroups}</Typography>,
-      status: (
-        <ChangeStatusProduct
-          updateHandler={() => fetchProductsList(page)}
-          status={item.isActive}
-          productId={item._id}
-        />
-      ),
-      more: (
-        <MoreDetail
-          userId={item._id}
-          orderId={item._id}
-          trackingId={item.tracking}
-          updateHandler={() => fetchProductsList(page)}
-        />
-      ),
+      status: <ChangeStatusProduct status={item.isActive} productId={item._id} />,
+      more: <MoreDetail productId={item._id} />,
     }))
   }, [])
 
   return (
     <StyledProductsPage>
       <PageHeader title="محصولات" />
-      <PageBody
-        data={formatData(response?.products)}
-        totalPages={response?.totalPages}
-        page={page}
-        setPage={setPage}
-        loading={loading}
-        tableHeading={tableHeading}
-      />
+      <PageBody data={formatData(response?.products)} loading={loading} tableHeading={tableHeading} />
+      <PaginationWrapper page={page} total={response?.totalPages} onChange={(value) => setPage(value)} />
     </StyledProductsPage>
   )
 }

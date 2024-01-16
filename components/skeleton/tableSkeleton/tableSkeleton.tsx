@@ -13,13 +13,7 @@ const TableSkeleton = () => {
             <TableRow key={idx}>
               {ITEMS.map((content, index) => (
                 <TableCell key={'TABLE_ROW_' + index}>
-                  <Skeleton
-                    sx={{ maxWidth: '90%' }}
-                    animation="wave"
-                    variant="text"
-                    width="124px"
-                    height="32px"
-                  />
+                  <Skeleton sx={{ maxWidth: '90%' }} animation="wave" variant="text" width="124px" height="32px" />
                 </TableCell>
               ))}
             </TableRow>

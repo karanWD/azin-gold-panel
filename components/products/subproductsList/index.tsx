@@ -1,5 +1,7 @@
 import React, { FC } from 'react'
 import { StyledSubproductsList } from '@/components/products/subproductsList/styles'
+import Table from '@/components/UI/table'
+import Switch from '@/components/UI/switch'
 
 type FeatureItemType = {
   _id: string
@@ -28,36 +30,38 @@ type Props = {
   }
 }
 
-// const generateTitles = (data: FeatureGroupType[]) => {
-//   const featureTitles = data?.map((item) => item.header)
-//   return ['ردیف', ...featureTitles, 'وزن', 'فعال/غیرفعال', 'عملیات']
-// }
+const generateTitles = (data: FeatureGroupType[]) => {
+  const featureTitles = data?.map((item) => item.header)
+  return ['ردیف', ...featureTitles, 'وزن', 'فعال/غیرفعال', 'عملیات']
+}
 
-// const generateData = (list: SubProductType[]) => {
-//     const featuresItems = list.features.map((featItem, index) => (
-//       <Typography key={'FEATURE_ITEM_' + index} variant="body3">
-//         {featItem.title}
-//       </Typography>
-//     ))
-//
-//   const baseItems = list.{
-//
-//   }
-//
-//     return {
-//
-//       ...res,
-//     }
-//   return list.map((item) => generateTypo(item, item.features))
-// }
+const generateData = (list) => {
+  const res = []
+  for (const item of list) {
+    let temp = {}
+    temp = {
+      _index: item.index,
+    }
+    for (const featItem of item.features) {
+      temp = {
+        ...temp,
+        [featItem.title]: featItem.title,
+      }
+    }
+    temp = {
+      ...temp,
+      _weight: `${item.weight}گرم`,
+      _isActive: <Switch checked={item.isActive} onChange={() => {}} />,
+    }
+    res.push(temp)
+  }
+  return res
+}
 
-const SubproductsList: FC<Props> = () => {
+const SubproductsList: FC<Props> = ({ data }) => {
   return (
     <StyledSubproductsList>
-      {/*<Table*/}
-      {/*  data={generateData(data?.subProducts) as any}*/}
-      {/*  headings={generateTitles(data?.product?.featureGroups)}*/}
-      {/*/>*/}
+      <Table data={generateData(data?.subProducts) as any} headings={generateTitles(data?.product?.featureGroups)} />
     </StyledSubproductsList>
   )
 }

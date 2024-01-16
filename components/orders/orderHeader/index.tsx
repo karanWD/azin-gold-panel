@@ -20,10 +20,7 @@ const OrderHeader: FC<Props> = ({ status, trackingId, orderId, updateHandler }) 
   return (
     <Box className="order-header-container">
       <Box>
-        <Typography
-          variant="button2"
-          className="back-button"
-          onClick={() => router.push('/orders')}>
+        <Typography variant="button2" className="back-button" onClick={() => router.push('/orders')}>
           <EastIcon />
           بازگشت به لیست
         </Typography>

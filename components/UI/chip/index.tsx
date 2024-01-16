@@ -7,14 +7,7 @@ type Props = {
   handleDelete?: () => void
 }
 const Chip: FC<Props> = ({ label, handleDelete }) => {
-  return (
-    <StyledChip
-      label={label}
-      variant="outlined"
-      onDelete={handleDelete}
-      deleteIcon={<CloseIcon />}
-    />
-  )
+  return <StyledChip label={label} variant="outlined" onDelete={handleDelete} deleteIcon={<CloseIcon />} />
 }
 
 export default Chip
