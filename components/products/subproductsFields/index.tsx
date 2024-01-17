@@ -23,16 +23,30 @@ type FeatureGroupType = {
 }
 type Props = {
   fields: FeatureGroupType[]
+  categories: { _id: string; title: string }[]
   updateHandler: () => void
 }
-const SubProductsFields: FC<Props> = ({ fields, updateHandler }) => {
+
+const defaultValues = {
+  weight: null,
+  category: '',
+  thumbnailIndex: null,
+  images: [],
+  features: {},
+}
+
+const SubProductsFields: FC<Props> = ({ fields, categories, updateHandler }) => {
   const { query } = useRouter()
   const { request, loading } = useFetch()
-  const [fieldData, setFieldData] = useState({})
+  const [fieldData, setFieldData] = useState(defaultValues)
   const [imageModal, setImageModal] = useState(false)
 
-  const selectHandler = (value: string | number, key: string) => {
-    setFieldData((prev) => ({ ...prev, [key]: value }))
+  const selectHandler = (value: string | number, key: string, isFeature = false) => {
+    if (isFeature) {
+      setFieldData((prev) => ({ ...prev, features: { ...prev.features, [key]: value } }))
+    } else {
+      setFieldData((prev) => ({ ...prev, [key]: value }))
+    }
   }
 
   const submitGalleryHandler = (gallery: GalleryType[]) => {
@@ -48,15 +62,16 @@ const SubProductsFields: FC<Props> = ({ fields, updateHandler }) => {
     let index = 0
     const formData = new FormData()
 
-    formData.append('category', fieldData['نوع محصول'])
+    formData.append('category', fieldData['category'])
     formData.append('weight', fieldData['weight'])
     formData.append('thumbnailIndex', fieldData['thumbnailIndex'])
-    formData.append('images', fieldData['images'])
-    for (const item in fieldData) {
-      if (item !== 'نوع محصول' && item !== 'weight' && item !== 'thumbnailIndex' && item !== 'images') {
-        formData.append(`features[${index}]`, fieldData[item])
-        index++
-      }
+    for (const item of fieldData.images) {
+      formData.append(`images`, item)
+    }
+    for (const item in fieldData.features) {
+      console.log(item)
+      formData.append(`features[${index}]`, fieldData.features[item])
+      index++
     }
 
     request({
@@ -79,8 +94,8 @@ const SubProductsFields: FC<Props> = ({ fields, updateHandler }) => {
             <Box className="field-body">
               <Select
                 width={'100%'}
-                changeHandler={(value) => selectHandler(value, item.header)}
-                value={fieldData[item.header]}
+                changeHandler={(value) => selectHandler(value, item.header, true)}
+                value={fieldData.features[item.header]}
                 placeHolder="انتخاب کنید">
                 {item.features.map((featureItem, index) => (
                   <MenuItem key={'FEATURE_GROUP_' + index} value={featureItem._id}>
@@ -105,6 +120,27 @@ const SubProductsFields: FC<Props> = ({ fields, updateHandler }) => {
               type={'number'}
               onChange={(e) => selectHandler(+e.target.value, 'weight')}
             />
+          </Box>
+        </Box>
+        <Box className="field-titles-item">
+          <Typography variant="body3">دسته‌بندی</Typography>
+          <Divider className="divider" />
+          <Box className="field-body">
+            <Select
+              width={'100%'}
+              changeHandler={(value) => selectHandler(value, 'category')}
+              value={fieldData['category']}
+              placeHolder="انتخاب کنید">
+              {categories.map((catItem, index) => (
+                <MenuItem key={'FEATURE_GROUP_' + index} value={catItem._id}>
+                  <Box className={`options-container`}>
+                    <Typography className="product-feature-options" variant={'button2'}>
+                      {catItem.title}
+                    </Typography>
+                  </Box>
+                </MenuItem>
+              ))}
+            </Select>
           </Box>
         </Box>
         <Box className="field-actions">
