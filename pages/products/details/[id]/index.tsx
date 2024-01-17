@@ -6,8 +6,10 @@ import { useRouter } from 'next/router'
 import Switch from '@/components/UI/switch'
 import Chip from '@/components/UI/chip'
 import ProductsComponents from '@/components/products'
+import { StyledSection } from '@/components/reusable/islandSections/styles'
+import Section from '@/components/reusable/islandSections'
 
-const SearchBar: NextPage = () => {
+const DetailsProductPage: NextPage = () => {
   const router = useRouter()
 
   return (
@@ -42,10 +44,7 @@ const SearchBar: NextPage = () => {
           </Typography>
         </Box>
       </Box>
-      <Box className="box-sections">
-        <Typography className="header-box-sections" variant="title4">
-          اطلاعات عمومی
-        </Typography>
+      <Section title='اطلاعات عمومی'>
         <Box className="items-box-sections">
           <Box className="box-details">
             <Box className="box-chaild-details">
@@ -78,46 +77,33 @@ const SearchBar: NextPage = () => {
             </Box>
           </Box>
         </Box>
-      </Box>
-      <Box className="box-sections">
-        <Typography className="header-box-sections" variant="title4">
-          ویژگی‌ها
-        </Typography>
+      </Section>
+      <Section title='ویژگی‌ها'>
         <Box className="items-box-sections">
           <Chip label="محمد" />
           <Chip label="محمد" />
           <Chip label="محمد" />
         </Box>
-      </Box>
-      <Box className="box-sections">
-        <Typography className="header-box-sections" variant="title4">
-          مشتری‌ها‌
-        </Typography>
+      </Section>
+      <Section title='مشتری‌ها‌'>
         <Box className="items-box-sections">
           <Chip label="محمد" />
           <Chip label="محمد" />
           <Chip label="محمد" />
         </Box>
-      </Box>
-      <Box className="box-sections">
-        <Typography className="header-box-sections" variant="title4">
-          دسته بندی‌ها‌
-        </Typography>
+      </Section>
+      <Section title="دسته بندی‌ها">
         <Box className="items-box-sections">
           <Chip label="محمد" />
           <Chip label="محمد" />
           <Chip label="محمد" />
         </Box>
-      </Box>
-      <Box className="box-sections">
-        <Typography className="header-box-sections" variant="title4">
-          {' '}
-          اطلاعات تکمیلی محصول{' '}
-        </Typography>
+      </Section>
+      <Section title='اطلاعات تکمیلی محصول'>
         <ProductsComponents />
-      </Box>
+      </Section>
     </StyledDetailsProductPage>
   )
 }
 
-export default SearchBar
+export default DetailsProductPage;

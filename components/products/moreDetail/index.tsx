@@ -42,12 +42,21 @@ const MoreDetail: FC<Props> = ({ productId }) => {
             cursor: 'pointer',
           },
         }}>
-        <Box>
-          <Link href={`/products/details/${productId}`}>
-            <Typography className="pointer-item" variant="button2">
-              جزییات محصول
-            </Typography>
-          </Link>
+        <Box className="box-more">
+          <Box>
+            <Link href={`/products/details/${productId}`}>
+              <Typography className="pointer-item" variant="body3">
+                جزییات محصول
+              </Typography>
+            </Link>
+          </Box>
+          <Box>
+            <Link href={`/products/edit/${productId}`}>
+              <Typography className="pointer-item" variant="body3">
+                ویرایش
+              </Typography>
+            </Link>
+          </Box>
         </Box>
       </Popover>
     </StyledMoreDetail>
