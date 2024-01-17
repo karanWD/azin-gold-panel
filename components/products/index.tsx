@@ -5,11 +5,11 @@ import { useCallback, useEffect, useState } from 'react'
 import { ApiRoutes } from '../../enums/ApiRoutes'
 import PageHeader from '../reusable/pageHeader'
 import { Typography } from '@mui/material'
-import MoreDetail from '../orders/moreDetail'
 import ChangeStatusProduct from '../products/changeStatusProducts'
 import PageBody from '../reusable/body'
 import { HandleDate } from '../../modules'
 import PaginationWrapper from '@/components/reusable/pagination'
+import MoreDetail from './moreDetail'
 
 const tableHeading: string[] = [
   'ردیف',
@@ -34,6 +34,8 @@ const ProductsComponents: NextPage = () => {
     })
   }
 
+  console.log(response)
+
   useEffect(() => {
     fetchProductsList(page)
   }, [page])
@@ -48,14 +50,7 @@ const ProductsComponents: NextPage = () => {
       wage: <Typography variant="body3">{item.wage + ' گرم '}</Typography>,
       features: <Typography variant="body3">{item.numbersOfFeatureGroups}</Typography>,
       status: <ChangeStatusProduct status={item.isActive} productId={item._id} />,
-      more: (
-        <MoreDetail
-          userId={item._id}
-          orderId={item._id}
-          trackingId={item.tracking}
-          updateHandler={() => fetchProductsList(page)}
-        />
-      ),
+      more: <MoreDetail productId={item._id} />,
     }))
   }, [])
 
