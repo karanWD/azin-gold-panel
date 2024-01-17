@@ -23,8 +23,8 @@ export const StyledMoreDetail = styled(Box)<BoxProps>(() => ({
       display: 'block',
     },
   },
-  ".box-more": {
+  '.box-more': {
     display: 'flex',
-    flexDirection: 'column'
-  }
+    flexDirection: 'column',
+  },
 }))

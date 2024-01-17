@@ -75,7 +75,7 @@ const SubProductsFields: FC<Props> = ({ fields, categories, updateHandler }) => 
     }
 
     request({
-      url: ApiRoutes.ADMIN_PRODUCTS + '/' + query.id + '/combination',
+      url: ApiRoutes.ADMIN_PRODUCTS + '/' + query.id + '/sub-products',
       method: 'POST',
       headers: {
         'Content-Type': 'multipart/form-data',

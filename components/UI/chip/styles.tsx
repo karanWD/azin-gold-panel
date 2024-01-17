@@ -1,6 +1,6 @@
 import { Chip, styled } from '@mui/material'
 
-export const StyledChip = styled(Chip)<any>(({ theme,format }) => ({
+export const StyledChip = styled(Chip)<any>(({ theme, format }) => ({
   display: 'flex',
   flexDirection: 'row-reverse',
   alignItems: 'center',

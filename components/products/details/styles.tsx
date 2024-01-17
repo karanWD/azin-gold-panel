@@ -24,8 +24,7 @@ export const StyledDetailsProductPage = styled(Box)<BoxProps>(({ theme }) => ({
     backgroundColor: theme.palette.primary['white'],
     padding: '14px',
     borderRadius: '8px',
-    display: 'flex',
-    justifyContent: 'space-between',
+    width: '400px !important',
   },
   '.items-box-sections': {
     display: 'flex',
@@ -50,30 +49,17 @@ export const StyledDetailsProductPage = styled(Box)<BoxProps>(({ theme }) => ({
   },
   '.box-details': {
     display: 'flex',
-    flexWrap: 'wrap',
-    rowGap: '10px',
-    columnGap: '10px',
   },
   '.box-chaild-details': {
     display: 'flex',
     flexDirection: 'column',
+    rowGap: '10px',
     marginRight: '10px',
+    width: '300px',
+    marginLeft: '150px',
   },
-  '.input-edit': {
-    width: '380px',
-  },
-  '.add-client-icon': {
-    color: theme.palette.txt['brandSecondary'],
-    position: 'relative',
-    top: '6px',
-    margin: '0 0 0 8px',
-  },
-  '.box-edit-button': {
+  '.box-data-product': {
     display: 'flex',
-    columnGap: '10px',
-    cursor: 'pointer',
-  },
-  '.set-edit-button': {
-    marginRight: 'auto',
+    justifyContent: 'space-between',
   },
 }))

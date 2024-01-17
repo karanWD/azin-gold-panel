@@ -1,10 +1,7 @@
-import {NextPage} from "next";
-import EditFeatureComponent from "@/components/features/editFeature";
+import { NextPage } from 'next'
+import EditFeatureComponent from '@/components/features/editFeature'
 
 const EditFeaturePage: NextPage = () => {
-
-  return (
-    <EditFeatureComponent />
-  )
+  return <EditFeatureComponent />
 }
 export default EditFeaturePage

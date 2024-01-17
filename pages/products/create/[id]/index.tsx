@@ -19,7 +19,7 @@ const ProductGroupsPage = () => {
 
   const updateHandler = (id: string, page) => {
     request({
-      url: ApiRoutes.ADMIN_PRODUCTS + '/' + id + '/combination?page=' + page,
+      url: ApiRoutes.ADMIN_PRODUCTS + '/' + id + '/sub-products?page=' + page,
     })
   }
 

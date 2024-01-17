@@ -17,7 +17,7 @@ const ChangeStatusProduct: FC<Props> = ({ productId, status }) => {
       method: 'PATCH',
       url: ApiRoutes.ADMIN_PRODUCTS + '/' + productId,
       data: {
-        isActive: `${!isActive}`,
+        isActive: !isActive,
       },
     }).then(() => setIsActive((prevState) => !prevState))
   }
