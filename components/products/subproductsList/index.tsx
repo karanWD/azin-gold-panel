@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { StyledSubproductsList } from '@/components/products/subproductsList/styles'
 import Table from '@/components/UI/table'
 import ListActions from '@/components/products/subproductsList/actions'
@@ -36,25 +36,27 @@ const generateTitles = (data: FeatureGroupType[]) => {
   return ['ردیف', ...featureTitles, 'وزن', 'دسته‌بندی', 'فعال/غیرفعال', 'عملیات']
 }
 
-const generateData = (list) => {
+const generateData = (list, updateHandler) => {
   const res = []
   for (const item of list) {
     let temp = {}
     temp = {
       _index: item.index,
     }
+    //feature items that we get dynamically
     for (const featItem of item.features) {
       temp = {
         ...temp,
         [featItem.title]: featItem.title,
       }
     }
+    //constant items that we have them always
     temp = {
       ...temp,
       _weight: `${item.weight}گرم`,
       category: item.category?.title ? item.category?.title : 'ثبت نشده است',
       _isActive: <SubProductsStatus status={item.isActive} id={item._id} />,
-      actions: <ListActions />,
+      actions: <ListActions id={item._id} updateHandler={updateHandler} />,
     }
     res.push(temp)
   }
@@ -62,9 +64,19 @@ const generateData = (list) => {
 }
 
 const SubproductsList: FC<Props> = ({ data }) => {
+  const [tableData, setTableData] = useState<SubProductType[]>(data.subProducts)
+  const updateListHandler = (type: 'DELETE' | 'EDIT', id: string, value?: any) => {
+    console.log(value)
+    if (type === 'DELETE') {
+      setTableData((prevState) => prevState.filter((item) => item._id !== id))
+    }
+  }
   return (
     <StyledSubproductsList>
-      <Table data={generateData(data?.subProducts) as any} headings={generateTitles(data?.product?.featureGroups)} />
+      <Table
+        data={generateData(tableData, updateListHandler)}
+        headings={generateTitles(data?.product?.featureGroups)}
+      />
     </StyledSubproductsList>
   )
 }

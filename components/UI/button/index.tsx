@@ -4,7 +4,7 @@ import { CircularProgress, Typography } from '@mui/material'
 
 interface ButtonPropsType {
   children: string | ReactNode | string[]
-  format: 'primary'
+  format: 'primary' | 'outline_primary'
   onClick?: (params?: any) => void
   type?: 'button' | 'submit'
   size?: 'small' | 'medium' | 'large'

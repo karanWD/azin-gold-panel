@@ -69,13 +69,12 @@ const SubProductsFields: FC<Props> = ({ fields, categories, updateHandler }) => 
       formData.append(`images`, item)
     }
     for (const item in fieldData.features) {
-      console.log(item)
       formData.append(`features[${index}]`, fieldData.features[item])
       index++
     }
 
     request({
-      url: ApiRoutes.ADMIN_PRODUCTS + '/' + query.id + '/combination',
+      url: ApiRoutes.ADMIN_PRODUCTS + '/' + query.id + '/sub-products',
       method: 'POST',
       headers: {
         'Content-Type': 'multipart/form-data',
