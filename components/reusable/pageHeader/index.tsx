@@ -21,7 +21,7 @@ const PageHeader: FC<Props> = ({ title, children }) => {
   return (
     username && (
       <StyledPageHeader>
-        <Box className="profile-container">
+        <Box className="title-container">
           <Typography variant={'title2'} className="page-title">
             {title}
           </Typography>

@@ -10,6 +10,11 @@ export const StyledPageHeader = styled(Box)<BoxProps>(({ theme }) => ({
     alignItems: 'center',
     columnGap: '24px',
   },
+  '.title-container': {
+    display: 'flex',
+    columnGap: '24px',
+    alignItems: 'center',
+  },
   '.profile-container': {
     display: 'flex',
     columnGap: '8px',
