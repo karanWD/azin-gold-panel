@@ -1,16 +1,22 @@
-import { Box, OutlinedInput, styled } from '@mui/material'
+import { Box, styled, TextField } from '@mui/material'
 
-export const StyledTextField = styled(OutlinedInput)<any>(({ theme }) => ({
-  '& .MuiInputBase-input': {
-    fontSize: '14px',
-    position: 'relative',
+export const StyledTextField = styled(TextField)<any>(({ theme }) => ({
+  '& .MuiInputBase-root': {
+    padding: '8px 12px',
+    display: 'flex',
+    alignItems: 'center',
+    columnGap: '8px',
     borderRadius: '8px',
-    border: '1px solid ' + theme.palette.outline.tertiary + ' !important',
-    padding: '6px 12px',
-    transition: theme.transitions.create(['border-color', 'background-color', 'box-shadow']),
+  },
+  '& .MuiInputBase-input': {
+    height: 'unset',
+    padding: '0',
+    fontSize: '16px',
+    lineHeight: '32px',
+    position: 'relative',
     '&::placeholder': {
+      fontSize: '16px',
       color: theme.palette.txt.brand,
-      fontSize: '14px',
     },
     '.Mui-focused': {
       '.MuiOutlinedInput-notchedOutline': {
@@ -22,6 +28,9 @@ export const StyledTextField = styled(OutlinedInput)<any>(({ theme }) => ({
   '.MuiOutlinedInput-notchedOutline': {
     borderColor: theme.palette.outline.tertiary,
     borderRadius: '8px',
+  },
+  '.MuiFormHelperText-root ': {
+    textAlign: 'right',
   },
 }))
 

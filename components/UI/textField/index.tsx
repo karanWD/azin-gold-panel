@@ -1,18 +1,41 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { StyledTextField, StyledTextFieldContainer } from '@/components/UI/textField/styles'
-import { TextFieldProps, Typography } from '@mui/material'
+import { IconButton, InputAdornment, TextFieldProps, Typography } from '@mui/material'
+import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined'
+import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined'
 
 type InputProps = {
   label: string
+  startIcon?: any
+  endIcon?: any
 } & TextFieldProps
 
-const TextField: FC<InputProps> = ({ label, ...rest }) => {
+const TextField: FC<InputProps> = ({ label, startIcon, endIcon, type, ...rest }) => {
+  const [showPass, setShowPass] = useState(false)
   return (
     <StyledTextFieldContainer>
       <Typography variant={'body3'} className="label-container">
         {label}
       </Typography>
-      <StyledTextField {...rest} />
+      <StyledTextField
+        variant="outlined"
+        InputProps={{
+          startAdornment: <InputAdornment position="start">{startIcon}</InputAdornment>,
+          endAdornment: (
+            <InputAdornment position="end">
+              {type === 'password' ? (
+                <IconButton onClick={() => setShowPass((prev) => !prev)} edge="end">
+                  {showPass ? <VisibilityOutlinedIcon /> : <VisibilityOffOutlinedIcon />}
+                </IconButton>
+              ) : (
+                endIcon
+              )}
+            </InputAdornment>
+          ),
+        }}
+        type={type === 'password' ? (showPass ? 'text' : 'password') : type}
+        {...rest}
+      />
     </StyledTextFieldContainer>
   )
 }
