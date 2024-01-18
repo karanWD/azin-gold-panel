@@ -8,9 +8,10 @@ type InputProps = {
   label: string
   startIcon?: any
   endIcon?: any
+  size?: 'small' | 'medium'
 } & TextFieldProps
 
-const TextField: FC<InputProps> = ({ label, startIcon, endIcon, type, ...rest }) => {
+const TextField: FC<InputProps> = ({ label, startIcon, endIcon, type, size = 'medium', ...rest }) => {
   const [showPass, setShowPass] = useState(false)
   return (
     <StyledTextFieldContainer>
@@ -18,6 +19,7 @@ const TextField: FC<InputProps> = ({ label, startIcon, endIcon, type, ...rest })
         {label}
       </Typography>
       <StyledTextField
+        size={size}
         variant="outlined"
         InputProps={{
           startAdornment: <InputAdornment position="start">{startIcon}</InputAdornment>,

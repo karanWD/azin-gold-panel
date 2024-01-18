@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react'
 import { StyledChangeStatusModal } from './styles'
-import { Box, Button, FormControl, MenuItem, Select, TextField, Typography } from '@mui/material'
+import { Box, FormControl, MenuItem, TextField, Typography } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 import Image from 'next/image'
 import { Statuses } from '../../../data/Statuses'
@@ -9,6 +9,8 @@ import { ApiRoutes } from '../../../enums/ApiRoutes'
 import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
 import { OrdersSubProduct } from '../../../types'
+import SelectBox from '@/components/UI/select'
+import Button from '@/components/UI/button'
 
 interface Props {
   selectedItems: {
@@ -34,10 +36,6 @@ const ChangeStatusModal: FC<Props> = ({ selectedItems, closeHandler, updateHandl
   const [newStatus, setNewStatus] = useState<string>(options[0].value)
   const [finalValues, setFinalValues] = useState(selectedItems)
   const { loading, request } = useFetch()
-
-  const handleChange = (event) => {
-    setNewStatus(event.target.value as string)
-  }
 
   const countHandler = (id, count) => {
     const temp = [...finalValues.items]
@@ -69,19 +67,21 @@ const ChangeStatusModal: FC<Props> = ({ selectedItems, closeHandler, updateHandl
   return (
     <StyledChangeStatusModal>
       <Box className="change-status-modal-header">
-        <Typography>تغییر وضعیت محصولات</Typography>
+        <Typography variant="title4">تغییر وضعیت محصولات</Typography>
         <CloseIcon fontSize="medium" onClick={closeHandler} />
       </Box>
       <Box className="change-status-modal-body">
-        <Typography>وضعیت</Typography>
+        <Typography variant="body3" component="div">
+          وضعیت
+        </Typography>
         <FormControl>
-          <Select className="select-status-container" size={'small'} value={newStatus} onChange={handleChange}>
+          <SelectBox changeHandler={(value) => setNewStatus(value)} value={newStatus}>
             {generateOptions().map((item, index) => (
               <MenuItem key={'OPTION_ITEM_' + index} value={item.value}>
                 {item.text}
               </MenuItem>
             ))}
-          </Select>
+          </SelectBox>
         </FormControl>
       </Box>
       <Box className="change-status-products-container">
@@ -117,7 +117,13 @@ const ChangeStatusModal: FC<Props> = ({ selectedItems, closeHandler, updateHandl
         ))}
       </Box>
       <Box className="change-status-modal-footer">
-        <Button color="primary" variant="contained" onClick={submitHandler} disabled={loading}>
+        <Button
+          format={'primary'}
+          size="large"
+          width="fit-content"
+          onClick={submitHandler}
+          disabled={!selectedItems}
+          loading={loading}>
           ثبت
         </Button>
       </Box>

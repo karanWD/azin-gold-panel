@@ -1,10 +1,12 @@
 import React, { FC, useState } from 'react'
-import { Box, Button, Modal, Typography } from '@mui/material'
-import EastIcon from '@mui/icons-material/East'
+import { Box, Modal } from '@mui/material'
 import OrdersStatus from '../ordersStatus'
 import { ORDER_STATUSES } from '../../../enums/OrderStatuses'
 import { useRouter } from 'next/router'
 import ChangeOrderTotalStatusModal from '../changeOrderTotalStatusModal'
+import BackToList from '@/components/reusable/backToList'
+import { StaticRoutes } from '../../../enums/StaticRoutes'
+import Button from '@/components/UI/button'
 
 type Props = {
   trackingId: string
@@ -19,20 +21,12 @@ const OrderHeader: FC<Props> = ({ status, trackingId, orderId, updateHandler }) 
   const [openModal, setOpenModal] = useState<boolean>(false)
   return (
     <Box className="order-header-container">
-      <Box>
-        <Typography variant="button2" className="back-button" onClick={() => router.push('/orders')}>
-          <EastIcon />
-          بازگشت به لیست
-        </Typography>
-        <Box className="order-detail-header">
-          <Typography variant="title3" className="order-detail-title">
-            {title}
-          </Typography>
-          <OrdersStatus status={status} type={'CONTAINED'} />
-        </Box>
+      <Box className="order-title-container">
+        <BackToList title={title} link={StaticRoutes.ORDERS} />
+        <OrdersStatus status={status} type={'CONTAINED'} />
       </Box>
-      <Button color="primary" variant="contained" onClick={() => setOpenModal(true)}>
-        <Typography variant="button2">تغییر وضعیت سفارش</Typography>
+      <Button width={'fit-content'} size="large" format={'primary'} onClick={() => setOpenModal(true)}>
+        تغییر وضعیت سفارش
       </Button>
       <Modal open={openModal} onClose={() => setOpenModal(false)}>
         <ChangeOrderTotalStatusModal

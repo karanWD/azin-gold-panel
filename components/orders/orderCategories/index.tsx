@@ -1,11 +1,12 @@
 import React, { FC, useState } from 'react'
 import { StyledOrderCategories } from './styles'
 import OrderCategoryName from './orderCategoryName'
-import { Box, Button, Modal, Typography } from '@mui/material'
+import { Box, Modal } from '@mui/material'
 import OrderProducts from '../orderProducts'
 import ChangeStatusModal from '../changeStatusModal'
 import { OrderProductsStatus, OrdersSubProduct } from '../../../types'
 import { ORDER_STATUSES } from '../../../enums/OrderStatuses'
+import Button from '@/components/UI/button'
 
 type Props = {
   data: OrderProductsStatus
@@ -36,7 +37,11 @@ const OrderCategories: FC<Props> = ({ data, orderId, updateHandler }) => {
       }))
     } else {
       const temp = selectedItems.items.filter((item) => item._id !== selectedData._id)
-      setSelectedItems((prevState) => ({ ...prevState, items: temp }))
+      if (temp.length === 0) {
+        setSelectedItems(null)
+      } else {
+        setSelectedItems((prevState) => ({ ...prevState, items: temp }))
+      }
     }
   }
 
@@ -44,7 +49,6 @@ const OrderCategories: FC<Props> = ({ data, orderId, updateHandler }) => {
     setOpenModal(false)
     setSelectedItems(null)
   }
-
   return (
     <StyledOrderCategories>
       {Object.entries(data).map(([key, value], index) => {
@@ -53,6 +57,7 @@ const OrderCategories: FC<Props> = ({ data, orderId, updateHandler }) => {
             <Box key={'ORDER_CATEGORY_ITEM_' + index} display="flex" flexDirection="column" gap="18px">
               <OrderCategoryName type={key as ORDER_STATUSES} />
               <OrderProducts
+                state={key as ORDER_STATUSES}
                 data={value}
                 selectedData={selectedItems}
                 handleChange={(isChecked, selectedData, groupId) =>
@@ -64,8 +69,13 @@ const OrderCategories: FC<Props> = ({ data, orderId, updateHandler }) => {
         )
       })}
       <Box mr={'auto'} ml={0}>
-        <Button color="primary" onClick={() => setOpenModal(true)} variant="contained">
-          <Typography variant="button2">تغییر وضعیت محصولات</Typography>
+        <Button
+          format={'primary'}
+          size={'large'}
+          width={'fit-content'}
+          onClick={() => setOpenModal(true)}
+          disabled={!selectedItems}>
+          تغییر وضعیت محصولات
         </Button>
       </Box>
       <Modal open={openModal} onClose={closeHandler}>

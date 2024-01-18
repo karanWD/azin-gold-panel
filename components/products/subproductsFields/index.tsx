@@ -114,6 +114,7 @@ const SubProductsFields: FC<Props> = ({ fields, categories, updateHandler }) => 
           <Divider className="divider" />
           <Box className="field-body">
             <TextField
+              size={'small'}
               label={''}
               value={fieldData['weight']}
               type={'number'}

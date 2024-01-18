@@ -9,7 +9,7 @@ interface StatusType extends BoxProps {
 
 export const StyledStatus = styled(Box)<StatusType>(({ theme, type, status }) => ({
   backgroundColor: type === 'TEXT' ? 'transparent' : Statuses[status].bg(theme),
-  border: `1px solid ${type === 'TEXT' ? 'transparent' : Statuses[status].color(theme)}`,
+  border: `1px solid ${type === 'TEXT' ? 'transparent' : Statuses[status].border(theme)}`,
   borderRadius: type === 'TEXT' ? '0' : '8px',
   color: Statuses[status].color(theme),
   padding: '4px 8px',

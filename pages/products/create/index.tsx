@@ -25,8 +25,8 @@ type FeatureGroupType = {
 
 type informationType = {
   title: string
-  wage: string
-  minimumSoldMultiple: string
+  wage: number
+  minimumSoldMultiple: number
   staticNotice: string
   dynamicNotice: string
   featureGroups: FeatureGroupType[]
@@ -34,8 +34,8 @@ type informationType = {
 }
 const DEFAULT_VALUES = {
   title: '',
-  wage: '',
-  minimumSoldMultiple: '',
+  wage: 0,
+  minimumSoldMultiple: 1,
   staticNotice: '',
   dynamicNotice: '',
   producer: '',
@@ -46,6 +46,7 @@ const CreateProductPage = () => {
   const router = useRouter()
   const { request, loading } = useFetch()
   const [data, setData] = useState<informationType>(DEFAULT_VALUES)
+  const [errors, setErrors] = useState<{ [key: string]: boolean } | null>(null)
   const changeHandler = (value: string | number, key: string) => {
     setData((prevState) => ({
       ...prevState,
@@ -65,7 +66,33 @@ const CreateProductPage = () => {
     setData((prev) => ({ ...prev, featureGroups: [...filteredFeatures] }))
   }
 
-  const submitHandler = () => {
+  const validationHandler = (field, value) => {
+    switch (field) {
+      case 'title':
+        return value.length > 0
+      case 'wage':
+        console.log(+value, +value > -1)
+        return +value > -1
+      case 'minimumSoldMultiple':
+        return +value > 0
+      default:
+        return true
+    }
+  }
+
+  const submitHandler = async () => {
+    let errors = {}
+    for (const item in data) {
+      const isValid = validationHandler(item, data[item])
+      console.log(item, data[item], isValid)
+      if (!isValid) {
+        errors = { ...errors, [item]: true }
+      }
+    }
+    if (Object.keys(errors).length) {
+      setErrors(errors)
+      return
+    }
     const values = {
       ...data,
       wage: +data.wage,
@@ -73,7 +100,12 @@ const CreateProductPage = () => {
       featureGroups: data.featureGroups.map((item) => item._id),
     }
     delete values.producer
-
+    if (!values.dynamicNotice) {
+      delete values.dynamicNotice
+    }
+    if (!values.staticNotice) {
+      delete values.staticNotice
+    }
     request({
       method: 'POST',
       url: ApiRoutes.ADMIN_PRODUCTS,
@@ -87,7 +119,7 @@ const CreateProductPage = () => {
     <StyledCreateProduct>
       <BackToList title={'ایجاد محصول'} link={StaticRoutes.PRODUCTS} />
       <Section title="اطلاعات عمومی">
-        <ProductInformation data={data} changeHandler={changeHandler} />
+        <ProductInformation data={data} errors={errors} changeHandler={changeHandler} />
       </Section>
       <Section title="ویژگی ها">
         <ProductFeature selectHandler={selectHandler} selectedFeatures={data.featureGroups} />
@@ -95,7 +127,7 @@ const CreateProductPage = () => {
         <ProductFeatureList list={data.featureGroups} deleteHandler={deleteHandler} />
       </Section>
       <Box className="submit-button-container">
-        <Button width="114px" format="primary" onClick={submitHandler} loading={loading}>
+        <Button width="fit-content" size="large" format="primary" onClick={submitHandler} loading={loading}>
           مرحله بعد
         </Button>
       </Box>

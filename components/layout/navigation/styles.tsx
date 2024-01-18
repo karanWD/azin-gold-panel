@@ -1,6 +1,7 @@
 import { Box, BoxProps, styled } from '@mui/material'
 
 export const StyledNavigation = styled(Box)<BoxProps>(() => ({
+  width: '100%',
   display: 'flex',
   rowGap: '48px',
   flexDirection: 'column',

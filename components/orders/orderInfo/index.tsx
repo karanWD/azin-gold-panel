@@ -14,7 +14,7 @@ const OrderInfo: FC<Props> = ({ data }) => {
         <OrderInfoItem title="شماره موبایل:" value={data.mobile} />
         <OrderInfoItem
           title="تاریخ تحویل:"
-          value={new Date(data.order.updatedAt).toLocaleDateString('fa-ir') ?? '--'}
+          value={data.order.deliveredAt ? new Date(data.order.deliveredAt).toLocaleDateString('fa-ir') : '--'}
         />
       </Box>
       <Box className="order-info-columns">

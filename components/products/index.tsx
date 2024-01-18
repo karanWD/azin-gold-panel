@@ -48,7 +48,7 @@ const ProductsComponents: NextPage = () => {
       title: <Typography variant="body3">{item.title}</Typography>,
       createdAt: <Typography variant="body3"> {HandleDate(item.createdAt)}</Typography>,
       updatedAt: <Typography variant="body3">{HandleDate(item.updatedAt)}</Typography>,
-      wage: <Typography variant="body3">{item.wage + ' گرم '}</Typography>,
+      wage: <Typography variant="body3">{item.wage + ' % '}</Typography>,
       features: <Typography variant="body3">{item.numbersOfFeatureGroups}</Typography>,
       status: <ChangeStatusProduct status={item.isActive} productId={item._id} />,
       more: (
