@@ -7,6 +7,9 @@ import { ApiRoutes } from '../../../../enums/ApiRoutes'
 import { useRouter } from 'next/router'
 import SubproductsList from '@/components/products/subproductsList'
 import PaginationWrapper from '@/components/reusable/pagination'
+import Button from '@/components/UI/button'
+import { StaticRoutes } from '../../../../enums/StaticRoutes'
+import { Box } from '@mui/material'
 
 const ProductGroupsPage = () => {
   const router = useRouter()
@@ -31,10 +34,16 @@ const ProductGroupsPage = () => {
         <BackToList title={'تکمیل اطلاعات محصول'} />
         <SubProductsFields
           fields={response?.product.featureGroups}
+          categories={response?.product.categories}
           updateHandler={() => updateHandler(id as string, 1)}
         />
         <SubproductsList data={response} />
         <PaginationWrapper page={page} total={response.totalPages} onChange={(value) => setPage(value)} />
+        <Box className="button-container">
+          <Button width="132px" size="large" format="primary" onClick={() => router.push(StaticRoutes.PRODUCTS)}>
+            ثبت محصول
+          </Button>
+        </Box>
       </StyledProductGroups>
     )
   )

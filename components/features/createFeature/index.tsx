@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
 import { StyledAddFeature } from './styles'
-import { Box, Button, Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace'
 import { useState } from 'react'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
@@ -14,12 +14,12 @@ import UseFetch from '../../../hooks/useFetch'
 import { ApiRoutes } from '../../../enums/ApiRoutes'
 import { DISPLAY_MODES } from '../../../enums/DisplayModes'
 import Image from 'next/image'
+import Button from '@/components/UI/button'
 
 const CreateFeatureComponent: NextPage = () => {
-  // const [numberValues, setNumberValues] = useState<number>(1)
   const router = useRouter()
 
-  const [headerInput, setHeaderInput] = useState<string>('')
+  const [headerInput, setHeaderInput] = useState<string>()
   const [imageInput, setImageInput] = useState([])
 
   const [temp, setTemp] = useState([{ title: '', sequence: '', id: Math.random() * 100 }])
@@ -125,7 +125,7 @@ const CreateFeatureComponent: NextPage = () => {
           </Box>
         </Box>
         <Box className="register-feature">
-          <Button color="primary" variant="contained" type="submit">
+          <Button width="40px" format="primary" type="submit">
             <Typography variant={'button2'}>ثبت</Typography>
           </Button>
         </Box>
