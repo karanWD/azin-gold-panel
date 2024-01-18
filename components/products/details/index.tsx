@@ -28,6 +28,8 @@ const DetailsProductComponents: NextPage = () => {
     id && updateHandler(id as string, page)
   }, [id, page])
 
+  console.log(response)
+
   return (
     response && (
       <StyledDetailsProductPage>
@@ -51,7 +53,7 @@ const DetailsProductComponents: NextPage = () => {
         </Box>
         <DataProductSection data={response?.product} />
         <SectionsDetails data={response?.product} />
-        <SubproductsList data={response} />
+        <SubproductsList data={response} detailsMode={true} />
         <PaginationWrapper page={page} total={response?.totalPages} onChange={(value) => setPage(value)} />
       </StyledDetailsProductPage>
     )

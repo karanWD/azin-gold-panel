@@ -5,7 +5,16 @@ import { HandleDate } from 'modules'
 import { StyledSectionsDetails } from './styles'
 
 type Props = {
-  data: any
+  data: {
+    title: string
+    wage: number
+    staticNotice: string
+    createdAt: string
+    manufacture: string
+    minimumSoldMultiple: number
+    dynamicNotice: string
+    updatedAt: string
+  }
 }
 const DataProductSection: FC<Props> = ({ data }) => {
   console.log(data)

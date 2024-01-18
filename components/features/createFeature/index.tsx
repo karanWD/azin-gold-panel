@@ -1,7 +1,6 @@
 import { NextPage } from 'next'
 import { StyledAddFeature } from './styles'
 import { Box, Typography } from '@mui/material'
-import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace'
 import { useState } from 'react'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
 import InputHeaderFeature from './createHeaderFeature'
@@ -15,6 +14,7 @@ import { ApiRoutes } from '../../../enums/ApiRoutes'
 import { DISPLAY_MODES } from '../../../enums/DisplayModes'
 import Image from 'next/image'
 import Button from '@/components/UI/button'
+import BackToList from '@/components/reusable/backToList'
 
 const CreateFeatureComponent: NextPage = () => {
   const router = useRouter()
@@ -67,13 +67,7 @@ const CreateFeatureComponent: NextPage = () => {
   return (
     <StyledAddFeature>
       <form onSubmit={submitHandler}>
-        <Box>
-          <Box className="back-to-list" onClick={() => router.push('/features')}>
-            <KeyboardBackspaceIcon className="back-icon" />
-            <Typography variant="body3">بازگشت به لیست</Typography>
-          </Box>
-          <Typography variant="title2">ایجاد ویژگی {router.query.title}</Typography>
-        </Box>
+        <BackToList title="ایجاد ویژگی" />
         <Box className="container">
           <Box className="header-box">
             <InputHeaderFeature amountInput={headerInput} setAmountInput={setHeaderInput} />

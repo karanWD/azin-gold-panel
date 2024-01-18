@@ -29,14 +29,15 @@ type Props = {
     }
     subProducts: SubProductType[]
   }
+  detailsMode?: boolean
 }
 
-const generateTitles = (data: FeatureGroupType[]) => {
+const generateTitles = (data: FeatureGroupType[], detailsMode) => {
   const featureTitles = data?.map((item) => item.header)
-  return ['ردیف', ...featureTitles, 'وزن', 'دسته‌بندی', 'فعال/غیرفعال', 'عملیات']
+  return ['ردیف', ...featureTitles, 'وزن', 'دسته‌بندی', 'فعال/غیرفعال', !detailsMode ? 'عملیات' : null]
 }
 
-const generateData = (list) => {
+const generateData = (list, detailsMode) => {
   const res = []
   for (const item of list) {
     let temp = {}
@@ -54,17 +55,20 @@ const generateData = (list) => {
       _weight: `${item.weight}گرم`,
       category: item.category?.title ? item.category?.title : 'ثبت نشده است',
       _isActive: <SubProductsStatus status={item.isActive} id={item._id} />,
-      actions: <ListActions />,
+      actions: !detailsMode ? <ListActions /> : null,
     }
     res.push(temp)
   }
   return res
 }
 
-const SubproductsList: FC<Props> = ({ data }) => {
+const SubproductsList: FC<Props> = ({ data, detailsMode }) => {
   return (
     <StyledSubproductsList>
-      <Table data={generateData(data?.subProducts) as any} headings={generateTitles(data?.product?.featureGroups)} />
+      <Table
+        data={generateData(data?.subProducts, detailsMode) as any}
+        headings={generateTitles(data?.product?.featureGroups, detailsMode)}
+      />
     </StyledSubproductsList>
   )
 }

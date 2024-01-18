@@ -24,7 +24,8 @@ export const StyledDetailsProductPage = styled(Box)<BoxProps>(({ theme }) => ({
     backgroundColor: theme.palette.primary['white'],
     padding: '14px',
     borderRadius: '8px',
-    width: '400px !important',
+    display: 'flex',
+    justifyContent: 'space-between',
   },
   '.items-box-sections': {
     display: 'flex',
@@ -34,7 +35,7 @@ export const StyledDetailsProductPage = styled(Box)<BoxProps>(({ theme }) => ({
     borderRadius: '16px',
     backgroundColor: theme.palette.primary['white'],
     padding: '14px',
-    marginLeft: '40px',
+    margin: '0 20px 0 20px',
     height: '70px',
     width: '250px',
   },
@@ -49,17 +50,30 @@ export const StyledDetailsProductPage = styled(Box)<BoxProps>(({ theme }) => ({
   },
   '.box-details': {
     display: 'flex',
+    flexWrap: 'wrap',
+    rowGap: '10px',
+    columnGap: '10px',
   },
   '.box-chaild-details': {
     display: 'flex',
     flexDirection: 'column',
-    rowGap: '10px',
     marginRight: '10px',
-    width: '300px',
-    marginLeft: '150px',
   },
-  '.box-data-product': {
+  '.input-edit': {
+    width: '380px',
+  },
+  '.add-client-icon': {
+    color: theme.palette.txt['brandSecondary'],
+    position: 'relative',
+    top: '6px',
+    margin: '0 0 0 8px',
+  },
+  '.box-edit-button': {
     display: 'flex',
-    justifyContent: 'space-between',
+    columnGap: '10px',
+    cursor: 'pointer',
+  },
+  '.set-edit-button': {
+    marginRight: 'auto',
   },
 }))
