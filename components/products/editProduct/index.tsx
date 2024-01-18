@@ -5,16 +5,78 @@ import { useRouter } from 'next/router'
 import Switch from '@/components/UI/switch'
 import Chip from '@/components/UI/chip'
 import Section from '@/components/reusable/islandSections'
-import TextField from '@/components/UI/textField'
-import SelectBox from '@/components/UI/select'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
 import Image from 'next/image'
 import Button from '@/components/UI/button'
 import Link from 'next/link'
 import BackToList from '@/components/reusable/backToList'
+import UseFetch from 'hooks/useFetch'
+import { useEffect, useState } from 'react'
+import { ApiRoutes } from 'enums/ApiRoutes'
+import ProductInformation from '../create/productInformation'
+
+
+  type informationType = {
+    title: string
+    wage: string
+    minimumSoldMultiple: string
+    staticNotice: string
+    dynamicNotice: string
+    producer: string /*تولیدکنندگان فعلا نداریم */
+  }
+  const DEFAULT_VALUES = {
+    title: '',
+    wage: '',
+    minimumSoldMultiple: '',
+    staticNotice: '',
+    dynamicNotice: '',
+    producer: '',
+  }
 
 const EditProductComponent: NextPage = () => {
   const router = useRouter()
+  const { request, response } = UseFetch()
+  const { request:editReq} = UseFetch()
+  const [data, setData] = useState<informationType>(DEFAULT_VALUES)
+  
+  const { id } = router.query
+  
+  
+  const updateHandler = (id: string) => {
+      request({
+          url: ApiRoutes.ADMIN_PRODUCTS + '/' + id + '/edit',
+        })
+  }
+
+  console.log(id)
+  
+  const editHandler = () => {
+    
+    const values = {
+        ...data,
+        wage: +data.wage,
+        minimumSoldMultiple: +data.minimumSoldMultiple,
+      }
+      delete values.producer
+      editReq({
+        method: "PATCH",
+        url: ApiRoutes.ADMIN_PRODUCTS + '/' + id ,
+        data:values
+      })
+}
+  
+  useEffect(() => {
+      id && updateHandler(id as string)
+    }, [id])
+    
+    const changeHandler = (value: string | number, key: string) => {
+      setData((prevState) => ({
+        ...prevState,
+        [key]: value,
+      }))}
+
+  console.log(response)
+
   return (
     <StyledDetailsProductPage>
       <Box className="header-details">
@@ -25,32 +87,15 @@ const EditProductComponent: NextPage = () => {
         </Box>
       </Box>
       <Section title="اطلاعات عمومی">
-        <Box className="box-details">
-          <TextField className="input-edit" label={'نام محصول'} />
-          <Box className="input-edit">
-            <SelectBox value="لیارا" changeHandler={() => {}} label={'تولید کننده کالا'}>
-              <Typography>لیارا</Typography>
-            </SelectBox>
-          </Box>
-          <TextField className="input-edit" label={'اجرت'} />
-          <TextField className="input-edit" label={'ضریب حداقل فروش'} />
-          <TextField
-            className="input-edit"
-            label={'توضیحات ثابت'}
-            placeholder="توضیحات ثابت را در صورت نیاز وارد کنید."
-          />
-          <TextField
-            className="input-edit"
-            label={'توضیحات متغیر'}
-            placeholder="توضیحات متغیر را در صورت نیاز وارد کنید"
-          />
-        </Box>
+        <ProductInformation data={data} changeHandler={changeHandler} />
       </Section>
       <Section title="ویژگی‌ها">
         <Box className="items-box-sections">
-          <Chip format={'brandSecondary'} label="محمد" />
-          <Chip format={'brandSecondary'} label="محمد" />
-          <Chip format={'brandSecondary'} label="محمد" />
+          {
+            response?.featureGroups.map((i) => (
+                <Chip key={i} format={'brandSecondary'} label={i?.header} />
+            ))
+          }
         </Box>
       </Section>
       <Section title="مشتری‌ها‌">
@@ -66,9 +111,11 @@ const EditProductComponent: NextPage = () => {
       </Section>
       <Section title="دسته بندی‌ها">
         <Box className="items-box-sections">
-          <Chip format={'brandSecondary'} handleDelete={() => {}} label="محمد" />
-          <Chip format={'brandSecondary'} handleDelete={() => {}} label="محمد" />
-          <Chip format={'brandSecondary'} handleDelete={() => {}} label="محمد" />
+            {
+            response?.categories.map((i) => (
+                <Chip key={i} format={'brandSecondary'} label={i?.title} />
+            ))
+          }
         </Box>
       </Section>
       <Box className="header-box-sections" title="اطلاعات تکمیلی محصول">
@@ -81,7 +128,7 @@ const EditProductComponent: NextPage = () => {
         </Box>
       </Box>
       <Box className="set-edit-button">
-        <Button width="100px" format="primary">
+        <Button width="100px" format="primary" onClick={editHandler}>
           ویرایش
         </Button>
       </Box>
