@@ -14,7 +14,8 @@ import UseFetch from 'hooks/useFetch'
 import { useEffect, useState } from 'react'
 import { ApiRoutes } from 'enums/ApiRoutes'
 import ProductInformation from '../create/productInformation'
-
+import SectionsCategori from './sectionsCategori'
+import SectionsFeatures from './sectionsFeatures'
 
   type informationType = {
     title: string
@@ -38,7 +39,7 @@ const EditProductComponent: NextPage = () => {
   const { request, response } = UseFetch()
   const { request:editReq} = UseFetch()
   const [data, setData] = useState<informationType>(DEFAULT_VALUES)
-  
+  const [isActive, setIsActive] = useState<boolean>(response?.product?.isActive)
   const { id } = router.query
   
   
@@ -75,6 +76,17 @@ const EditProductComponent: NextPage = () => {
         [key]: value,
       }))}
 
+      const editStatusProducts = () => {
+        request({
+          method: 'PATCH',
+          url: ApiRoutes.ADMIN_PRODUCTS + '/' + id,
+          data: {
+            isActive: !isActive,
+          },
+        }).then(() => setIsActive((prevState) => !prevState))
+      }
+      
+
   console.log(response)
 
   return (
@@ -83,25 +95,15 @@ const EditProductComponent: NextPage = () => {
         <BackToList title={'ویرایش محصول '} />
         <Box>
           <Typography variant="body3"> فعال/ غیرفعال: </Typography>
-          <Switch checked={true} onChange={() => {}} />
+          <Switch checked={isActive} onChange={editStatusProducts} />
         </Box>
       </Box>
       <Section title="اطلاعات عمومی">
         <ProductInformation data={data} changeHandler={changeHandler} />
       </Section>
-      <Section title="ویژگی‌ها">
-        <Box className="items-box-sections">
-          {
-            response?.featureGroups.map((i) => (
-                <Chip key={i} format={'brandSecondary'} label={i?.header} />
-            ))
-          }
-        </Box>
-      </Section>
+      <SectionsFeatures data={response} />
       <Section title="مشتری‌ها‌">
         <Box className="items-box-sections">
-          <Chip format={'brandSecondary'} handleDelete={() => {}} label="محمد" />
-          <Chip format={'brandSecondary'} handleDelete={() => {}} label="محمد" />
           <Chip format={'brandSecondary'} handleDelete={() => {}} label="محمد" />
           <Box>
             <AddCircleOutlineIcon className="add-client-icon" />
@@ -109,15 +111,7 @@ const EditProductComponent: NextPage = () => {
           </Box>
         </Box>
       </Section>
-      <Section title="دسته بندی‌ها">
-        <Box className="items-box-sections">
-            {
-            response?.categories.map((i) => (
-                <Chip key={i} format={'brandSecondary'} label={i?.title} />
-            ))
-          }
-        </Box>
-      </Section>
+      <SectionsCategori data={response} />
       <Box className="header-box-sections" title="اطلاعات تکمیلی محصول">
         <Typography variant="title4">اطلاعات تکمیلی محصول</Typography>
         <Box>

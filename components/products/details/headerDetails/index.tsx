@@ -12,7 +12,7 @@ type Props = {
 }
 const HeaderDetails: FC<Props> = ({ id }) => {
   const { request, response } = UseFetch()
-  const [isActive, setIsActive] = useState<boolean>(response?.product.isActive)
+  const [isActive, setIsActive] = useState<boolean>(response?.product?.isActive)
   const router = useRouter()
 
   const editStatusProducts = () => {
@@ -36,7 +36,7 @@ const HeaderDetails: FC<Props> = ({ id }) => {
         </Box>
         <Box>
           <Typography variant="body3"> فعال/ غیرفعال: </Typography>
-          <Switch checked={isActive} onChange={() => editStatusProducts} />
+          <Switch checked={isActive} onChange={editStatusProducts} />
         </Box>
       </Box>
     </StyledHeaderDetails>
