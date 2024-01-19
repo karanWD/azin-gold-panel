@@ -7,6 +7,11 @@ export const StyledButton = styled(Button)<any>(({ theme, format, width, size })
       color: theme.palette.txt.primary,
       border: 'none',
     },
+    outline_primary: {
+      backgroundColor: 'transparent',
+      color: theme.palette.txt.brand,
+      border: `1px solid ${theme.palette.outline.brand}`,
+    },
   }
 
   const SIZES = {
@@ -44,6 +49,11 @@ export const StyledButton = styled(Button)<any>(({ theme, format, width, size })
       width: '32px !important',
       height: '32px !important',
       color: theme.palette.txt.tertiary,
+    },
+    '&:hover': {
+      backgroundColor: TYPES[format].backgroundColor,
+      color: TYPES[format].color,
+      border: TYPES[format].border,
     },
   }
 })

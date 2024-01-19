@@ -4,12 +4,15 @@ import useFetch from '../../hooks/useFetch'
 import { useCallback, useEffect, useState } from 'react'
 import { ApiRoutes } from '../../enums/ApiRoutes'
 import PageHeader from '../reusable/pageHeader'
-import { Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import ChangeStatusProduct from '../products/changeStatusProducts'
 import PageBody from '../reusable/body'
 import { HandleDate } from '../../modules'
 import PaginationWrapper from '@/components/reusable/pagination'
 import MoreDetail from './moreDetail'
+import { StaticRoutes } from 'enums/StaticRoutes'
+import Link from 'next/link'
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
 
 const tableHeading: string[] = [
   'ردیف',
@@ -45,7 +48,7 @@ const ProductsComponents: NextPage = () => {
       title: <Typography variant="body3">{item.title}</Typography>,
       createdAt: <Typography variant="body3"> {HandleDate(item.createdAt)}</Typography>,
       updatedAt: <Typography variant="body3">{HandleDate(item.updatedAt)}</Typography>,
-      wage: <Typography variant="body3">{item.wage + ' گرم '}</Typography>,
+      wage: <Typography variant="body3">{item.wage + ' % '}</Typography>,
       features: <Typography variant="body3">{item.numbersOfFeatureGroups}</Typography>,
       status: <ChangeStatusProduct status={item.isActive} productId={item._id} />,
       more: <MoreDetail productId={item._id} />,
@@ -54,7 +57,14 @@ const ProductsComponents: NextPage = () => {
 
   return (
     <StyledProductsPage>
-      <PageHeader title="محصولات" />
+      <PageHeader title="محصولات">
+        <Link href={StaticRoutes.CREATE_PRODUCT}>
+          <Box className="add-product-button">
+            <AddCircleOutlineIcon />
+            <Typography variant="button1">افزودن محصول</Typography>
+          </Box>
+        </Link>
+      </PageHeader>
       <PageBody data={formatData(response?.products)} loading={loading} tableHeading={tableHeading} />
       <PaginationWrapper page={page} total={response?.totalPages} onChange={(value) => setPage(value)} />
     </StyledProductsPage>

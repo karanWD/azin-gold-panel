@@ -1,11 +1,13 @@
 import React, { FC, useState } from 'react'
 import { StyledChangeOrderTotalStatus } from './styles'
-import { Box, Button, FormControl, MenuItem, Select, Typography } from '@mui/material'
+import { Box, MenuItem, Typography } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 import { Statuses } from '../../../data/Statuses'
 import useFetch from '../../../hooks/useFetch'
 import { ApiRoutes } from '../../../enums/ApiRoutes'
 import { toast } from 'react-toastify'
+import Button from '@/components/UI/button'
+import SelectBox from '@/components/UI/select'
 
 type Props = {
   closeHandler: () => void
@@ -46,23 +48,17 @@ const ChangeOrderTotalStatusModal: FC<Props> = ({ closeHandler, updateHandler, u
       </Box>
       <Box className="change-status-modal-body">
         <Typography variant="body3">وضعیت</Typography>
-        <FormControl fullWidth>
-          <Select
-            className="select-status-container"
-            size={'small'}
-            value={newStatus}
-            onChange={(e) => setNewStatus(e.target.value as string)}>
-            {generateOptions().map((item, index) => (
-              <MenuItem key={'OPTION_ITEM_' + index} value={item.value}>
-                <Typography variant={'button2'}>{item.text}</Typography>
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
+        <SelectBox changeHandler={(value) => setNewStatus(value)} value={newStatus}>
+          {generateOptions().map((item, index) => (
+            <MenuItem key={'OPTION_ITEM_' + index} value={item.value}>
+              <Typography variant={'button2'}>{item.text}</Typography>
+            </MenuItem>
+          ))}
+        </SelectBox>
       </Box>
       <Box className="change-status-modal-footer">
-        <Button color="primary" variant="contained" onClick={submitHandler} disabled={loading}>
-          <Typography variant={'button2'}>ثبت</Typography>
+        <Button format={'primary'} size={'large'} width="fit-content" onClick={submitHandler} loading={loading}>
+          ثبت
         </Button>
       </Box>
     </StyledChangeOrderTotalStatus>

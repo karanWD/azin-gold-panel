@@ -9,6 +9,11 @@ export const StyledOrderDetailPage = styled(Box)<BoxProps>(({ theme }) => ({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+  '.order-title-container': {
+    display: 'flex',
+    alignItems: 'flex-end',
+    columnGap: '16px',
+  },
   '.back-button': {
     display: 'flex',
     alignItems: 'center',

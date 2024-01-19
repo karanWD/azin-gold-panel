@@ -33,6 +33,7 @@ export interface OrderDetailInfo {
   createdAt: string
   updatedAt: string
   tracking: string
+  deliveredAt?: string
 }
 
 export interface OrderProductsStatus {
