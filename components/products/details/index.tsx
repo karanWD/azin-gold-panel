@@ -22,13 +22,10 @@ const DetailsProductComponents: NextPage = () => {
     })
   }
   const { id } = router.query
-  console.log(id)
 
   useEffect(() => {
     id && updateHandler(id as string, page)
   }, [id, page])
-
-  console.log(response)
 
   return (
     response && (

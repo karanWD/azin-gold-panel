@@ -17,7 +17,6 @@ type Props = {
   }
 }
 const DataProductSection: FC<Props> = ({ data }) => {
-  console.log(data)
   return (
     <StyledSectionsDetails>
       <Section title="اطلاعات عمومی">

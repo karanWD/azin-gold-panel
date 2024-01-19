@@ -69,7 +69,6 @@ const SubProductsFields: FC<Props> = ({ fields, categories, updateHandler }) => 
       formData.append(`images`, item)
     }
     for (const item in fieldData.features) {
-      console.log(item)
       formData.append(`features[${index}]`, fieldData.features[item])
       index++
     }

@@ -34,8 +34,6 @@ const ProductsComponents: NextPage = () => {
     })
   }
 
-  console.log(response)
-
   useEffect(() => {
     fetchProductsList(page)
   }, [page])

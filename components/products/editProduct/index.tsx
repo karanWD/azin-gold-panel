@@ -17,77 +17,71 @@ import ProductInformation from '../create/productInformation'
 import SectionsCategori from './sectionsCategori'
 import SectionsFeatures from './sectionsFeatures'
 
-  type informationType = {
-    title: string
-    wage: string
-    minimumSoldMultiple: string
-    staticNotice: string
-    dynamicNotice: string
-    producer: string /*تولیدکنندگان فعلا نداریم */
-  }
-  const DEFAULT_VALUES = {
-    title: '',
-    wage: '',
-    minimumSoldMultiple: '',
-    staticNotice: '',
-    dynamicNotice: '',
-    producer: '',
-  }
+type informationType = {
+  title: string
+  wage: string
+  minimumSoldMultiple: string
+  staticNotice: string
+  dynamicNotice: string
+  producer: string /*تولیدکنندگان فعلا نداریم */
+}
+const DEFAULT_VALUES = {
+  title: '',
+  wage: '',
+  minimumSoldMultiple: '',
+  staticNotice: '',
+  dynamicNotice: '',
+  producer: '',
+}
 
 const EditProductComponent: NextPage = () => {
   const router = useRouter()
   const { request, response } = UseFetch()
-  const { request:editReq} = UseFetch()
+  const { request: editReq } = UseFetch()
   const [data, setData] = useState<informationType>(DEFAULT_VALUES)
   const [isActive, setIsActive] = useState<boolean>(response?.product?.isActive)
   const { id } = router.query
-  
-  
+
   const updateHandler = (id: string) => {
-      request({
-          url: ApiRoutes.ADMIN_PRODUCTS + '/' + id + '/edit',
-        })
+    request({
+      url: ApiRoutes.ADMIN_PRODUCTS + '/' + id + '/edit',
+    })
   }
 
-  console.log(id)
-  
   const editHandler = () => {
-    
     const values = {
-        ...data,
-        wage: +data.wage,
-        minimumSoldMultiple: +data.minimumSoldMultiple,
-      }
-      delete values.producer
-      editReq({
-        method: "PATCH",
-        url: ApiRoutes.ADMIN_PRODUCTS + '/' + id ,
-        data:values
-      })
-}
-  
+      ...data,
+      wage: +data.wage,
+      minimumSoldMultiple: +data.minimumSoldMultiple,
+    }
+    delete values.producer
+    editReq({
+      method: 'PATCH',
+      url: ApiRoutes.ADMIN_PRODUCTS + '/' + id,
+      data: values,
+    })
+  }
+
   useEffect(() => {
-      id && updateHandler(id as string)
-    }, [id])
-    
-    const changeHandler = (value: string | number, key: string) => {
-      setData((prevState) => ({
-        ...prevState,
-        [key]: value,
-      }))}
+    id && updateHandler(id as string)
+  }, [id])
 
-      const editStatusProducts = () => {
-        request({
-          method: 'PATCH',
-          url: ApiRoutes.ADMIN_PRODUCTS + '/' + id,
-          data: {
-            isActive: !isActive,
-          },
-        }).then(() => setIsActive((prevState) => !prevState))
-      }
-      
+  const changeHandler = (value: string | number, key: string) => {
+    setData((prevState) => ({
+      ...prevState,
+      [key]: value,
+    }))
+  }
 
-  console.log(response)
+  const editStatusProducts = () => {
+    request({
+      method: 'PATCH',
+      url: ApiRoutes.ADMIN_PRODUCTS + '/' + id,
+      data: {
+        isActive: !isActive,
+      },
+    }).then(() => setIsActive((prevState) => !prevState))
+  }
 
   return (
     <StyledDetailsProductPage>

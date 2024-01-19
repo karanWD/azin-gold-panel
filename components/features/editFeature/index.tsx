@@ -29,10 +29,7 @@ const EditFeatureComponent: NextPage = () => {
     request({
       url: ApiRoutes.ADMIN_FEATURES + `/${featureId}`,
     })
-    console.log('response')
   }
-
-  console.log(temp)
 
   useEffect(() => {
     getFeatureData()
@@ -44,16 +41,9 @@ const EditFeatureComponent: NextPage = () => {
     setTemp(response?.features ? response.features : [])
   }, [response])
 
-  console.log(response?.features)
-  console.log(temp)
-
   const changeHandler = (value, id, type) => {
-    console.log('id:', id)
     const updatedTemp = [...temp]
-    console.log(updatedTemp)
-
     updatedTemp.find((i) => i.id === id)[type] = value
-    console.log(updatedTemp)
     setTemp([...updatedTemp])
   }
 
@@ -75,8 +65,6 @@ const EditFeatureComponent: NextPage = () => {
 
     for (let i = 0; i < temp.length; i++) {
       for (const key in temp[i]) {
-        console.log('key:', key)
-        // console.log(tooltip)
         if (key === 'id' || (key === 'tooltip' && temp[i][key] === '')) {
           continue
         }
@@ -92,9 +80,7 @@ const EditFeatureComponent: NextPage = () => {
       url: ApiRoutes.ADMIN_FEATURES + `/${featureId}`,
       data: formData,
       headers: { 'Content-Type': 'multipart/form-data' },
-    }).then((res) => {
-      console.log(res)
-    })
+    }).then(() => {})
   }
 
   return (
