@@ -19,16 +19,16 @@ import SectionsFeatures from './sectionsFeatures'
 
 type informationType = {
   title: string
-  wage: string
-  minimumSoldMultiple: string
+  wage: number
+  minimumSoldMultiple: number
   staticNotice: string
   dynamicNotice: string
   producer: string /*تولیدکنندگان فعلا نداریم */
 }
 const DEFAULT_VALUES = {
   title: '',
-  wage: '',
-  minimumSoldMultiple: '',
+  wage: 0,
+  minimumSoldMultiple: 1,
   staticNotice: '',
   dynamicNotice: '',
   producer: '',

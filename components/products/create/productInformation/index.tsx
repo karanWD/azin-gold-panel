@@ -7,8 +7,8 @@ type Props = {
   errors?: { [key: string]: boolean }
   data: {
     title: string
-    wage: number |string
-    minimumSoldMultiple: number |string
+    wage: number
+    minimumSoldMultiple: number
     staticNotice: string
     dynamicNotice: string
     // producer: string /*تولیدکنندگان فعلا نداریم */
