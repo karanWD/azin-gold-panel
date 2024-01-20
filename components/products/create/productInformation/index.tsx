@@ -4,7 +4,7 @@ import TextField from '@/components/UI/textField'
 import { Box } from '@mui/material'
 
 type Props = {
-  errors: { [key: string]: boolean }
+  errors?: { [key: string]: boolean }
   data: {
     title: string
     wage: number

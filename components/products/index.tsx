@@ -5,13 +5,13 @@ import { useCallback, useEffect, useState } from 'react'
 import { ApiRoutes } from '../../enums/ApiRoutes'
 import PageHeader from '../reusable/pageHeader'
 import { Box, Typography } from '@mui/material'
-import MoreDetail from '../orders/moreDetail'
 import ChangeStatusProduct from '../products/changeStatusProducts'
 import PageBody from '../reusable/body'
 import { HandleDate } from '../../modules'
 import PaginationWrapper from '@/components/reusable/pagination'
+import MoreDetail from './moreDetail'
+import { StaticRoutes } from 'enums/StaticRoutes'
 import Link from 'next/link'
-import { StaticRoutes } from '../../enums/StaticRoutes'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
 
 const tableHeading: string[] = [
@@ -51,14 +51,7 @@ const ProductsComponents: NextPage = () => {
       wage: <Typography variant="body3">{item.wage + ' % '}</Typography>,
       features: <Typography variant="body3">{item.numbersOfFeatureGroups}</Typography>,
       status: <ChangeStatusProduct status={item.isActive} productId={item._id} />,
-      more: (
-        <MoreDetail
-          userId={item._id}
-          orderId={item._id}
-          trackingId={item.tracking}
-          updateHandler={() => fetchProductsList(page)}
-        />
-      ),
+      more: <MoreDetail productId={item._id} />,
     }))
   }, [])
 
